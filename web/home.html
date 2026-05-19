@@ -16,27 +16,37 @@
 <div class="load">戴启东住宅方案</div>
 <script>
 (function(){
-  // Instant if cached
   var c=sessionStorage.getItem('_rt');
   if(c){location.replace(c);return}
+
   var base='dai-qidong-scheme-v';
+  // 5 most recent dates
   var d=new Date(), dates=[];
-  for(var i=0;i<14;i++){
+  for(var i=0;i<5;i++){
     var y=String(d.getFullYear()).slice(-2),m=String(d.getMonth()+1).padStart(2,'0'),dd=String(d.getDate()).padStart(2,'0');
-    dates.push(y+m+dd);d.setDate(d.getDate()-1);
+    dates.push(y+m+dd); d.setDate(d.getDate()-1);
   }
-  var urls=[],best=null,done=0;
-  for(var v=4;v<=20;v++)for(var j=0;j<dates.length;j++)urls.push({n:v,date:dates[j],url:base+v+'_'+dates[j]+'.html'});
-  urls.forEach(function(c){
-    fetch(c.url,{method:'HEAD'}).then(function(r){
-      if(r.ok&&(!best||c.n>best.n||(c.n===best.n&&c.date>best.date)))best=c;
-    }).catch(function(){}).finally(function(){
-      if(++done>=urls.length&&best){sessionStorage.setItem('_rt',best.url);location.replace(best.url)}
+
+  // Probe v20→v4, one version at a time, all dates in parallel per version.
+  // First version with any hit → redirect.
+  var ver=20, aborted=false;
+  function probeVersion(v){
+    if(v<4||aborted){toFallback();return}
+    var pending=dates.length;
+    dates.forEach(function(dt){
+      var url=base+v+'_'+dt+'.html';
+      fetch(url,{method:'HEAD'}).then(function(r){
+        if(!aborted&&r.ok){aborted=true;sessionStorage.setItem('_rt',url);location.replace(url)}
+      }).catch(function(){}).finally(function(){
+        if(--pending===0&&!aborted) probeVersion(v-1);
+      });
     });
-  });
-  setTimeout(function(){
-    if(!best)location.replace('dai-qidong-scheme-v4_260519.html');
-  },2500);
+  }
+  function toFallback(){
+    if(!aborted){aborted=true;location.replace('dai-qidong-scheme-v4_260519.html')}
+  }
+  probeVersion(ver);
+  setTimeout(toFallback,2500);
 })();
 </script>
 </body>
