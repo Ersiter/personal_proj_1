@@ -403,7 +403,7 @@
     z-index: 1; pointer-events: none;
   }
   @media (prefers-color-scheme: dark) {
-    .card-illo .illo-img img { filter: brightness(0.75) saturate(0.6); }
+    .card-illo .illo-img img { filter: brightness(0.75) saturate(0.7); }
   }
   @media (max-width: 480px) {
     .card-illo { flex-direction: column-reverse; }
@@ -1120,15 +1120,18 @@
 <script>
 (function(){
   var carousels=document.querySelectorAll('.illo-carousel');
-  carousels.forEach(function(el){
+  var delays=[0,80,200,350,430,550];
+  carousels.forEach(function(el,i){
     var imgs=el.querySelectorAll('img');
     if(imgs.length<2)return;
     var idx=0;
-    setInterval(function(){
-      imgs[idx].classList.remove('active');
-      idx=(idx+1)%imgs.length;
-      imgs[idx].classList.add('active');
-    },3000);
+    setTimeout(function(){
+      setInterval(function(){
+        imgs[idx].classList.remove('active');
+        idx=(idx+1)%imgs.length;
+        imgs[idx].classList.add('active');
+      },3000);
+    },delays[i]||0);
   });
 })();
 </script>
