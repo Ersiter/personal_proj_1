@@ -248,26 +248,26 @@
     position: absolute; inset: 0; z-index: 0;
     display: flex; align-items: center; justify-content: center;
     overflow: hidden;
-    mask-image: linear-gradient(to right, transparent 5%, black 18%, black 82%, transparent 95%);
-    -webkit-mask-image: linear-gradient(to right, transparent 5%, black 18%, black 82%, transparent 95%);
+    mask-image: linear-gradient(to right, transparent 5%, black 30%, black 70%, transparent 95%);
+    -webkit-mask-image: linear-gradient(to right, transparent 5%, black 30%, black 70%, transparent 95%);
   }
   @media (orientation: portrait) {
     .hero-bg {
-      mask-image: linear-gradient(to bottom, transparent 5%, black 18%, black 82%, transparent 95%);
-      -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 18%, black 82%, transparent 95%);
+      mask-image: linear-gradient(to bottom, transparent 5%, black 30%, black 70%, transparent 95%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 30%, black 70%, transparent 95%);
     }
   }
   .hero-bg img {
     object-fit: contain;
     height: 100%; width: auto;
-    filter: grayscale(1) opacity(0.08);
+    filter: grayscale(1) opacity(0.04);
     max-width: none;
   }
   @media (orientation: portrait) {
     .hero-bg img { width: 100%; height: auto; }
   }
   @media (prefers-color-scheme: dark) {
-    .hero-bg img { filter: grayscale(1) opacity(0.06); }
+    .hero-bg img { filter: grayscale(1) opacity(0.025); }
   }
   .hero h1 .accent { color: var(--amber); }
   .hero .sub {
