@@ -8,14 +8,27 @@
 <script>
 (function(){
   var fallback='dai-qidong-scheme-v4_260519.html';
-  fetch('versions.json')
+  // Probe GitHub tags: highest v{N} = latest
+  fetch('https://api.github.com/repos/Ersiter/personal_proj_1/git/refs/tags')
     .then(function(r){return r.json()})
-    .then(function(d){
-      location.replace(d.latest||fallback);
+    .then(function(tags){
+      var re=/^refs\/tags\/v(\d+)_(\d{6})$/;
+      var latest={n:0,date:'000000',tag:''};
+      tags.forEach(function(t){
+        var m=t.ref.match(re);
+        if(!m) return;
+        var ver={n:+m[1],date:m[2],tag:m[0].split('/').pop()};
+        if(ver.n>latest.n||(ver.n===latest.n&&ver.date>latest.date)){
+          latest=ver;
+        }
+      });
+      if(latest.tag){
+        location.replace('dai-qidong-scheme-'+latest.tag+'.html');
+      }else{
+        location.replace(fallback);
+      }
     })
-    .catch(function(){
-      location.replace(fallback);
-    });
+    .catch(function(){location.replace(fallback)});
 })();
 </script>
 </body>
