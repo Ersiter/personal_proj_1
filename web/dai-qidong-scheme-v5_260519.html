@@ -244,6 +244,31 @@
     align-items: center; justify-content: center; text-align: center;
     padding: clamp(4rem, 8vh, 8rem) clamp(1rem, 4vw, 2rem) clamp(2rem, 6vh, 4rem);
   }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 5%, black 18%, black 82%, transparent 95%);
+    -webkit-mask-image: linear-gradient(to right, transparent 5%, black 18%, black 82%, transparent 95%);
+  }
+  @media (orientation: portrait) {
+    .hero-bg {
+      mask-image: linear-gradient(to bottom, transparent 5%, black 18%, black 82%, transparent 95%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 18%, black 82%, transparent 95%);
+    }
+  }
+  .hero-bg img {
+    object-fit: contain;
+    height: 100%; width: auto;
+    filter: grayscale(1) opacity(0.08);
+    max-width: none;
+  }
+  @media (orientation: portrait) {
+    .hero-bg img { width: 100%; height: auto; }
+  }
+  @media (prefers-color-scheme: dark) {
+    .hero-bg img { filter: grayscale(1) opacity(0.06); }
+  }
   .hero h1 .accent { color: var(--amber); }
   .hero .sub {
     font-size: clamp(0.9rem, 1.2vw, 1.1rem); font-weight: 300;
@@ -673,6 +698,7 @@
 
 <!-- Hero -->
 <header class="hero">
+  <div class="hero-bg"><img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/first-page-bg.webp" alt="" aria-hidden="true" loading="eager"></div>
   <div class="eyebrow reveal">住宅空间设计 · 课程作业</div>
   <h1 class="reveal d1">戴启东<span class="accent">住宅方案</span></h1>
   <p class="sub reveal d2">岭南新中式 · 适老化温馨之家。从一份手写意向表出发，为一户顺德人家量身定制的空间设计。</p>
