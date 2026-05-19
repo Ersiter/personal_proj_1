@@ -260,17 +260,18 @@
   .hero-bg img {
     object-fit: contain;
     height: 100%; width: auto;
-    filter: grayscale(1) opacity(0.04);
+    filter: grayscale(1) opacity(0.04) blur(0.4px);
     max-width: none;
     pointer-events: none; user-select: none;
-    opacity: 0; transform: translateY(0);
+    opacity: 0;
+    will-change: opacity;
     animation: reveal 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
   }
   @media (orientation: portrait) {
     .hero-bg img { width: 100%; height: auto; }
   }
   @media (prefers-color-scheme: dark) {
-    .hero-bg img { filter: grayscale(1) opacity(0.025); }
+    .hero-bg img { filter: grayscale(1) opacity(0.025) blur(0.4px); }
   }
   .hero h1 .accent { color: var(--amber); }
   .hero .sub {
@@ -1141,7 +1142,7 @@
         observer.unobserve(img);
       }
     })
-  },{rootMargin:'800px',threshold:0.01});
+  },{rootMargin:'700px',threshold:0.01});
   document.querySelectorAll('img[data-src]').forEach(function(img){observer.observe(img)});
 })();
 </script>
