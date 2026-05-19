@@ -6,46 +6,17 @@
 <title>戴启东住宅方案</title>
 <style>
   html{background:#faf8f4}
-  body{display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;font-family:'Noto Serif SC',serif}
-  .load{color:#c4934a;font-size:14px;letter-spacing:.1em;opacity:0;animation:fadeIn .3s ease .15s forwards}
-  @keyframes fadeIn{to{opacity:.6}}
-  @media(prefers-color-scheme:dark){html{background:#1a1612}.load{color:#dab87a}}
+  @media(prefers-color-scheme:dark){html{background:#1a1612}}
 </style>
 </head>
 <body>
-<div class="load">戴启东住宅方案</div>
 <script>
 (function(){
   var c=sessionStorage.getItem('_rt');
   if(c){location.replace(c);return}
-
-  var base='dai-qidong-scheme-v';
-  var d=new Date(), dates=[];
-  for(var i=0;i<3;i++){
-    var y=String(d.getFullYear()).slice(-2),m=String(d.getMonth()+1).padStart(2,'0'),dd=String(d.getDate()).padStart(2,'0');
-    dates.push(y+m+dd); d.setDate(d.getDate()-1);
-  }
-  var ver=20, aborted=false;
-  function probe(v){
-    if(v<4||aborted){fallback();return}
-    var i=0;
-    function tryDate(){
-      if(i>=dates.length||aborted){probe(v-1);return}
-      var url=base+v+'_'+dates[i]+'.html';
-      var x=new XMLHttpRequest();
-      x.open('HEAD',url,true);
-      x.onload=function(){
-        if(!aborted&&x.status===200){aborted=true;sessionStorage.setItem('_rt',url);location.replace(url)}
-        else{i++;tryDate()}
-      };
-      x.onerror=function(){i++;tryDate()};
-      x.send();
-    }
-    tryDate();
-  }
-  function fallback(){if(!aborted){aborted=true;location.replace('dai-qidong-scheme-v4_260519.html')}}
-  probe(ver);
-  setTimeout(fallback,2000);
+  var u='dai-qidong-scheme-latest.html';
+  sessionStorage.setItem('_rt',u);
+  location.replace(u);
 })();
 </script>
 </body>
