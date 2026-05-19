@@ -2,44 +2,41 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+<meta name="color-scheme" content="light dark">
 <title>戴启东住宅方案</title>
+<style>
+  html{background:#faf8f4}
+  body{display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;font-family:'Noto Serif SC',serif}
+  .load{color:#c4934a;font-size:14px;letter-spacing:.1em;opacity:0;animation:fadeIn .3s ease .15s forwards}
+  @keyframes fadeIn{to{opacity:.6}}
+  @media(prefers-color-scheme:dark){html{background:#1a1612}.load{color:#dab87a}}
+</style>
 </head>
 <body>
+<div class="load">戴启东住宅方案</div>
 <script>
 (function(){
+  // Instant if cached
+  var c=sessionStorage.getItem('_rt');
+  if(c){location.replace(c);return}
   var base='dai-qidong-scheme-v';
-  // Generate candidate URLs: v4..v20 × last 14 days
-  var d=new Date(), dates=[], urls=[];
+  var d=new Date(), dates=[];
   for(var i=0;i<14;i++){
-    var y=String(d.getFullYear()).slice(-2);
-    var m=String(d.getMonth()+1).padStart(2,'0');
-    var dd=String(d.getDate()).padStart(2,'0');
-    dates.push(y+m+dd);
-    d.setDate(d.getDate()-1);
+    var y=String(d.getFullYear()).slice(-2),m=String(d.getMonth()+1).padStart(2,'0'),dd=String(d.getDate()).padStart(2,'0');
+    dates.push(y+m+dd);d.setDate(d.getDate()-1);
   }
-  for(var v=4;v<=20;v++){
-    for(var j=0;j<dates.length;j++){
-      urls.push({n:v,date:dates[j],url:base+v+'_'+dates[j]+'.html'});
-    }
-  }
-  var best=null;
-  var done=0;
+  var urls=[],best=null,done=0;
+  for(var v=4;v<=20;v++)for(var j=0;j<dates.length;j++)urls.push({n:v,date:dates[j],url:base+v+'_'+dates[j]+'.html'});
   urls.forEach(function(c){
     fetch(c.url,{method:'HEAD'}).then(function(r){
-      if(r.ok&&(!best||c.n>best.n||(c.n===best.n&&c.date>best.date))){
-        best=c;
-      }
+      if(r.ok&&(!best||c.n>best.n||(c.n===best.n&&c.date>best.date)))best=c;
     }).catch(function(){}).finally(function(){
-      done++;
-      if(done>=urls.length&&best){
-        location.replace(best.url);
-      }
+      if(++done>=urls.length&&best){sessionStorage.setItem('_rt',best.url);location.replace(best.url)}
     });
   });
-  // Fallback after 3s
   setTimeout(function(){
-    if(!best) location.replace('dai-qidong-scheme-v4_260519.html');
-  },3000);
+    if(!best)location.replace('dai-qidong-scheme-v4_260519.html');
+  },2500);
 })();
 </script>
 </body>
