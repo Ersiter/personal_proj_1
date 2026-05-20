@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN" data-theme="auto">
 <head>
 <meta charset="UTF-8">
@@ -511,6 +511,51 @@
     font-family: 'Noto Serif SC', serif; font-weight: 700; color: var(--amber-soft);
   }
 
+  /* ===== Room Flyout (floorplan hover) ===== */
+  .room-flyout {
+    position: absolute; left: 0; right: 0; top: 100%;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+    background: var(--surface); border: 1px solid var(--amber-soft);
+    border-radius: 0.4rem; overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+    z-index: 10;
+  }
+  .room-flyout.show {
+    opacity: 1; transform: translateY(0);
+  }
+  .room-flyout .room-card-top {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: clamp(0.65rem, 1.2vw, 0.9rem) clamp(0.8rem, 1.8vw, 1.2rem) 0.3rem;
+    gap: 0.5rem;
+  }
+  .room-flyout .room-card-top h4 {
+    font: 500 clamp(0.82rem, 1vw, 0.95rem) 'Noto Serif SC', serif;
+    color: var(--ink); margin: 0;
+  }
+  .room-flyout .room-card-top .sqm {
+    font-size: clamp(0.65rem, 0.8vw, 0.75rem);
+    color: var(--amber); white-space: nowrap;
+  }
+  .room-flyout p {
+    margin: 0;
+    padding: 0 clamp(0.8rem, 1.8vw, 1.2rem) clamp(0.65rem, 1.2vw, 0.9rem);
+    font-size: clamp(0.72rem, 0.85vw, 0.82rem);
+    font-weight: 300; line-height: 1.85; color: var(--ink-soft);
+  }
+  .room-flyout-inner {
+    transition: opacity 0.2s ease;
+  }
+  /* highlight the hovered span */
+  .overlay-stats span.room-hint {
+    cursor: pointer; transition: color 0.25s, text-shadow 0.25s;
+    position: relative; pointer-events: auto;
+  }
+  .overlay-stats span.room-hint:hover,
+  .overlay-stats span.room-hint.active {
+    color: #fff; text-shadow: 0 0 10px rgba(255,210,130,0.95), 0 0 24px rgba(255,180,60,0.55);
+  }
+
   /* ===== Process Row ===== */
   .process-row {
     display: flex; flex-wrap: wrap; justify-content: center;
@@ -596,7 +641,10 @@
 
   /* ===== Budget Table ===== */
   .budget-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .budget-table { width: 100%; border-collapse: collapse; min-width: 36rem; }
+  .budget-table { width: 100%; border-collapse: collapse; min-width: 28rem; max-width: 46rem; margin: 0 auto; }
+  .budget-table col.name { width: 18%; }
+  .budget-table col.desc { width: 52%; }
+  .budget-table col.cost { width: 30%; }
   .budget-table th {
     text-align: left; font: 500 clamp(0.68rem, 0.82vw, 0.75rem) 'Noto Sans SC', sans-serif;
     color: var(--ink-soft); padding: 0.75rem 0;
@@ -678,6 +726,9 @@
 
     .floorplan-frame .overlay-stats { flex-direction: column; align-items: center; gap: 0.3rem; }
     .process-row { flex-direction: column; align-items: center; }
+    .pano-links {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+    }
   }
 </style>
 </head>
@@ -706,9 +757,9 @@
   <div class="hero-bg"><img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/first-page-bg.webp" alt="" aria-hidden="true" loading="eager"></div>
   <div class="eyebrow reveal">住宅空间设计 · 课程作业</div>
   <h1 class="reveal d1">戴启东<span class="accent">住宅方案</span></h1>
-  <p class="sub reveal d2">岭南新中式 · 适老化温馨之家。从一份手写意向表出发，为一户顺德人家量身定制的空间设计。</p>
+  <p class="sub reveal d2">岭南新中式 · 适老化温馨之家。从一份手写意向表出发，为一户禅城人家量身定制的空间设计。</p>
   <div class="meta-row reveal d3">
-    <span>佛山 · 顺德</span>
+    <span>佛山 · 禅城</span>
     <span class="sep">/</span>
     <span>227.92㎡ 四室两厅三卫</span>
     <span class="sep">/</span>
@@ -722,7 +773,7 @@
   <div class="container">
     <div class="eyebrow reveal sec-label">01 · Overview</div>
     <h2 class="sec-title reveal d1">项目概览</h2>
-    <p class="sec-desc reveal d2">业主戴启东，19岁大学生，与父母（父49岁、母52岁）及哥哥共同居住于佛山顺德。母亲患有帕金森综合症，室内设计需以安全、便利为核心底线，同时融入岭南文化元素。</p>
+    <p class="sec-desc reveal d2">业主戴启东，19岁大学生，与父母（父49岁、母52岁）及哥哥共同居住于佛山禅城。母亲患有帕金森综合症，室内设计需以安全、便利为核心底线，同时融入岭南文化元素。</p>
 
     <div class="stat-line reveal d3">
       <div class="stat-item"><div class="num">227.92</div><div class="unit">㎡ 建筑面积</div></div>
@@ -743,7 +794,7 @@
         <ul class="feature-list">
           <li><strong>适老化底线</strong> — 帕金森综合症母亲的安全是最高优先级</li>
           <li><strong>岭南文脉</strong> — "多岭南特色"需从建筑符号转化为现代空间语言</li>
-          <li><strong>务实预算</strong> — 顺德普通家庭，拒绝过度装修</li>
+          <li><strong>务实预算</strong> — 湛江普通家庭，拒绝过度装修</li>
         </ul>
       </div>
     </div>
@@ -902,22 +953,25 @@
   <div class="container">
     <div class="eyebrow reveal sec-label">05 · Floor Plan</div>
     <h2 class="sec-title reveal d1">原始户型</h2>
-    <p class="sec-desc reveal d2">建筑面积 227.92㎡ · 套内面积 198.11㎡ · 进深 16,510 × 开间 16,990mm</p>
+    <p class="sec-desc reveal d2">禅城区 · 岭南天地 · 建筑面积 227.92㎡ · 套内面积 198.11㎡ · 进深 16,510 × 开间 16,990mm</p>
 
+    <div style="position:relative;">
     <div class="floorplan-frame reveal d3">
-      <img data-src="https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIFUKLAKTLD74AABAAAAAEA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 9%22%3E%3C/svg%3E"
+      <img src="https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIFUKLAKTLD74AABAAAAAEA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp" loading="lazy"
         alt="戴启东住宅原始户型图 — 四室两厅三卫 227.92㎡"
         sizes="(max-width: 640px) 92vw, (max-width: 1024px) 90vw, 75rem"
-        data-srcset="https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIFUKLAKTLD74AABAAAAAEA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp 1920w"
+        srcset="https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIFUKLAKTLD74AABAAAAAEA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp 1920w"
       >
       <div class="overlay-stats" aria-hidden="true">
-        <span>客餐厅 <strong>71.20㎡</strong></span>
-        <span>主卧 <strong>28.61㎡</strong></span>
-        <span>次卧一 <strong>24.43㎡</strong></span>
-        <span>次卧二 <strong>18.24㎡</strong></span>
-        <span>次卧三 <strong>18.02㎡</strong></span>
-        <span>厨房 <strong>11.49㎡</strong></span>
+        <span class="room-hint" data-room="0">客餐厅 <strong>71.20㎡</strong></span>
+        <span class="room-hint" data-room="1">主卧 <strong>28.61㎡</strong></span>
+        <span class="room-hint" data-room="2">次卧一 <strong>24.43㎡</strong></span>
+        <span class="room-hint" data-room="3">次卧二 <strong>18.24㎡</strong></span>
+        <span class="room-hint" data-room="4">次卧三 <strong>18.02㎡</strong></span>
+        <span class="room-hint" data-room="5">厨房 <strong>11.49㎡</strong></span>
       </div>
+    </div>
+    <div class="room-flyout" id="roomFlyout" aria-live="polite"></div>
     </div>
   </div>
 </section>
@@ -930,27 +984,27 @@
     <p class="sec-desc reveal d2">八室一厅，各安其位。每个空间的设计决策都来自意向表的原文对应。</p>
 
     <div class="room-grid reveal d3">
-      <div class="room-card">
+      <div class="room-card" data-room="0">
         <div class="room-card-top"><h4>客餐厅</h4><span class="sqm">71.20㎡</span></div>
         <div class="room-card-body">全屋最核心公共空间。6人L型沙发+茶几、75寸大屏电视。木饰面护墙板电视墙+隐形收纳。岭南花窗隔断柔性分区，暖色无主灯3000K。1×6实木餐桌+餐边柜+陈列柜，配独立电视。</div>
       </div>
-      <div class="room-card">
+      <div class="room-card" data-room="1">
         <div class="room-card-top"><h4>主卧室（老年房）</h4><span class="sqm">28.61㎡</span></div>
         <div class="room-card-body">父母居住，适老化核心空间。2×2m实木床离地45cm，床头双侧扶手+紧急呼叫。可升降挂衣杆衣柜+圆角梳妆台。感应夜灯路径覆盖至主卫（9.66㎡），语音控制窗帘与灯光。</div>
       </div>
-      <div class="room-card">
+      <div class="room-card" data-room="2">
         <div class="room-card-top"><h4>次卧一（戴启东）</h4><span class="sqm">24.43㎡</span></div>
         <div class="room-card-body">戴启东本人房间。双人床+极宽电脑桌+衣柜+书柜。手办展示区+电动娱乐角。耐脏墙面处理，暖色系+木地板。</div>
       </div>
-      <div class="room-card">
+      <div class="room-card" data-room="3">
         <div class="room-card-top"><h4>次卧二（哥哥）</h4><span class="sqm">18.24㎡</span></div>
         <div class="room-card-body">哥哥房间。双人床+电脑桌+衣柜。简约实用风格，暖色系墙面+木地板。</div>
       </div>
-      <div class="room-card">
+      <div class="room-card" data-room="4">
         <div class="room-card-top"><h4>次卧三（书房）</h4><span class="sqm">18.02㎡</span></div>
         <div class="room-card-body">改造为书房，满足2人同时使用。双人书桌+电脑位，书籍+手办展示柜。暖色系+实木地板。</div>
       </div>
-      <div class="room-card">
+      <div class="room-card" data-room="5">
         <div class="room-card-top"><h4>厨房</h4><span class="sqm">11.49㎡</span></div>
         <div class="room-card-body">中式大吸力烟灶应对大油烟。U型操作台+双水槽，实用优先。暖木色橱柜面板+隐形拉手，易清洁哑光大砖。</div>
       </div>
@@ -1036,27 +1090,27 @@
 
     <div class="render-gallery reveal d3">
       <div class="render-frame">
-        <img data-src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WK2Y8.jpg?x-oss-process=image/format,webp" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 9%22%3E%3C/svg%3E" alt="客餐厅视角一">
+        <img src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WK2Y8.jpg?x-oss-process=image/format,webp" loading="lazy" alt="客餐厅视角一">
         <div class="cap"><span class="tt">客餐厅 · 视角一</span><span class="tg">宋式美学</span></div>
       </div>
       <div class="render-frame">
-        <img data-src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZQ8.jpg?x-oss-process=image/format,webp" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 9%22%3E%3C/svg%3E" alt="客餐厅视角二">
+        <img src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZQ8.jpg?x-oss-process=image/format,webp" loading="lazy" alt="客餐厅视角二">
         <div class="cap"><span class="tt">客餐厅 · 视角二</span><span class="tg">暖色无主灯</span></div>
       </div>
       <div class="render-frame">
-        <img data-src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZA8.jpg?x-oss-process=image/format,webp" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 9%22%3E%3C/svg%3E" alt="次卧一">
+        <img src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZA8.jpg?x-oss-process=image/format,webp" loading="lazy" alt="次卧一">
         <div class="cap"><span class="tt">次卧 · 视角一</span><span class="tg">暖木色</span></div>
       </div>
       <div class="render-frame">
-        <img data-src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKYA8.jpg?x-oss-process=image/format,webp" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 9%22%3E%3C/svg%3E" alt="次卧二">
+        <img src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKYA8.jpg?x-oss-process=image/format,webp" loading="lazy" alt="次卧二">
         <div class="cap"><span class="tt">次卧 · 视角二</span><span class="tg">柔和灯光</span></div>
       </div>
       <div class="render-frame">
-        <img data-src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZI8.jpg?x-oss-process=image/format,webp" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 9%22%3E%3C/svg%3E" alt="次卧三">
+        <img src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZI8.jpg?x-oss-process=image/format,webp" loading="lazy" alt="次卧三">
         <div class="cap"><span class="tt">次卧 · 视角三</span><span class="tg">收纳空间</span></div>
       </div>
       <div class="render-frame">
-        <img data-src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZY8.jpg?x-oss-process=image/format,webp" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 9%22%3E%3C/svg%3E" alt="厨房">
+        <img src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZY8.jpg?x-oss-process=image/format,webp" loading="lazy" alt="厨房">
         <div class="cap"><span class="tt">厨房</span><span class="tg">实用布局</span></div>
       </div>
     </div>
@@ -1083,6 +1137,7 @@
 
     <div class="budget-wrap reveal d3">
       <table class="budget-table">
+        <colgroup><col class="name"><col class="desc"><col class="cost"></colgroup>
         <thead><tr><th>项目类别</th><th>内容说明</th><th>预估费用</th></tr></thead>
         <tbody>
           <tr><td>硬装基础</td><td>水电改造（198㎡套内+智能布线）、防水、找平、吊顶</td><td>140,000 – 170,000 元</td></tr>
@@ -1123,7 +1178,7 @@
   <p>
     空间居住设计 · 课程作业<br>
     汇报人：25 环境艺术设计 1 班 陈键朗<br>
-    佛山 · 顺德 · 2026 年 5 月
+    佛山 · 禅城 · 2026 年 5 月
   </p>
   <p style="font-size:clamp(0.6rem,0.7vw,0.68rem);opacity:0.35;margin-top:1rem;">
     酷家乐方案 ID：3FO3EIOVF0JS · 基于《业主需求意向表（戴启东）》编制
@@ -1133,38 +1188,140 @@
 
 <script>
 (function(){
-  var observer=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        var img=e.target,s=img.getAttribute('data-src');
-        if(s){img.src=s;img.removeAttribute('data-src')}
-        var ss=img.getAttribute('data-srcset');
-        if(ss){img.srcset=ss;img.removeAttribute('data-srcset')}
-        observer.unobserve(img);
-      }
-    })
-  },{rootMargin:'700px',threshold:0.01});
-  document.querySelectorAll('img[data-src]').forEach(function(img){observer.observe(img)});
+  var carousels=document.querySelectorAll('.illo-carousel');
+  var delays=[0,80,200,350,430,550];
+  window.addEventListener('load',function(){
+    carousels.forEach(function(el,i){
+      var imgs=el.querySelectorAll('img');
+      if(imgs.length<2)return;
+      var idx=0;
+      setTimeout(function(){
+        setInterval(function(){
+          imgs[idx].classList.remove('active');
+          idx=(idx+1)%imgs.length;
+          imgs[idx].classList.add('active');
+        },3000);
+      },delays[i]||0);
+    });
+  });
 })();
 </script>
 
 <script>
 (function(){
-  var carousels=document.querySelectorAll('.illo-carousel');
-  var delays=[0,80,200,350,430,550];
-  carousels.forEach(function(el,i){
-    var imgs=el.querySelectorAll('img');
-    if(imgs.length<2)return;
-    var idx=0;
+  var flyout=document.getElementById('roomFlyout');
+  var hints=document.querySelectorAll('.overlay-stats .room-hint');
+  var cards=document.querySelectorAll('.room-grid .room-card');
+  var activeIdx=-1;
+  var currentInner=null;
+  var hideTimer=null;
+  var touchDevice='ontouchstart' in window;
+
+  function show(span){
+    if(hideTimer){clearTimeout(hideTimer);hideTimer=null;}
+    var idx=parseInt(span.getAttribute('data-room'));
+    if(idx===activeIdx)return;
+    var card=cards[idx];
+    if(!card)return;
+
+    hints.forEach(function(h){h.classList.remove('active');});
+    span.classList.add('active');
+    activeIdx=idx;
+
+    if(flyout.classList.contains('show')){
+      crossfade(card);
+    }else{
+      fillContent(card);
+      flyout.classList.add('show');
+    }
+  }
+
+  function fillContent(card){
+    var top=card.querySelector('.room-card-top').cloneNode(true);
+    var body=card.querySelector('.room-card-body').textContent;
+    var inner=document.createElement('div');
+    inner.className='room-flyout-inner';
+    inner.appendChild(top);
+    var p=document.createElement('p');
+    p.textContent=body;
+    inner.appendChild(p);
+    flyout.innerHTML='';
+    flyout.appendChild(inner);
+    currentInner=inner;
+  }
+
+  function crossfade(card){
+    var old=currentInner;
+    if(!old||!old.parentNode){fillContent(card);return;}
+    // Kill stale layers from rapid switching
+    var all=flyout.querySelectorAll('.room-flyout-inner');
+    for(var i=all.length-1;i>=0;i--){
+      if(all[i]!==old)all[i].parentNode.removeChild(all[i]);
+    }
+    // Build new layer (absolute overlay)
+    var top=card.querySelector('.room-card-top').cloneNode(true);
+    var body=card.querySelector('.room-card-body').textContent;
+    var next=document.createElement('div');
+    next.className='room-flyout-inner';
+    next.style.cssText='position:absolute;top:0;left:0;right:0;opacity:0';
+    next.appendChild(top);
+    var p=document.createElement('p');
+    p.textContent=body;
+    next.appendChild(p);
+    flyout.appendChild(next);
+    next.offsetHeight;
+    // Crossfade
+    old.style.opacity='0';
+    next.style.opacity='1';
+    currentInner=next;
+    // Cleanup
     setTimeout(function(){
-      setInterval(function(){
-        imgs[idx].classList.remove('active');
-        idx=(idx+1)%imgs.length;
-        imgs[idx].classList.add('active');
-      },3000);
-    },delays[i]||0);
-  });
+      if(old.parentNode)old.parentNode.removeChild(old);
+      next.style.cssText='opacity:1';
+    },250);
+  }
+
+  function hide(){
+    flyout.classList.remove('show');
+    hints.forEach(function(h){h.classList.remove('active');});
+    activeIdx=-1;
+    currentInner=null;
+  }
+
+  function delayedHide(){
+    hideTimer=setTimeout(function(){
+      hide();
+      hideTimer=null;
+    },150);
+  }
+
+  if(touchDevice){
+    hints.forEach(function(span){
+      span.addEventListener('click',function(e){
+        e.stopPropagation();
+        var idx=parseInt(span.getAttribute('data-room'));
+        if(activeIdx===idx){hide();return;}
+        show(span);
+      });
+    });
+    document.addEventListener('click',function(e){
+      if(!e.target.closest('.overlay-stats')&&!e.target.closest('.room-flyout')){
+        hide();
+      }
+    });
+  }else{
+    hints.forEach(function(span){
+      span.addEventListener('mouseenter',function(){show(span);});
+      span.addEventListener('mouseleave',function(){delayedHide();});
+    });
+    flyout.addEventListener('mouseenter',function(){
+      if(hideTimer){clearTimeout(hideTimer);hideTimer=null;}
+    });
+    flyout.addEventListener('mouseleave',function(){delayedHide();});
+  }
 })();
 </script>
 </body>
 </html>
+
+
