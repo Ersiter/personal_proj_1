@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="zh-CN" data-theme="auto">
 <head>
@@ -8,9 +8,8 @@
 <title>戴启东住宅空间设计方案 — 岭南新中式 · 适老化温馨之家</title>
 <meta name="color-scheme" content="light dark">
 <style>
-  
 
-  
+
   :root {
     --bg:            #faf8f4;
     --bg-warm:       #f3efe6;
@@ -27,7 +26,7 @@
     --shadow-sm:     0 1px 2px rgba(0,0,0,0.03);
   }
 
-  
+
   @media (prefers-color-scheme: dark) {
     [data-theme="auto"] {
       --bg:       #1a1612;
@@ -73,7 +72,7 @@
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.03);
   }
 
-  
+
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   html {
@@ -95,7 +94,7 @@
     transition: background 0.4s ease, color 0.4s ease;
   }
 
-  
+
   ::selection {
     background: var(--amber-soft);
     color: var(--ink);
@@ -105,7 +104,7 @@
     color: var(--ink);
   }
 
-  
+
   .serif { font-family: 'Noto Serif SC', 'STSong', 'SimSun', serif; }
 
   h1 { font: 700 clamp(2.2rem, 5.5vw, 4.5rem)/1.15 'Noto Serif SC', serif; }
@@ -121,13 +120,13 @@
     font-weight: 500;
   }
 
-  
+
   .container {
     width: min(90vw, 75rem);
     margin-inline: auto;
   }
 
-  
+
   nav {
     position: fixed; inset: 0 0 auto 0; z-index: 100;
     background: color-mix(in srgb, var(--bg) 92%, transparent);
@@ -158,7 +157,7 @@
   }
   nav .links a:hover { color: var(--amber); }
 
-  
+
   .hamburger {
     display: none; background: none; border: none; cursor: pointer;
     width: 32px; height: 32px; position: relative; z-index: 110;
@@ -221,7 +220,7 @@
     nav .links a:hover { background: var(--bg-warm); }
   }
 
-  
+
   .hero {
     position: relative;
     min-height: 100vh; min-height: 100dvh;
@@ -278,7 +277,7 @@
   }
   .hero .scroll-hint:hover { color: var(--amber); }
 
-  
+
   section {
     padding: clamp(4rem, 10vh, 8rem) clamp(1rem, 4vw, 3rem);
   }
@@ -290,14 +289,14 @@
     line-height: 1.75; margin-bottom: 4rem;
   }
 
-  
+
   hr.rule {
     border: none; height: 1px;
     background: linear-gradient(to right, var(--rule), transparent);
     margin: 0 0 4rem;
   }
 
-  
+
   .stat-line {
     display: flex; flex-wrap: wrap; gap: clamp(1.5rem, 4vw, 3rem);
     justify-content: center;
@@ -315,14 +314,14 @@
     color: var(--ink-soft); margin-top: 0.15rem;
   }
 
-  
+
   .split {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: clamp(2rem, 5vw, 4rem); align-items: start;
   }
   @media (max-width: 768px) { .split { grid-template-columns: 1fr; } }
 
-  
+
   .feature-list { list-style: none; }
   .feature-list li {
     padding: 0.85rem 0; border-bottom: 1px solid var(--rule);
@@ -332,7 +331,7 @@
   .feature-list li:last-child { border-bottom: none; }
   .feature-list li strong { font-weight: 500; color: var(--ink); }
 
-  
+
   .callout {
     background: var(--bg-warm); padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2.25rem);
     margin: 2rem 0;
@@ -345,7 +344,7 @@
   }
   .callout p { color: var(--ink-soft); }
 
-  
+
   .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
@@ -369,7 +368,7 @@
   .card li { padding: 0.3rem 0; list-style: none; }
   .card li::before { content: '— '; color: var(--amber-soft); }
 
-  
+
   .card-illo {
     display: flex; gap: 0; align-items: stretch;
     background: var(--surface); border: 1px solid var(--rule);
@@ -427,7 +426,7 @@
     }
   }
 
-  
+
   .room-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
@@ -455,7 +454,7 @@
     color: var(--ink-soft); line-height: 1.85;
   }
 
-  
+
   .floorplan-frame {
     position: relative; width: 100%;
     background: var(--surface);
@@ -469,9 +468,9 @@
     display: block; width: 100%; height: auto;
     object-fit: contain;
     max-height: 75vh;
-    background: #fff; 
+    background: #fff;
   }
-  
+
   @media (prefers-color-scheme: dark) {
     .floorplan-frame img {
       filter: brightness(0.92) sepia(0.06);
@@ -493,7 +492,7 @@
     font-family: 'Noto Serif SC', serif; font-weight: 700; color: #dab87a;
   }
 
-  
+
   .property-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -542,7 +541,7 @@
     .property-cell { padding: 0.8rem 0.7rem; }
   }
 
-  
+
   .room-flyout {
     position: absolute; left: 0; right: 0; top: 100%;
     opacity: 0; transform: translateY(8px);
@@ -574,7 +573,7 @@
     font-size: clamp(0.72rem, 0.85vw, 0.82rem);
     font-weight: 300; line-height: 1.85; color: var(--ink-soft);
   }
-  
+
   :root {
     --flyout-fade-out: 140ms;
     --flyout-fade-in-delay: 100ms;
@@ -586,7 +585,7 @@
   .room-flyout-inner.is-leaving {
     transition: opacity var(--flyout-fade-out) cubic-bezier(0.55, 0.06, 0.68, 0.19);
   }
-  
+
   .overlay-stats span.room-hint {
     cursor: pointer; transition: color 0.25s, text-shadow 0.25s;
     position: relative; pointer-events: auto;
@@ -596,7 +595,7 @@
     color: #fff; text-shadow: 0 0 10px rgba(255,210,130,0.95), 0 0 24px rgba(255,180,60,0.55);
   }
 
-  
+
   .process-row {
     display: flex; flex-wrap: wrap; justify-content: center;
     gap: 0;
@@ -617,7 +616,7 @@
   }
 
 
-  
+
   .palette-bar {
     display: flex; flex-wrap: wrap; border-radius: 0.4rem;
     overflow: hidden; margin-bottom: 4rem;
@@ -631,7 +630,7 @@
   .palette-bar .swatch-name { font-weight: 500; margin-bottom: 0.25rem; }
   .palette-bar .swatch-role { font-size: clamp(0.58rem, 0.7vw, 0.68rem); opacity: 0.7; }
 
-  
+
   .render-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
@@ -662,7 +661,7 @@
     white-space: nowrap;
   }
 
-  
+
   .pano-links {
     display: flex; flex-wrap: wrap; justify-content: center;
     gap: clamp(0.5rem, 1.5vw, 1rem); margin-top: 3rem;
@@ -679,7 +678,7 @@
   .pano-link:hover { border-color: var(--amber); }
   .pano-link .arr { color: var(--amber); font-size: 1.2em; }
 
-  
+
   .budget-bench {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -714,7 +713,7 @@
     .budget-bench { grid-template-columns: repeat(2, 1fr); }
   }
 
-  
+
   .budget-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .budget-table { width: 100%; border-collapse: collapse; min-width: 28rem; max-width: 56rem; margin: 0 auto; }
   .budget-table col.name { width: 18%; }
@@ -738,7 +737,7 @@
   }
   .budget-table tr.total td:last-child { color: var(--terracotta); }
 
-  
+
   .src-list {
     list-style: none; padding: 0; margin: 0.5rem 0 0;
     display: grid; gap: 0.4rem;
@@ -761,7 +760,7 @@
   }
   .src-list a:hover { color: var(--amber); border-bottom-color: var(--amber); }
 
-  
+
   .quote-block {
     padding: clamp(3rem, 8vh, 6rem) clamp(1rem, 3vw, 2rem);
     text-align: center;
@@ -773,7 +772,7 @@
     color: var(--ink-soft); max-width: 38rem; margin: 0 auto;
   }
 
-  
+
   footer {
     padding: clamp(3rem, 8vh, 5rem) clamp(1rem, 3vw, 2rem);
     text-align: center; font-size: clamp(0.72rem, 0.85vw, 0.82rem);
@@ -784,7 +783,7 @@
     color: var(--ink); margin-bottom: 0.25rem;
   }
 
-  
+
   .reveal {
     opacity: 0; transform: translateY(1rem);
     animation: reveal 0.85s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
@@ -799,7 +798,7 @@
     html { scroll-behavior: auto; }
   }
 
-  
+
   @media (min-width: 1600px) {
     .container { width: min(80vw, 82rem); }
     .card-grid { grid-template-columns: repeat(3, 1fr); }
@@ -810,12 +809,12 @@
     .render-gallery { grid-template-columns: repeat(3, 1fr); }
   }
 
-  
+
   @media (max-width: 1024px) {
     .card-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
-  
+
   @media (max-width: 640px) {
     .container { width: 92vw; }
     .card-grid { grid-template-columns: 1fr; }
@@ -829,12 +828,12 @@
     }
   }
 
-  
-  
+
+
   .glowable { transition: color 0.28s ease, text-shadow 0.28s ease; }
   a         { transition: color 0.28s ease, text-shadow 0.28s ease; }
 
-  
+
   html.glow-on .glowable:hover {
     color: var(--amber) !important;
     text-shadow:
@@ -842,7 +841,7 @@
       0 0 18px color-mix(in srgb, var(--amber) 30%, transparent) !important;
   }
 
-  
+
   html.glow-on .card:hover .glowable,
   html.glow-on .card-illo:hover .glowable,
   html.glow-on .room-card:hover .glowable,
@@ -863,7 +862,7 @@
       0 0 18px color-mix(in srgb, var(--amber) 30%, transparent) !important;
   }
 
-  
+
   html.glow-on .eyebrow:hover ~ .sec-title,
   html.glow-on .eyebrow:hover ~ .sec-desc,
   html.glow-on .sec-title:hover ~ .sec-desc {
@@ -873,7 +872,7 @@
       0 0 18px color-mix(in srgb, var(--amber) 30%, transparent) !important;
   }
 
-  
+
   html.glow-on .overlay-stats .room-hint:hover,
   html.glow-on .overlay-stats .room-hint.active {
     color: #fff !important;
@@ -887,15 +886,15 @@
     color: inherit !important;
     text-shadow: none !important;
   }
-  
-  
+
+
   .src-list a:hover { color: inherit !important; text-shadow: none !important; }
-  
+
   a:hover { color: var(--amber) !important; text-shadow: 0 0 8px color-mix(in srgb,var(--amber) 55%,transparent), 0 0 18px color-mix(in srgb,var(--amber) 30%,transparent); }
-  
+
   a[href*="3FO3EIOVF0JS"] { text-decoration: none; border-bottom: 1px dotted var(--rule-strong); transition: border-color 0.25s, color 0.28s ease, text-shadow 0.28s ease; }
   a[href*="3FO3EIOVF0JS"]:hover { border-bottom-color: var(--amber); }
-  
+
   @media (prefers-reduced-motion: reduce) {
     .glowable, a { transition: none; }
   }
@@ -1125,7 +1124,7 @@
     <h2 class="sec-title reveal d1 glowable">项目背景 · 原始户型</h2>
     <p class="sec-desc reveal d2 glowable">项目位于佛山市禅城区祖庙街道 · <strong class="glowable">岭南天地</strong>居住片区，由瑞安房地产开发。本户建面 227.92㎡，是片区高层四房大平层之一。</p>
 
-    
+
     <div class="property-grid reveal d3">
       <div class="property-cell">
         <div class="property-label glowable">位置</div>
@@ -1174,7 +1173,7 @@
     <h3 class="reveal d3 glowable" style="margin-top:clamp(2rem,4vw,3rem);margin-bottom:1rem;">原始户型平面</h3>
     <div style="position:relative;" id="floorplanContainer">
     <div class="floorplan-frame reveal d3">
-      <img src="https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIFUKLAKTLD74AABAAAAAEA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp" loading="lazy"
+      <img id="floorplanImg" src="https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIFUKLAKTLD74AABAAAAAEA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp" loading="lazy"
         alt="戴启东住宅原始户型图 — 四室两厅三卫 227.92㎡"
         sizes="(max-width: 640px) 92vw, (max-width: 1024px) 90vw, 75rem"
         srcset="https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIFUKLAKTLD74AABAAAAAEA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp 1920w"
@@ -1303,43 +1302,22 @@
   <div class="container">
     <div class="eyebrow reveal sec-label glowable">09 · Renderings</div>
     <h2 class="sec-title reveal d1 glowable">效果图</h2>
-    <p class="sec-desc reveal d2 glowable">酷家乐智能设计渲染 · 新中式–宋式 A 风格 · 设计 ID：3FO3EIOVF0JS</p>
+    <p class="sec-desc reveal d2 glowable">酷家乐智能设计渲染 · 新中式–宋式 A 风格 · 设计 ID：<span id="designIdDisplay">3FO3EIOVF0JS</span></p>
 
-    <div class="render-gallery reveal d3">
-      <div class="render-frame">
-        <img src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WK2Y8.jpg?x-oss-process=image/format,webp" loading="lazy" alt="客餐厅视角一">
-        <div class="cap glowable"><span class="tt glowable">客餐厅 · 视角一</span><span class="tg glowable">宋式美学</span></div>
-      </div>
-      <div class="render-frame">
-        <img src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZQ8.jpg?x-oss-process=image/format,webp" loading="lazy" alt="客餐厅视角二">
-        <div class="cap glowable"><span class="tt glowable">客餐厅 · 视角二</span><span class="tg glowable">暖色无主灯</span></div>
-      </div>
-      <div class="render-frame">
-        <img src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZA8.jpg?x-oss-process=image/format,webp" loading="lazy" alt="次卧一">
-        <div class="cap glowable"><span class="tt glowable">次卧 · 视角一</span><span class="tg glowable">暖木色</span></div>
-      </div>
-      <div class="render-frame">
-        <img src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKYA8.jpg?x-oss-process=image/format,webp" loading="lazy" alt="次卧二">
-        <div class="cap glowable"><span class="tt glowable">次卧 · 视角二</span><span class="tg glowable">柔和灯光</span></div>
-      </div>
-      <div class="render-frame">
-        <img src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZI8.jpg?x-oss-process=image/format,webp" loading="lazy" alt="次卧三">
-        <div class="cap glowable"><span class="tt glowable">次卧 · 视角三</span><span class="tg glowable">收纳空间</span></div>
-      </div>
-      <div class="render-frame">
-        <img src="https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZY8.jpg?x-oss-process=image/format,webp" loading="lazy" alt="厨房">
-        <div class="cap glowable"><span class="tt glowable">厨房</span><span class="tg glowable">实用布局</span></div>
-      </div>
+    <div class="render-gallery reveal d3" id="renderGallery">
+      <div class="render-frame skeleton"><div style="height:clamp(12rem,30vw,16rem);background:var(--rule);"></div><div class="cap"><span>加载中…</span></div></div>
+      <div class="render-frame skeleton"><div style="height:clamp(12rem,30vw,16rem);background:var(--rule);"></div><div class="cap"><span>加载中…</span></div></div>
+      <div class="render-frame skeleton"><div style="height:clamp(12rem,30vw,16rem);background:var(--rule);"></div><div class="cap"><span>加载中…</span></div></div>
     </div>
 
     <hr class="rule" style="margin-top:4rem;">
 
     <h3 class="glowable" style="text-align:center;margin-bottom:1.5rem;">VR 全景图</h3>
-    <div class="pano-links">
-      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJUTGFHI" target="_blank" class="pano-link glowable"><span class="arr glowable">→</span> 客餐厅全景</a>
-      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJWNQWEK" target="_blank" class="pano-link glowable"><span class="arr glowable">→</span> 次卧全景 · 一</a>
-      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJUW8ROM" target="_blank" class="pano-link glowable"><span class="arr glowable">→</span> 次卧全景 · 二</a>
-      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJUWBGBF" target="_blank" class="pano-link glowable"><span class="arr glowable">→</span> 厨房全景</a>
+    <div class="pano-links" id="panoLinks">
+      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJUTGFHI" target="_blank" class="pano-link glowable"><span class="arr glowable">&rarr;</span> 客餐厅全景</a>
+      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJWNQWEK" target="_blank" class="pano-link glowable"><span class="arr glowable">&rarr;</span> 次卧全景 · 一</a>
+      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJUW8ROM" target="_blank" class="pano-link glowable"><span class="arr glowable">&rarr;</span> 次卧全景 · 二</a>
+      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJUWBGBF" target="_blank" class="pano-link glowable"><span class="arr glowable">&rarr;</span> 厨房全景</a>
     </div>
     <p class="glowable" style="text-align:center;font-size:clamp(0.65rem,0.8vw,0.75rem);color:var(--ink-soft);margin-top:1.5rem;">酷家乐方案：<a href="https://www.kujiale.com/pcenter/design/3FO3EIOVF0JS/list" target="_blank" style="color:var(--amber);">3FO3EIOVF0JS</a></p>
   </div>
@@ -1352,7 +1330,7 @@
     <h2 class="sec-title reveal d1 glowable">预算概算</h2>
     <p class="sec-desc reveal d2 glowable">套内 198.11㎡，禅城区 2026 中高端档全包测算。每项均给出估算依据，便于核价与裁剪。</p>
 
-    
+
     <div class="budget-bench reveal d3">
       <div <span class="b-k glowable">禅城 2026 半包</span><span class="b-v glowable">¥680~750<span class="b-u glowable">/㎡</span></span></div>
       <div <span class="b-k glowable">禅城 2026 全包</span><span class="b-v glowable">¥1,320~1,580<span class="b-u glowable">/㎡</span></span></div>
@@ -1413,7 +1391,7 @@
     佛山 · 禅城 · 2026 年 5 月
   </p>
   <p class="glowable" style="font-size:clamp(0.6rem,0.7vw,0.68rem);opacity:0.35;margin-top:1rem;">
-    酷家乐方案 ID：3FO3EIOVF0JS · 基于《业主需求意向表（戴启东）》编制
+    酷家乐方案 ID：<span id="designIdFooter">3FO3EIOVF0JS</span> · 基于《业主需求意向表（戴启东）》编制
   </p>
 </footer>
 
@@ -1630,8 +1608,105 @@
   }
 })();
 </script>
+
+
+
+<script>
+var KJL_CONFIG = {
+  "designId": "3FO3EIOVF0JS",
+  "updatedAt": "2026-05-26",
+  "renders": [
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WK2Y8", "name": "客餐厅 · 视角一", "tag": "宋式美学", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WK2Y8.jpg?x-oss-process=image/format,webp" },
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZQ8", "name": "客餐厅 · 视角二", "tag": "暖色无主灯", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZQ8.jpg?x-oss-process=image/format,webp" },
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZA8", "name": "次卧 · 视角一", "tag": "暖木色", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZA8.jpg?x-oss-process=image/format,webp" },
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKYA8", "name": "次卧 · 视角二", "tag": "柔和灯光", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKYA8.jpg?x-oss-process=image/format,webp" },
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZI8", "name": "次卧 · 视角三", "tag": "收纳空间", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZI8.jpg?x-oss-process=image/format,webp" },
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZY8", "name": "厨房", "tag": "实用布局", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZY8.jpg?x-oss-process=image/format,webp" }
+  ],
+  "panos": [
+    { "name": "客餐厅全景", "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJUTGFHI" },
+    { "name": "次卧全景 · 一", "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJWNQWEK" },
+    { "name": "次卧全景 · 二", "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJUW8ROM" },
+    { "name": "厨房全景", "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJUWBGBF" }
+  ],
+  "cover": {
+    "name": "户型封面",
+    "url": "https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIKTMNIKTK3XKAABAAAAABI8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp"
+  }
+};
+</script>
+
+<script>
+(function(){
+  'use strict';
+
+  var data = window.KJL_CONFIG;
+  if(!data) return;
+
+  var gallery = document.getElementById('renderGallery');
+  var panoContainer = document.getElementById('panoLinks');
+  var designIdDisp  = document.getElementById('designIdDisplay');
+  var designIdFoot  = document.getElementById('designIdFooter');
+
+  // 户型封面图 — 从配置更新
+  if(data.cover && data.cover.url){
+    var fpImg = document.getElementById('floorplanImg');
+    if(fpImg){
+      fpImg.src = data.cover.url;
+      fpImg.setAttribute('srcset', data.cover.url + ' 1920w');
+      if(data.cover.name) fpImg.alt = data.cover.name;
+    }
+  }
+
+  // 设计 ID
+  if(designIdDisp && data.designId) designIdDisp.textContent = data.designId;
+  if(designIdFoot && data.designId) designIdFoot.textContent = data.designId;
+
+  // 渲染图画廊
+  if(gallery && data.renders && data.renders.length){
+    gallery.innerHTML = '';
+    data.renders.forEach(function(r){
+      var frame = document.createElement('div');
+      frame.className = 'render-frame';
+      var img = document.createElement('img');
+      img.src = r.url;
+      img.alt = r.name;
+      img.loading = 'lazy';
+      frame.appendChild(img);
+      var cap = document.createElement('div');
+      cap.className = 'cap glowable';
+      var tt = document.createElement('span');
+      tt.className = 'tt glowable';
+      tt.textContent = r.name;
+      cap.appendChild(tt);
+      if(r.tag){
+        var tg = document.createElement('span');
+        tg.className = 'tg glowable';
+        tg.textContent = r.tag;
+        cap.appendChild(tg);
+      }
+      frame.appendChild(cap);
+      gallery.appendChild(frame);
+    });
+  }
+
+  // VR 全景链接
+  if(panoContainer && data.panos && data.panos.length){
+    panoContainer.innerHTML = '';
+    data.panos.forEach(function(p){
+      var a = document.createElement('a');
+      a.href = p.url;
+      a.target = '_blank';
+      a.className = 'pano-link glowable';
+      var arr = document.createElement('span');
+      arr.className = 'arr glowable';
+      arr.textContent = '→';
+      a.appendChild(arr);
+      a.appendChild(document.createTextNode(' ' + p.name));
+      panoContainer.appendChild(a);
+    });
+  }
+})();
+</script>
 </body>
 </html>
-
-
-
