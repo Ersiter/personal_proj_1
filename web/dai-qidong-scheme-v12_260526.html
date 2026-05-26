@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/web/favicon.ico" type="image/x-icon" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>戴启东住宅空间设计方案 — 岭南新中式 · 适老化温馨之家</title>
+<meta name="color-scheme" content="light dark">
+<style>
+
+
+  :root {
+    --bg:            #faf8f4;
+    --bg-warm:       #f3efe6;
+    --surface:       #ffffff;
+    --ink:           #2c1810;
+    --ink-soft:      #5c4a3e;
+    --amber:         #c4934a;
+    --amber-soft:    #dab87a;
+    --sage:          #6b8f71;
+    --terracotta:    #c47a5a;
+    --rule:          #e8e3d8;
+    --rule-strong:   #d5cec0;
+    --ghost:         rgba(0,0,0,0.025);
+    --shadow-sm:     0 1px 2px rgba(0,0,0,0.03);
+  }
+
+
+  @media (prefers-color-scheme: dark) {
+    [data-theme="auto"] {
+      --bg:       #1a1612;
+      --bg-warm:  #221d18;
+      --surface:  #25201b;
+      --ink:      #e8e3d8;
+      --ink-soft: #b5ad9f;
+      --amber:    #dab87a;
+      --amber-soft: #c4934a;
+      --sage:     #7faa93;
+      --terracotta: #d49278;
+      --rule:     #3a3228;
+      --rule-strong: #4c4236;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.15);
+    }
+  }
+  [data-theme="dark"] {
+    --bg:       #1a1612;
+    --bg-warm:  #221d18;
+    --surface:  #25201b;
+    --ink:      #e8e3d8;
+    --ink-soft: #b5ad9f;
+    --amber:    #dab87a;
+    --amber-soft: #c4934a;
+    --sage:     #7faa93;
+    --terracotta: #d49278;
+    --rule:     #3a3228;
+    --rule-strong: #4c4236;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.15);
+  }
+  [data-theme="light"] {
+    --bg:       #faf8f4;
+    --bg-warm:  #f3efe6;
+    --surface:  #ffffff;
+    --ink:      #2c1810;
+    --ink-soft: #5c4a3e;
+    --amber:    #c4934a;
+    --amber-soft: #dab87a;
+    --sage:     #6b8f71;
+    --terracotta: #c47a5a;
+    --rule:     #e8e3d8;
+    --rule-strong: #d5cec0;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.03);
+  }
+
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    font-size: clamp(14px, 1.6vw, 18px);
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: 'Noto Sans SC', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.75;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    transition: background 0.4s ease, color 0.4s ease;
+  }
+
+
+  ::selection {
+    background: var(--amber-soft);
+    color: var(--ink);
+  }
+  ::-moz-selection {
+    background: var(--amber-soft);
+    color: var(--ink);
+  }
+
+
+  .serif { font-family: 'Noto Serif SC', 'STSong', 'SimSun', serif; }
+
+  h1 { font: 700 clamp(2.2rem, 5.5vw, 4.5rem)/1.15 'Noto Serif SC', serif; }
+  h2 { font: 700 clamp(1.6rem, 3.5vw, 2.4rem)/1.25 'Noto Serif SC', serif; }
+  h3 { font: 500 clamp(1rem, 1.6vw, 1.15rem)/1.4 'Noto Serif SC', serif; }
+  h4 { font: 500 clamp(0.9rem, 1.3vw, 1rem)/1.45 'Noto Serif SC', serif; }
+
+  .eyebrow {
+    font-size: clamp(0.6rem, 0.85vw, 0.7rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 500;
+  }
+
+
+  .container {
+    width: min(90vw, 75rem);
+    margin-inline: auto;
+  }
+
+
+  nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 100;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 clamp(1rem, 4vw, 3rem);
+    height: clamp(44px, 5vh, 56px);
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background 0.4s ease, border-color 0.4s ease;
+  }
+  nav .wordmark {
+    font: 700 clamp(0.95rem, 1.4vw, 1.15rem) 'Noto Serif SC', serif;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+  }
+  nav .wordmark em {
+    font-style: normal; font-weight: 300; color: var(--amber);
+    margin: 0 0.15em;
+  }
+  nav .links {
+    display: flex; gap: clamp(0.8rem, 2.5vw, 2rem); list-style: none;
+  }
+  nav .links a {
+    text-decoration: none; color: var(--ink-soft);
+    font-size: clamp(0.7rem, 0.95vw, 0.82rem); font-weight: 400;
+    transition: color 0.3s, text-shadow 0.28s ease; white-space: nowrap;
+  }
+  nav .links a:hover { color: var(--amber); }
+
+
+  .hamburger {
+    display: none; background: none; border: none; cursor: pointer;
+    width: 32px; height: 32px; position: relative; z-index: 110;
+    padding: 0; outline-color: var(--amber);
+  }
+  .hamburger span {
+    display: block; width: 22px; height: 1.5px;
+    background: var(--ink); border-radius: 1px;
+    position: absolute; left: 5px;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+  }
+  .hamburger span:nth-child(1) { top: 9px; }
+  .hamburger span:nth-child(2) { top: 16px; }
+  .hamburger span:nth-child(3) { top: 23px; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 820px) {
+    .hamburger { display: block; }
+    nav .links {
+      display: flex; flex-direction: column;
+      position: fixed; top: clamp(44px, 5vh, 56px);
+      right: clamp(0.5rem, 2vw, 1rem);
+      left: auto;
+      width: clamp(8.5rem, 30vw, 11rem);
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 0.4rem;
+      padding: 0.25rem 0;
+      gap: 0;
+      transform: translateY(-120%);
+      visibility: hidden;
+      transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0s 0.35s;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      z-index: 99;
+    }
+    nav .links.open {
+      transform: translateY(0);
+      visibility: visible;
+      transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0s 0s;
+    }
+    nav .links li {
+      border-bottom: 1px solid var(--rule);
+      opacity: 0;
+      transform: translateY(-0.4rem);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      text-align: center;
+    }
+    nav .links.open li {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    nav .links li:last-child { border-bottom: none; }
+    nav .links a {
+      display: block; padding: 0.6rem 1.1rem;
+      text-align: center;
+      font-size: clamp(0.75rem, 0.95vw, 0.85rem);
+    }
+    nav .links a:hover { background: var(--bg-warm); }
+  }
+
+
+  .hero {
+    position: relative;
+    min-height: 100vh; min-height: 100dvh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: clamp(4rem, 8vh, 8rem) clamp(1rem, 4vw, 2rem) clamp(2rem, 6vh, 4rem);
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 5%, black 30%, black 70%, transparent 95%);
+    -webkit-mask-image: linear-gradient(to right, transparent 5%, black 30%, black 70%, transparent 95%);
+  }
+  @media (orientation: portrait) {
+    .hero-bg {
+      mask-image: linear-gradient(to bottom, transparent 5%, black 30%, black 70%, transparent 95%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 30%, black 70%, transparent 95%);
+    }
+  }
+  .hero-bg img {
+    object-fit: contain;
+    height: 100%; width: auto;
+    filter: grayscale(1) opacity(0.04) blur(0.4px);
+    max-width: none;
+    pointer-events: none; user-select: none;
+    opacity: 0;
+    will-change: opacity;
+    animation: reveal 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+  @media (orientation: portrait) {
+    .hero-bg img { width: 100%; height: auto; }
+  }
+  @media (prefers-color-scheme: dark) {
+    .hero-bg img { filter: grayscale(1) opacity(0.025) blur(0.4px); }
+  }
+  .hero h1 .accent { color: var(--amber); }
+  .hero .sub {
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem); font-weight: 300;
+    color: var(--ink-soft); max-width: 32rem; margin: 1.25rem auto 2.5rem;
+  }
+  .hero .meta-row {
+    display: flex; flex-wrap: wrap; gap: clamp(1rem, 3vw, 2.5rem);
+    justify-content: center; font-size: clamp(0.72rem, 0.92vw, 0.85rem);
+    color: var(--ink-soft);
+  }
+  .hero .meta-row .sep { color: var(--amber); user-select: none; }
+
+  .hero .scroll-hint {
+    position: absolute; bottom: clamp(1.5rem, 4vh, 2.5rem);
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    color: var(--amber-soft); cursor: pointer;
+    user-select: none; transition: color 0.3s;
+  }
+  .hero .scroll-hint:hover { color: var(--amber); }
+
+
+  section {
+    padding: clamp(4rem, 10vh, 8rem) clamp(1rem, 4vw, 3rem);
+  }
+  .sec-label { margin-bottom: 0.75rem; }
+  .sec-title { margin-bottom: 1rem; }
+  .sec-desc {
+    font-size: clamp(0.88rem, 1.1vw, 1rem);
+    color: var(--ink-soft); max-width: 36rem;
+    line-height: 1.75; margin-bottom: 4rem;
+  }
+
+
+  hr.rule {
+    border: none; height: 1px;
+    background: linear-gradient(to right, var(--rule), transparent);
+    margin: 0 0 4rem;
+  }
+
+
+  .stat-line {
+    display: flex; flex-wrap: wrap; gap: clamp(1.5rem, 4vw, 3rem);
+    justify-content: center;
+    padding: clamp(1.5rem, 3vh, 2.5rem) 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 4rem;
+  }
+  .stat-item .num {
+    font: 700 clamp(1.6rem, 3vw, 2.4rem)/1.1 'Noto Serif SC', serif;
+    color: var(--amber);
+  }
+  .stat-item .unit {
+    font-size: clamp(0.7rem, 0.85vw, 0.8rem);
+    color: var(--ink-soft); margin-top: 0.15rem;
+  }
+
+
+  .split {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem); align-items: start;
+  }
+  @media (max-width: 768px) { .split { grid-template-columns: 1fr; } }
+
+
+  .feature-list { list-style: none; }
+  .feature-list li {
+    padding: 0.85rem 0; border-bottom: 1px solid var(--rule);
+    font-size: clamp(0.8rem, 1vw, 0.92rem); font-weight: 300;
+    line-height: 1.75;
+  }
+  .feature-list li:last-child { border-bottom: none; }
+  .feature-list li strong { font-weight: 500; color: var(--ink); }
+
+
+  .callout {
+    background: var(--bg-warm); padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2.25rem);
+    margin: 2rem 0;
+    border-radius: 0.4rem;
+    font-size: clamp(0.78rem, 0.95vw, 0.88rem); line-height: 1.85;
+  }
+  .callout h4 {
+    font: 500 clamp(0.85rem, 1.1vw, 0.95rem) 'Noto Serif SC', serif;
+    color: var(--terracotta); margin-bottom: 0.75rem;
+  }
+  .callout p { color: var(--ink-soft); }
+
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+    gap: clamp(1rem, 2.5vw, 2rem);
+  }
+  .card {
+    background: var(--surface); padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.5rem, 3vw, 2rem);
+    border: 1px solid var(--rule); border-radius: 0.4rem;
+    transition: border-color 0.3s, background 0.4s;
+    box-shadow: var(--shadow-sm);
+  }
+  .card:hover { border-color: var(--amber-soft); }
+  .card .card-accent {
+    height: 3px; width: 2.5rem; margin-bottom: 1.25rem;
+    border-radius: 2px;
+  }
+  .card p, .card li {
+    font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+    color: var(--ink-soft); line-height: 1.8;
+  }
+  .card li { padding: 0.3rem 0; list-style: none; }
+  .card li::before { content: '— '; color: var(--amber-soft); }
+
+
+  .card-illo {
+    display: flex; gap: 0; align-items: stretch;
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 0.4rem; overflow: hidden;
+    transition: border-color 0.3s, background 0.4s;
+    box-shadow: var(--shadow-sm);
+  }
+  .card-illo:hover { border-color: var(--amber-soft); }
+  .card-illo .illo-text {
+    flex: 1; padding: clamp(1rem, 2.5vw, 1.5rem);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .card-illo .illo-text h3 {
+    position: relative;
+    margin-bottom: 0.5rem;
+    padding-left: 0.85rem;
+  }
+  .card-illo .illo-text h3::before {
+    content: '';
+    position: absolute; left: 0; top: 0.15em; bottom: 0.15em;
+    width: 3px; border-radius: 2px;
+    background: var(--bar-color, var(--amber));
+  }
+  .card-illo .illo-text p {
+    font-size: clamp(0.72rem, 0.88vw, 0.82rem);
+    color: var(--ink-soft); line-height: 1.75;
+  }
+  .card-illo .illo-img {
+    flex: 0 0 clamp(8rem, 28%, 12rem);
+    position: relative; overflow: hidden;
+  }
+  .card-illo .illo-img img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .card-illo .illo-img img.active { opacity: 1; }
+  .card-illo .illo-img::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: clamp(2rem, 25%, 3rem);
+    background: linear-gradient(to right, var(--surface) 0%, transparent 100%);
+    z-index: 1; pointer-events: none;
+  }
+  @media (prefers-color-scheme: dark) {
+    .card-illo .illo-img img { filter: brightness(0.75) saturate(0.7); }
+  }
+  @media (max-width: 480px) {
+    .card-illo { flex-direction: column-reverse; }
+    .card-illo .illo-img { flex: 0 0 clamp(5rem, 30vw, 7rem); }
+    .card-illo .illo-img::before {
+      top: auto; left: 0; right: 0; bottom: 0;
+      width: 100%; height: clamp(1.5rem, 25%, 2rem);
+      background: linear-gradient(to top, var(--surface) 0%, transparent 100%);
+    }
+  }
+
+
+  .room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
+    gap: clamp(0.8rem, 2vw, 1.5rem);
+  }
+  .room-card {
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 0.4rem; overflow: hidden;
+    transition: border-color 0.3s, background 0.4s;
+  }
+  .room-card:hover { border-color: var(--amber-soft); }
+  .room-card-top {
+    padding: clamp(0.8rem, 1.8vw, 1.25rem) clamp(0.8rem, 2vw, 1.5rem);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .room-card-top h4 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .room-card-top .sqm {
+    font-size: clamp(0.65rem, 0.8vw, 0.75rem);
+    color: var(--amber); white-space: nowrap;
+  }
+  .room-card-body {
+    padding: 0 clamp(0.8rem, 2vw, 1.5rem) clamp(0.8rem, 1.8vw, 1.25rem);
+    font-size: clamp(0.72rem, 0.85vw, 0.82rem);
+    color: var(--ink-soft); line-height: 1.85;
+  }
+
+
+  .floorplan-frame {
+    position: relative; width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 0.4rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: background 0.4s, border-color 0.4s;
+  }
+  .floorplan-frame img {
+    display: block; width: 100%; height: auto;
+    object-fit: contain;
+    max-height: 75vh;
+    background: #fff;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .floorplan-frame img {
+      filter: brightness(0.92) sepia(0.06);
+    }
+  }
+  .floorplan-frame .overlay-stats {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
+    color: #fff; padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 2vw, 1.5rem) clamp(0.8rem, 1.8vw, 1.25rem);
+    display: flex; flex-wrap: wrap; gap: clamp(0.8rem, 2vw, 1.5rem);
+    justify-content: center;
+    font-size: clamp(0.7rem, 0.9vw, 0.82rem);
+    pointer-events: none;
+  }
+  .floorplan-frame .overlay-stats span {
+    opacity: 0.9; font-weight: 300;
+  }
+  .floorplan-frame .overlay-stats strong {
+    font-family: 'Noto Serif SC', serif; font-weight: 700; color: #dab87a;
+  }
+
+
+  .property-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.6rem, 1.5vw, 1rem);
+    margin: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(1rem, 2.5vw, 2rem);
+  }
+  .property-cell {
+    padding: clamp(0.9rem, 2vw, 1.4rem) clamp(0.8rem, 1.8vw, 1.2rem);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 0.4rem;
+    transition: border-color 0.3s;
+  }
+  .property-cell:hover {
+    border-color: var(--amber-soft);
+  }
+  .property-label {
+    font-size: clamp(0.6rem, 0.78vw, 0.7rem);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .property-value {
+    font: 500 clamp(1rem, 1.6vw, 1.4rem)/1.2 'Noto Serif SC', serif;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .property-value .property-unit {
+    font-size: 0.6em;
+    color: var(--ink-soft);
+    margin-left: 0.15em;
+    font-weight: 300;
+  }
+  .property-note {
+    font-size: clamp(0.65rem, 0.78vw, 0.75rem);
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  @media (max-width: 900px) {
+    .property-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 500px) {
+    .property-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .property-cell { padding: 0.8rem 0.7rem; }
+  }
+
+
+  .room-flyout {
+    position: absolute; left: 0; right: 0; top: 100%;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+    background: var(--surface); border: 1px solid var(--amber-soft);
+    border-radius: 0.4rem; overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+    z-index: 10;
+  }
+  .room-flyout.show {
+    opacity: 1; transform: translateY(0);
+  }
+  .room-flyout .room-card-top {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: clamp(0.65rem, 1.2vw, 0.9rem) clamp(0.8rem, 1.8vw, 1.2rem) 0.3rem;
+    gap: 0.5rem;
+  }
+  .room-flyout .room-card-top h4 {
+    font: 500 clamp(0.82rem, 1vw, 0.95rem) 'Noto Serif SC', serif;
+    color: var(--ink); margin: 0;
+  }
+  .room-flyout .room-card-top .sqm {
+    font-size: clamp(0.65rem, 0.8vw, 0.75rem);
+    color: var(--amber); white-space: nowrap;
+  }
+  .room-flyout p {
+    margin: 0;
+    padding: 0 clamp(0.8rem, 1.8vw, 1.2rem) clamp(0.65rem, 1.2vw, 0.9rem);
+    font-size: clamp(0.72rem, 0.85vw, 0.82rem);
+    font-weight: 300; line-height: 1.85; color: var(--ink-soft);
+  }
+
+  :root {
+    --flyout-fade-out: 140ms;
+    --flyout-fade-in-delay: 100ms;
+    --flyout-fade-in: 220ms;
+  }
+  .room-flyout-inner {
+    transition: opacity var(--flyout-fade-in) cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .room-flyout-inner.is-leaving {
+    transition: opacity var(--flyout-fade-out) cubic-bezier(0.55, 0.06, 0.68, 0.19);
+  }
+
+  .overlay-stats span.room-hint {
+    cursor: pointer; transition: color 0.25s, text-shadow 0.25s;
+    position: relative; pointer-events: auto;
+  }
+  .overlay-stats span.room-hint:hover,
+  .overlay-stats span.room-hint.active {
+    color: #fff; text-shadow: 0 0 10px rgba(255,210,130,0.95), 0 0 24px rgba(255,180,60,0.55);
+  }
+
+
+  .process-row {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 0;
+  }
+  .process-item {
+    flex: 1 1 10rem; max-width: 14rem;
+    text-align: center; padding: clamp(1rem, 3vw, 2rem) clamp(0.5rem, 2vw, 1rem);
+    position: relative;
+  }
+  .process-item .step-num {
+    font: 700 clamp(2rem, 4vw, 3.2rem) 'Noto Serif SC', serif;
+    color: var(--amber-soft); opacity: 0.3; line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+  .process-item p {
+    font-size: clamp(0.68rem, 0.8vw, 0.78rem);
+    color: var(--ink-soft); line-height: 1.7; margin-top: 0.35rem;
+  }
+
+
+
+  .palette-bar {
+    display: flex; flex-wrap: wrap; border-radius: 0.4rem;
+    overflow: hidden; margin-bottom: 4rem;
+  }
+  .palette-bar > div {
+    flex: 1 1 0%; min-width: 0;
+    padding: clamp(1.2rem, 3vw, 2.25rem) clamp(0.25rem, 1vw, 0.5rem);
+    text-align: center; color: #fff; font-size: clamp(0.68rem, 0.85vw, 0.82rem);
+    overflow: hidden;
+  }
+  .palette-bar .swatch-name { font-weight: 500; margin-bottom: 0.25rem; }
+  .palette-bar .swatch-role { font-size: clamp(0.58rem, 0.7vw, 0.68rem); opacity: 0.7; }
+
+
+  .render-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+    gap: clamp(1rem, 2.5vw, 1.75rem);
+  }
+  .render-frame {
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 0.4rem; overflow: hidden;
+    transition: border-color 0.3s, background 0.4s;
+  }
+  .render-frame:hover { border-color: var(--amber-soft); }
+  .render-frame img {
+    display: block; width: 100%; height: clamp(12rem, 30vw, 16rem);
+    object-fit: cover;
+  }
+  .render-frame .cap {
+    padding: clamp(0.6rem, 1.2vw, 1rem) clamp(0.6rem, 1.5vw, 1.25rem);
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: clamp(0.72rem, 0.85vw, 0.82rem);
+  }
+  .render-frame .cap .tt {
+    font: 500 clamp(0.78rem, 0.95vw, 0.88rem) 'Noto Serif SC', serif;
+  }
+  .render-frame .cap .tg {
+    font-size: clamp(0.6rem, 0.72vw, 0.68rem);
+    color: var(--amber); border: 1px solid var(--amber-soft);
+    padding: 0.12rem 0.6rem; border-radius: 0.75rem;
+    white-space: nowrap;
+  }
+
+
+  .pano-links {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: clamp(0.5rem, 1.5vw, 1rem); margin-top: 3rem;
+  }
+  .pano-links .pano-link { flex: 0 1 auto; }
+  .pano-link {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: clamp(0.8rem, 1.8vw, 1.25rem) clamp(0.8rem, 2vw, 1.5rem);
+    background: var(--surface); border: 1px solid var(--rule);
+    border-radius: 0.4rem; text-decoration: none; color: var(--ink);
+    transition: border-color 0.3s, background 0.4s, color 0.28s ease, text-shadow 0.28s ease;
+    font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+  }
+  .pano-link:hover { border-color: var(--amber); }
+  .pano-link .arr { color: var(--amber); font-size: 1.2em; }
+
+
+  .budget-bench {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.5rem, 1.2vw, 0.9rem);
+    margin: clamp(1rem, 2.5vw, 2rem) 0 clamp(1.5rem, 3vw, 2.5rem);
+    max-width: 56rem; margin-inline: auto;
+  }
+  .budget-bench > div {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 0.3rem;
+    padding: clamp(0.7rem, 1.4vw, 1rem) clamp(0.7rem, 1.4vw, 1rem);
+    display: flex; flex-direction: column; gap: 0.3rem;
+    transition: border-color 0.3s;
+  }
+  .budget-bench > div:hover { border-color: var(--amber-soft); }
+  .budget-bench .b-k {
+    font-size: clamp(0.6rem, 0.78vw, 0.7rem);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 500;
+  }
+  .budget-bench .b-v {
+    font: 500 clamp(0.85rem, 1.2vw, 1.05rem)/1.2 'Noto Serif SC', serif;
+    color: var(--ink);
+  }
+  .budget-bench .b-u {
+    font-size: 0.7em; color: var(--ink-soft); font-weight: 300; margin-left: 0.1em;
+  }
+  @media (max-width: 720px) {
+    .budget-bench { grid-template-columns: repeat(2, 1fr); }
+  }
+
+
+  .budget-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .budget-table { width: 100%; border-collapse: collapse; min-width: 28rem; max-width: 56rem; margin: 0 auto; }
+  .budget-table col.name { width: 18%; }
+  .budget-table col.basis { width: 56%; }
+  .budget-table col.cost { width: 26%; }
+  .budget-table th {
+    text-align: left; font: 500 clamp(0.68rem, 0.82vw, 0.75rem) 'Noto Sans SC', sans-serif;
+    color: var(--ink-soft); padding: 0.75rem 0;
+    border-bottom: 1px solid var(--rule-strong);
+    white-space: nowrap;
+  }
+  .budget-table th:last-child { text-align: right; }
+  .budget-table td {
+    padding: 0.75rem 0; font-size: clamp(0.75rem, 0.9vw, 0.88rem);
+    font-weight: 300; border-bottom: 1px solid var(--rule);
+  }
+  .budget-table td:last-child { text-align: right; color: var(--amber); font-weight: 500; white-space: nowrap; }
+  .budget-table tr.total td {
+    font-weight: 500; font-size: clamp(0.85rem, 1.05vw, 1rem);
+    border-top: 2px solid var(--ink);
+  }
+  .budget-table tr.total td:last-child { color: var(--terracotta); }
+
+
+  .src-list {
+    list-style: none; padding: 0; margin: 0.5rem 0 0;
+    display: grid; gap: 0.4rem;
+  }
+  .src-list li {
+    font-size: clamp(0.7rem, 0.82vw, 0.78rem);
+    color: var(--ink-soft);
+    line-height: 1.5;
+    padding-left: 1rem; position: relative;
+  }
+  .src-list li::before {
+    content: '↗';
+    position: absolute; left: 0; top: 0;
+    color: var(--amber); font-size: 0.85em;
+  }
+  .src-list a {
+    color: var(--ink-soft); text-decoration: none;
+    border-bottom: 1px dotted var(--rule-strong);
+    transition: color 0.25s, border-color 0.25s;
+  }
+  .src-list a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+
+
+  .quote-block {
+    padding: clamp(3rem, 8vh, 6rem) clamp(1rem, 3vw, 2rem);
+    text-align: center;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .quote-block blockquote {
+    font: 300 clamp(1.1rem, 2.2vw, 1.75rem)/1.85 'Noto Serif SC', serif;
+    color: var(--ink-soft); max-width: 38rem; margin: 0 auto;
+  }
+
+
+  footer {
+    padding: clamp(3rem, 8vh, 5rem) clamp(1rem, 3vw, 2rem);
+    text-align: center; font-size: clamp(0.72rem, 0.85vw, 0.82rem);
+    color: var(--ink-soft); line-height: 2.5;
+  }
+  footer .sig {
+    font: 500 clamp(0.9rem, 1.1vw, 1rem) 'Noto Serif SC', serif;
+    color: var(--ink); margin-bottom: 0.25rem;
+  }
+
+
+  .reveal {
+    opacity: 0; transform: translateY(1rem);
+    animation: reveal 0.85s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+  @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+  .d1 { animation-delay: 0.08s; }
+  .d2 { animation-delay: 0.2s; }
+  .d3 { animation-delay: 0.35s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { animation: none; opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+
+
+  @media (min-width: 1600px) {
+    .container { width: min(80vw, 82rem); }
+    .card-grid { grid-template-columns: repeat(3, 1fr); }
+    .room-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (min-width: 2200px) {
+    .container { width: min(72vw, 88rem); }
+    .render-gallery { grid-template-columns: repeat(3, 1fr); }
+  }
+
+
+  @media (max-width: 1024px) {
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+
+  @media (max-width: 640px) {
+    .container { width: 92vw; }
+    .card-grid { grid-template-columns: 1fr; }
+    .room-grid { grid-template-columns: 1fr; }
+    .render-gallery { grid-template-columns: 1fr; }
+
+    .floorplan-frame .overlay-stats { flex-direction: column; align-items: center; gap: 0.3rem; }
+    .process-row { flex-direction: column; align-items: center; }
+    .pano-links {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+
+
+  .glowable { transition: color 0.28s ease, text-shadow 0.28s ease; }
+  a         { transition: color 0.28s ease, text-shadow 0.28s ease; }
+
+
+  html.glow-on .glowable:hover {
+    color: var(--amber) !important;
+    text-shadow:
+      0 0 8px color-mix(in srgb, var(--amber) 55%, transparent),
+      0 0 18px color-mix(in srgb, var(--amber) 30%, transparent) !important;
+  }
+
+
+  html.glow-on .card:hover .glowable,
+  html.glow-on .card-illo:hover .glowable,
+  html.glow-on .room-card:hover .glowable,
+  html.glow-on .split > div:hover h3.glowable,
+  html.glow-on .split > div:hover p.glowable,
+  html.glow-on .process-item:hover .glowable,
+  html.glow-on .stat-item:hover .glowable,
+  html.glow-on .palette-bar > div:hover .glowable,
+  html.glow-on .render-frame:hover .glowable,
+  html.glow-on .callout:hover .glowable,
+  html.glow-on .property-cell:hover .glowable,
+  html.glow-on .budget-bench > div:hover .glowable,
+  html.glow-on .budget-table tbody tr:hover .glowable,
+  html.glow-on .hero .meta-row:hover .glowable {
+    color: var(--amber) !important;
+    text-shadow:
+      0 0 8px color-mix(in srgb, var(--amber) 55%, transparent),
+      0 0 18px color-mix(in srgb, var(--amber) 30%, transparent) !important;
+  }
+
+
+  html.glow-on .eyebrow:hover ~ .sec-title,
+  html.glow-on .eyebrow:hover ~ .sec-desc,
+  html.glow-on .sec-title:hover ~ .sec-desc {
+    color: var(--amber) !important;
+    text-shadow:
+      0 0 8px color-mix(in srgb, var(--amber) 55%, transparent),
+      0 0 18px color-mix(in srgb, var(--amber) 30%, transparent) !important;
+  }
+
+
+  html.glow-on .overlay-stats .room-hint:hover,
+  html.glow-on .overlay-stats .room-hint.active {
+    color: #fff !important;
+    text-shadow: 0 0 10px rgba(255,210,130,0.95), 0 0 24px rgba(255,180,60,0.55) !important;
+  }
+  html.glow-on .floorplan-frame .overlay-stats strong,
+  html.glow-on .floorplan-frame .overlay-stats strong:hover {
+    color: #dab87a !important;
+  }
+  html.glow-on .src-list a:hover {
+    color: inherit !important;
+    text-shadow: none !important;
+  }
+
+
+  .src-list a:hover { color: inherit !important; text-shadow: none !important; }
+
+  a:hover { color: var(--amber) !important; text-shadow: 0 0 8px color-mix(in srgb,var(--amber) 55%,transparent), 0 0 18px color-mix(in srgb,var(--amber) 30%,transparent); }
+
+  a[href*="3FO3EIOVF0JS"] { text-decoration: none; border-bottom: 1px dotted var(--rule-strong); transition: border-color 0.25s, color 0.28s ease, text-shadow 0.28s ease; }
+  a[href*="3FO3EIOVF0JS"]:hover { border-bottom-color: var(--amber); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .glowable, a { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+
+
+<nav>
+  <div class="wordmark glowable">戴启东<em class="glowable">·</em>宅</div>
+  <button class="hamburger" aria-label="菜单" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="links">
+    <li class="glowable"><a href="#overview">概览</a></li>
+    <li class="glowable"><a href="#philosophy">理念</a></li>
+    <li class="glowable"><a href="#lingnan">岭南</a></li>
+    <li class="glowable"><a href="#elderly">适老</a></li>
+    <li class="glowable"><a href="#floorplan">户型</a></li>
+    <li class="glowable"><a href="#spaces">空间</a></li>
+    <li class="glowable"><a href="#renders">效果图</a></li>
+    <li class="glowable"><a href="#budget">预算</a></li>
+  </ul>
+</nav>
+
+
+<header class="hero">
+  <div class="hero-bg"><img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/first-page-bg.webp" alt="" aria-hidden="true" loading="eager"></div>
+  <div class="eyebrow reveal glowable">住宅空间设计 · 课程作业</div>
+  <h1 class="reveal d1 glowable">戴启东<span class="accent">住宅方案</span></h1>
+  <p class="sub reveal d2 glowable">岭南新中式 · 适老化温馨之家。从一份手写意向表出发，为一户湛江人家量身定制的空间设计。</p>
+  <div class="meta-row reveal d3">
+    <span class="glowable">佛山 · 禅城</span>
+    <span class="sep">/</span>
+    <span class="glowable">227.92㎡ 四室两厅三卫</span>
+    <span class="sep">/</span>
+    <span class="glowable">四口之家</span>
+  </div>
+  <div class="scroll-hint reveal" onclick="if(event.ctrlKey||event.metaKey){event.preventDefault();document.documentElement.classList.toggle('glow-on')}else if(event.shiftKey){var h=document.documentElement;h.dataset.theme=h.dataset.theme==='light'?'dark':h.dataset.theme==='dark'?'auto':'light'}else{document.getElementById('overview').scrollIntoView({behavior:'smooth'})}" title="点击滚到概览 · Shift+点击切明暗 · Ctrl+点击切高亮">▼</div>
+</header>
+
+
+<section id="overview">
+  <div class="container">
+    <div class="eyebrow reveal sec-label glowable">01 · Overview</div>
+    <h2 class="sec-title reveal d1 glowable">项目概览</h2>
+    <p class="sec-desc reveal d2 glowable">业主戴启东，19岁大学生，与父母（父49岁、母52岁）及哥哥共同居住于佛山禅城。母亲患有帕金森综合症，室内设计需以安全、便利为核心底线，同时融入岭南文化元素。</p>
+
+    <div class="stat-line reveal d3">
+      <div class="stat-item"><div class="num glowable">227.92</div><div class="unit glowable">㎡ 建筑面积</div></div>
+      <div class="stat-item"><div class="num glowable">198.11</div><div class="unit glowable">㎡ 套内面积</div></div>
+      <div class="stat-item"><div class="num glowable">四室两厅三卫</div><div class="unit glowable">+ 厨房 + 阳台</div></div>
+      <div class="stat-item"><div class="num glowable">66 ~ 91 万</div><div class="unit glowable">预估总投入（含 10% 弹性）</div></div>
+    </div>
+
+    <div class="split reveal">
+      <div>
+        <h3 class="glowable" style="margin-bottom:1rem;">设计起点</h3>
+        <p class="glowable" style="font-size:clamp(0.8rem,0.95vw,0.9rem);color:var(--ink-soft);line-height:1.85;">
+          业主在《需求意向表》中写下的每一行字——从"广东人，你懂的"到"帕金森等老年综合症"，从"多岭南特色"到"一定要有一个茶几"——都被逐条解读。设计师的任务不是套模板，而是将这些口语化的愿望转译为精确的空间语言。
+        </p>
+      </div>
+      <div>
+        <h3 class="glowable" style="margin-bottom:1rem;">三大设计约束</h3>
+        <ul class="feature-list">
+          <li class="glowable"><strong class="glowable">适老化底线</strong> — 帕金森综合症母亲的安全是最高优先级</li>
+          <li class="glowable"><strong class="glowable">岭南文脉</strong> — "多岭南特色"需从建筑符号转化为现代空间语言</li>
+          <li class="glowable"><strong class="glowable">务实预算</strong> — 湛江普通家庭，拒绝过度装修</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="philosophy" style="background:var(--bg-warm);">
+  <div class="container">
+    <div class="eyebrow reveal sec-label glowable">02 · Philosophy</div>
+    <h2 class="sec-title reveal d1 glowable">设计理念</h2>
+    <p class="sec-desc reveal d2 glowable">"现代极简骨架 + 岭南文化灵魂 + 宋式美学韵味"<br>线条克制、材料诚实、温度自然。</p>
+
+    <div class="split reveal d3">
+      <p class="glowable" style="font-size:clamp(0.82rem,0.98vw,0.92rem);line-height:2;color:var(--ink-soft);">
+        拒绝欧式雕花与传统中式的繁复堆砌。保留木作的温度，但用简化线条、现代材质重新演绎。岭南建筑符号——镬耳山墙、满洲窗、趟栊门——被"符号化"转译：可识别，但不复古；有根脉，但不陈旧。
+      </p>
+      <p class="glowable" style="font-size:clamp(0.82rem,0.98vw,0.92rem);line-height:2;color:var(--ink-soft);">
+        设计不张扬，温暖不刻意。<br>
+        老有所安——母亲可以安全地走完家里的每一寸路；<br>
+        少有所乐——戴启东的手办和电动有属于它们的角落；<br>
+        家有所依——一家人围坐吃饭，是最核心的空间定义。
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section id="lingnan">
+  <div class="container">
+    <div class="eyebrow reveal sec-label glowable">03 · Lingnan Heritage</div>
+    <h2 class="sec-title reveal d1 glowable">岭南文化 · 元素转译</h2>
+    <p class="sec-desc reveal d2 glowable">六组岭南建筑符号，被提炼为现代室内空间的设计语言。</p>
+
+    <div class="card-grid reveal d3">
+      <div class="card-illo">
+        <div class="illo-text">
+          <h3 class="glowable" style="--bar-color:var(--amber)">镬耳山墙</h3>
+          <p class="glowable">提炼弧形轮廓 → 天花造型装饰线、电视背景墙弧形收边、走廊灯槽曲线呼应。</p>
+        </div>
+        <div class="illo-img illo-carousel" data-group="1" data-count="4">
+          <img class="active" src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-1-1.webp" alt="镬耳山墙" loading="eager">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-1-2.webp" alt="镬耳山墙" loading="lazy">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-1-3.webp" alt="镬耳山墙" loading="lazy">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-1-4.webp" alt="镬耳山墙" loading="lazy">
+        </div>
+      </div>
+      <div class="card-illo">
+        <div class="illo-text">
+          <h3 class="glowable" style="--bar-color:var(--sage)">满洲窗</h3>
+          <p class="glowable">彩色玻璃几何分割 → 玄关屏风、客餐厅柔性隔断、柜门装饰面板。</p>
+        </div>
+        <div class="illo-img illo-carousel" data-group="2" data-count="4">
+          <img class="active" src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-2-1.webp" alt="满洲窗" loading="eager">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-2-2.webp" alt="满洲窗" loading="lazy">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-2-3.webp" alt="满洲窗" loading="lazy">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-2-4.webp" alt="满洲窗" loading="lazy">
+        </div>
+      </div>
+      <div class="card-illo">
+        <div class="illo-text">
+          <h3 class="glowable" style="--bar-color:var(--ink-soft)">青砖灰瓦</h3>
+          <p class="glowable">灰调哑光砖 → 玄关 / 厨卫地面；仿古肌理涂料 → 局部墙面；青灰调贯穿硬装基底。</p>
+        </div>
+        <div class="illo-img illo-carousel" data-group="3" data-count="3">
+          <img class="active" src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-3-1.webp" alt="青砖灰瓦" loading="eager">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-3-2.webp" alt="青砖灰瓦" loading="lazy">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-3-3.webp" alt="青砖灰瓦" loading="lazy">
+        </div>
+      </div>
+      <div class="card-illo">
+        <div class="illo-text">
+          <h3 class="glowable" style="--bar-color:var(--terracotta)">木雕花窗</h3>
+          <p class="glowable">简化几何镂空 → 空调出风口面板、装饰墙面、柜门通风隔断。</p>
+        </div>
+        <div class="illo-img illo-carousel" data-group="4" data-count="6">
+          <img class="active" src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-1.webp" alt="木雕花窗" loading="eager">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-2.webp" alt="木雕花窗" loading="lazy">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-3.webp" alt="木雕花窗" loading="lazy">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-4.webp" alt="木雕花窗" loading="lazy">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-5.webp" alt="木雕花窗" loading="lazy">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-6.webp" alt="木雕花窗" loading="lazy">
+        </div>
+      </div>
+      <div class="card-illo">
+        <div class="illo-text">
+          <h3 class="glowable" style="--bar-color:var(--amber)">趟栊门</h3>
+          <p class="glowable">推拉隔断新演绎 → 客餐厅柔性分区，木格栅移门保持视线通透、空间可分可合。</p>
+        </div>
+        <div class="illo-img illo-carousel" data-group="5" data-count="2">
+          <img class="active" src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-5-1.webp" alt="趟栊门" loading="eager">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-5-2.webp" alt="趟栊门" loading="lazy">
+        </div>
+      </div>
+      <div class="card-illo">
+        <div class="illo-text">
+          <h3 class="glowable" style="--bar-color:var(--sage)">庭院天井</h3>
+          <p class="glowable">阳台绿植 + 天光引入 → 微型室内景观，实木格栅天棚营造半室外感受。</p>
+        </div>
+        <div class="illo-img illo-carousel" data-group="6" data-count="3">
+          <img class="active" src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-6-1.webp" alt="庭院天井" loading="eager">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-6-2.webp" alt="庭院天井" loading="lazy">
+          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-6-3.webp" alt="庭院天井" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="elderly" style="background:var(--bg-warm);">
+  <div class="container">
+    <div class="eyebrow reveal sec-label glowable">04 · Elderly Care</div>
+    <h2 class="sec-title reveal d1 glowable">适老化设计策略</h2>
+    <p class="sec-desc reveal d2 glowable">以母亲（帕金森综合症）为核心使用者，构建全屋安全防护与便利体系。</p>
+
+    <div class="split reveal d3" style="margin-bottom:clamp(1rem,2.5vw,2rem);">
+      <div>
+        <h3 class="glowable" style="margin-bottom:1rem;">安全防护</h3>
+        <ul class="feature-list">
+          <li class="glowable"><strong class="glowable">全屋防滑地面</strong> — 哑光砖防滑系数 R10+，无光滑表面</li>
+          <li class="glowable"><strong class="glowable">连续扶手系统</strong> — 走廊 + 卫生间 + 床边，管径 32mm</li>
+          <li class="glowable"><strong class="glowable">门槛零高差</strong> — 斜坡过渡 ≤ 5°，T 型铜条接缝</li>
+          <li class="glowable"><strong class="glowable">卫生间安全</strong> — 折叠沐浴凳 + L 型扶手 + 防滑垫</li>
+          <li class="glowable"><strong class="glowable">感应起夜灯</strong> — 床下 → 走廊 → 卫生间路径自动调暗</li>
+          <li class="glowable"><strong class="glowable">紧急呼叫</strong> — 床头 + 卫生间一键报警，联动子女手机</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="glowable" style="margin-bottom:1rem;">舒适便利</h3>
+        <ul class="feature-list">
+          <li class="glowable"><strong class="glowable">宽通道</strong> — 卧室门 ≥ 900mm，走廊 ≥ 1100mm（轮椅通行）</li>
+          <li class="glowable"><strong class="glowable">杠杆门把手</strong> — 省力易握，替代球形把手</li>
+          <li class="glowable"><strong class="glowable">衣柜可升降</strong> — 挂衣杆智能升降，减少踮脚弯腰</li>
+          <li class="glowable"><strong class="glowable">厨房双高度台面</strong> — 坐姿 / 站姿两用操作区</li>
+          <li class="glowable"><strong class="glowable">语音控制</strong> — 灯光 + 空调 + 窗帘，减少走动</li>
+          <li class="glowable"><strong class="glowable">家具圆角</strong> — 全屋无尖锐边角，沙发扶手加宽</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <h4 class="glowable">针对帕金森综合症的特殊考量</h4>
+      <p class="glowable">
+        高对比度色彩标识：门框、台阶、扶手使用与周围形成明显对比的颜色，帮助视觉定位。<br>
+        减少精细操作：大面板开关（86 型）、感应水龙头、语音控制家电，杜绝细小旋钮与按键。<br>
+        消除地面视觉干扰：统一素色哑光地面，避免图案纹理造成视觉错觉引发眩晕。<br>
+        稳定支撑面：床离地 45cm 方便起坐，马桶旁设固定扶手，座椅带扶手支撑。
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section id="floorplan">
+  <div class="container">
+    <div class="eyebrow reveal sec-label glowable">05 · Property &amp; Floor Plan</div>
+    <h2 class="sec-title reveal d1 glowable">项目背景 · 原始户型</h2>
+    <p class="sec-desc reveal d2 glowable">项目位于佛山市禅城区祖庙街道 · <strong class="glowable">岭南天地</strong>居住片区，由瑞安房地产开发。本户建面 227.92㎡，是片区高层四房大平层之一。</p>
+
+
+    <div class="property-grid reveal d3">
+      <div class="property-cell">
+        <div class="property-label glowable">位置</div>
+        <div class="property-value glowable">禅城祖庙</div>
+        <div class="property-note glowable">兆祥路 / 简平路一带</div>
+      </div>
+      <div class="property-cell">
+        <div class="property-label glowable">开发商</div>
+        <div class="property-value glowable">瑞安房地产</div>
+        <div class="property-note glowable">Shui On Land · 上海丰诚物管</div>
+      </div>
+      <div class="property-cell">
+        <div class="property-label glowable">建成</div>
+        <div class="property-value glowable">2003 起</div>
+        <div class="property-note glowable">多期开发 · 70 年产权</div>
+      </div>
+      <div class="property-cell">
+        <div class="property-label glowable">容积率 / 绿化</div>
+        <div class="property-value glowable">1.03 / 20.7%</div>
+        <div class="property-note glowable">低密度居住组团</div>
+      </div>
+      <div class="property-cell">
+        <div class="property-label glowable">建筑面积</div>
+        <div class="property-value glowable">227.92<span class="property-unit">㎡</span></div>
+        <div class="property-note glowable">套内 198.11㎡ · 使用率 87%</div>
+      </div>
+      <div class="property-cell">
+        <div class="property-label glowable">尺度</div>
+        <div class="property-value glowable">16.51 × 16.99<span class="property-unit">m</span></div>
+        <div class="property-note glowable">进深 × 开间 · 近方正格局</div>
+      </div>
+      <div class="property-cell">
+        <div class="property-label glowable">户型</div>
+        <div class="property-value glowable">4 室 2 厅 3 卫</div>
+        <div class="property-note glowable">+ 厨房 + 阳台 · 含主套</div>
+      </div>
+      <div class="property-cell">
+        <div class="property-label glowable">物业费</div>
+        <div class="property-value glowable">¥3.5~5.8</div>
+        <div class="property-note glowable">元/㎡/月 · 区段差异</div>
+      </div>
+    </div>
+
+    <p class="glowable reveal d3" style="font-size:clamp(0.82rem,0.98vw,0.92rem);line-height:2;color:var(--ink-soft);">岭南天地（Lingnan Tiandi）是瑞安房地产「天地」系产品在佛山的延伸，与上海「新天地」同源。项目以祖庙东华里历史街区为文化底盘，将岭南骑楼、镬耳山墙、青砖灰瓦等元素与现代商住体量缝合，居住组团围绕街区展开。本户位于其中的高层住宅，南北通透，开间近 17 m，三面采光，是片区面积上限附近的大平层产品，适合三代同堂。</p>
+
+    <h3 class="reveal d3 glowable" style="margin-top:clamp(2rem,4vw,3rem);margin-bottom:1rem;">原始户型平面</h3>
+    <div style="position:relative;" id="floorplanContainer">
+    <div class="floorplan-frame reveal d3">
+      <img id="floorplanImg" src="https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIFUKLAKTLD74AABAAAAAEA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp" loading="lazy"
+        alt="戴启东住宅原始户型图 — 四室两厅三卫 227.92㎡"
+        sizes="(max-width: 640px) 92vw, (max-width: 1024px) 90vw, 75rem"
+        srcset="https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIFUKLAKTLD74AABAAAAAEA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp 1920w"
+      >
+      <div class="overlay-stats" aria-hidden="true">
+        <span class="room-hint" data-room="0">客餐厅 <strong class="glowable">71.20㎡</strong></span>
+        <span class="room-hint" data-room="1">主卧 <strong class="glowable">28.61㎡</strong></span>
+        <span class="room-hint" data-room="2">次卧一 <strong class="glowable">24.43㎡</strong></span>
+        <span class="room-hint" data-room="3">次卧二 <strong class="glowable">18.24㎡</strong></span>
+        <span class="room-hint" data-room="4">次卧三 <strong class="glowable">18.02㎡</strong></span>
+        <span class="room-hint" data-room="5">厨房 <strong class="glowable">11.49㎡</strong></span>
+      </div>
+    </div>
+    <div class="room-flyout" id="roomFlyout" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="spaces" style="background:var(--bg-warm);">
+  <div class="container">
+    <div class="eyebrow reveal sec-label glowable">06 · Space Planning</div>
+    <h2 class="sec-title reveal d1 glowable">空间功能分区</h2>
+    <p class="sec-desc reveal d2 glowable">八室一厅，各安其位。每个空间的设计决策都来自意向表的原文对应。</p>
+
+    <div class="room-grid reveal d3">
+      <div class="room-card" data-room="0">
+        <div class="room-card-top"><h4 class="glowable">客餐厅</h4><span class="sqm glowable">71.20㎡</span></div>
+        <div class="room-card-body glowable">全屋最核心公共空间。6人L型沙发+茶几、75寸大屏电视。木饰面护墙板电视墙+隐形收纳。岭南花窗隔断柔性分区，暖色无主灯3000K。1×6实木餐桌+餐边柜+陈列柜，配独立电视。</div>
+      </div>
+      <div class="room-card" data-room="1">
+        <div class="room-card-top"><h4 class="glowable">主卧室（老年房）</h4><span class="sqm glowable">28.61㎡</span></div>
+        <div class="room-card-body glowable">父母居住，适老化核心空间。2×2m实木床离地45cm，床头双侧扶手+紧急呼叫。可升降挂衣杆衣柜+圆角梳妆台。感应夜灯路径覆盖至主卫（9.66㎡），语音控制窗帘与灯光。</div>
+      </div>
+      <div class="room-card" data-room="2">
+        <div class="room-card-top"><h4 class="glowable">次卧一（戴启东）</h4><span class="sqm glowable">24.43㎡</span></div>
+        <div class="room-card-body glowable">戴启东本人房间。双人床+极宽电脑桌+衣柜+书柜。手办展示区+电动娱乐角。耐脏墙面处理，暖色系+木地板。</div>
+      </div>
+      <div class="room-card" data-room="3">
+        <div class="room-card-top"><h4 class="glowable">次卧二（哥哥）</h4><span class="sqm glowable">18.24㎡</span></div>
+        <div class="room-card-body glowable">哥哥房间。双人床+电脑桌+衣柜。简约实用风格，暖色系墙面+木地板。</div>
+      </div>
+      <div class="room-card" data-room="4">
+        <div class="room-card-top"><h4 class="glowable">次卧三（书房）</h4><span class="sqm glowable">18.02㎡</span></div>
+        <div class="room-card-body glowable">改造为书房，满足2人同时使用。双人书桌+电脑位，书籍+手办展示柜。暖色系+实木地板。</div>
+      </div>
+      <div class="room-card" data-room="5">
+        <div class="room-card-top"><h4 class="glowable">厨房</h4><span class="sqm glowable">11.49㎡</span></div>
+        <div class="room-card-body glowable">中式大吸力烟灶应对大油烟。U型操作台+双水槽，实用优先。暖木色橱柜面板+隐形拉手，易清洁哑光大砖。</div>
+      </div>
+      <div class="room-card">
+        <div class="room-card-top"><h4 class="glowable">阳台</h4><span class="sqm glowable">5.79㎡</span></div>
+        <div class="room-card-body glowable">铝合金封阳台，实木格栅天棚。晒衣+储物功能，搭配琴叶榕/龟背竹微型景观。半室外岭南天井氛围。</div>
+      </div>
+      <div class="room-card">
+        <div class="room-card-top"><h4 class="glowable">卫生间 ×3</h4><span class="sqm glowable">9.66 / 4.88 / 3.98㎡</span></div>
+        <div class="room-card-body glowable">三卫配置：主卫连接主卧，适老化全套扶手+折叠沐浴凳+智能马桶+紧急呼叫。次卫一淋浴房+台盆柜。次卫二实用为主。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="container">
+    <div class="eyebrow reveal sec-label glowable">07 · Process</div>
+    <h2 class="sec-title reveal d1 glowable">设计流程</h2>
+    <p class="sec-desc reveal d2 glowable">从业主意向表到完整空间方案的五步递进。</p>
+
+    <div class="process-row reveal d3">
+      <div class="process-item">
+        <div class="step-num glowable">1</div>
+        <h4 class="glowable">需求解读</h4>
+        <p class="glowable">逐条分析意向表<br>标注显性与隐性需求<br>提炼设计约束</p>
+      </div>
+      <div class="process-item">
+        <div class="step-num glowable">2</div>
+        <h4 class="glowable">文化调研</h4>
+        <p class="glowable">岭南建筑符号搜集<br>适老化标准查阅<br>风水习俗确认</p>
+      </div>
+      <div class="process-item">
+        <div class="step-num glowable">3</div>
+        <h4 class="glowable">空间规划</h4>
+        <p class="glowable">功能分区+动线设计<br>尺度推敲+家具选型<br>酷家乐3D建模验证</p>
+      </div>
+      <div class="process-item">
+        <div class="step-num glowable">4</div>
+        <h4 class="glowable">风格落地</h4>
+        <p class="glowable">色彩/材质/灯光体系<br>岭南元素空间转译<br>渲染出图</p>
+      </div>
+      <div class="process-item">
+        <div class="step-num glowable">5</div>
+        <h4 class="glowable">方案完善</h4>
+        <p class="glowable">材料清单+工艺说明<br>预算控制+可行性评估<br>业主沟通确认</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section style="background:var(--bg-warm);">
+  <div class="container">
+    <div class="eyebrow reveal sec-label glowable">08 · Palette &amp; Material</div>
+    <h2 class="sec-title reveal d1 glowable">色彩与材质体系</h2>
+    <p class="sec-desc reveal d2 glowable">以温暖木色为底，青灰为骨，金柚为点睛。</p>
+
+    <div class="palette-bar reveal d2">
+      <div style="background:#2c1810;"><div class="swatch-name glowable">墨色</div><div class="swatch-role glowable">骨架 · 主色</div></div>
+      <div style="background:#5c4a3e;"><div class="swatch-name glowable">檀木棕</div><div class="swatch-role glowable">家具 · 木作</div></div>
+      <div style="background:#c4934a;"><div class="swatch-name glowable">金柚木</div><div class="swatch-role glowable">点缀 · 金属</div></div>
+      <div style="background:#faf8f4;color:#2c1810;"><div class="swatch-name glowable">米白底</div><div class="swatch-role glowable" style="color:#5c4a3e;">墙面 · 天花</div></div>
+      <div style="background:#6b8f71;"><div class="swatch-name glowable">岭南绿</div><div class="swatch-role glowable">绿植 · 局部</div></div>
+      <div style="background:#c47a5a;"><div class="swatch-name glowable">赭石</div><div class="swatch-role glowable">温暖 · 点缀</div></div>
+    </div>
+
+    <div class="card-grid reveal d3">
+      <div class="card"><div class="card-accent" style="background:#5c4a3e;"></div><h3 class="glowable">地面</h3><ul><li class="glowable">客餐厅+卧室 — 实木复合地板（暖橡木）</li><li class="glowable">厨房+卫浴 — 600×1200 哑光防滑砖</li><li class="glowable">玄关 — 灰调仿古砖</li><li class="glowable">阳台 — 防滑木纹砖</li></ul></div>
+      <div class="card"><div class="card-accent" style="background:var(--sage);"></div><h3 class="glowable">墙面</h3><ul><li class="glowable">乳胶漆（暖白/米色系，可擦洗）</li><li class="glowable">局部微水泥质感涂料</li><li class="glowable">电视背景 — 木饰面护墙板</li><li class="glowable">厨卫 — 大板哑光素色砖</li></ul></div>
+      <div class="card"><div class="card-accent" style="background:var(--amber);"></div><h3 class="glowable">照明</h3><ul><li class="glowable">客餐厅 — 无主灯+3000K 暖色温</li><li class="glowable">卫生间 — 4000K 高亮度冷光（老人需求）</li><li class="glowable">全屋 — 感应起夜灯（地脚式）</li><li class="glowable">天花 — 隐藏式 LED 线性灯带</li></ul></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="renders">
+  <div class="container">
+    <div class="eyebrow reveal sec-label glowable">09 · Renderings</div>
+    <h2 class="sec-title reveal d1 glowable">效果图</h2>
+    <p class="sec-desc reveal d2 glowable">酷家乐智能设计渲染 · 新中式–宋式 A 风格 · 设计 ID：<span id="designIdDisplay">3FO3EIOVF0JS</span></p>
+
+    <div class="render-gallery reveal d3" id="renderGallery">
+      <div class="render-frame skeleton"><div style="height:clamp(12rem,30vw,16rem);background:var(--rule);"></div><div class="cap"><span>加载中…</span></div></div>
+      <div class="render-frame skeleton"><div style="height:clamp(12rem,30vw,16rem);background:var(--rule);"></div><div class="cap"><span>加载中…</span></div></div>
+      <div class="render-frame skeleton"><div style="height:clamp(12rem,30vw,16rem);background:var(--rule);"></div><div class="cap"><span>加载中…</span></div></div>
+    </div>
+
+    <hr class="rule" style="margin-top:4rem;">
+
+    <h3 class="glowable" style="text-align:center;margin-bottom:1.5rem;">VR 全景图</h3>
+    <div class="pano-links" id="panoLinks">
+      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJUTGFHI" target="_blank" class="pano-link glowable"><span class="arr glowable">&rarr;</span> 客餐厅全景</a>
+      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJWNQWEK" target="_blank" class="pano-link glowable"><span class="arr glowable">&rarr;</span> 次卧全景 · 一</a>
+      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJUW8ROM" target="_blank" class="pano-link glowable"><span class="arr glowable">&rarr;</span> 次卧全景 · 二</a>
+      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJUWBGBF" target="_blank" class="pano-link glowable"><span class="arr glowable">&rarr;</span> 厨房全景</a>
+    </div>
+    <p class="glowable" style="text-align:center;font-size:clamp(0.65rem,0.8vw,0.75rem);color:var(--ink-soft);margin-top:1.5rem;">酷家乐方案：<a href="https://www.kujiale.com/pcenter/design/3FO3EIOVF0JS/list" target="_blank" style="color:var(--amber);">3FO3EIOVF0JS</a></p>
+  </div>
+</section>
+
+
+<section id="budget" style="background:var(--bg-warm);">
+  <div class="container">
+    <div class="eyebrow reveal sec-label glowable">10 · Budget</div>
+    <h2 class="sec-title reveal d1 glowable">预算概算</h2>
+    <p class="sec-desc reveal d2 glowable">套内 198.11㎡，禅城区 2026 中高端档全包测算。每项均给出估算依据，便于核价与裁剪。</p>
+
+
+    <div class="budget-bench reveal d3">
+      <div <span class="b-k glowable">禅城 2026 半包</span><span class="b-v glowable">¥680~750<span class="b-u glowable">/㎡</span></span></div>
+      <div <span class="b-k glowable">禅城 2026 全包</span><span class="b-v glowable">¥1,320~1,580<span class="b-u glowable">/㎡</span></span></div>
+      <div <span class="b-k glowable">高端档全包</span><span class="b-v glowable">¥1,650~1,854<span class="b-u glowable">+/㎡</span></span></div>
+      <div <span class="b-k glowable">本方案定位</span><span class="b-v glowable">中高端 · 适老化</span></div>
+    </div>
+
+    <div class="budget-wrap reveal d3">
+      <table class="budget-table">
+        <colgroup><col class="name"><col class="basis"><col class="cost"></colgroup>
+        <thead><tr><th>分项</th><th>估算依据</th><th>区间（元）</th></tr></thead>
+        <tbody>
+          <tr><td class="glowable">硬装基础</td><td class="glowable">套内 198㎡ × ¥850~1,100/㎡（水电+防水+找平+泥木油+吊顶）</td><td class="glowable">168,000 ~ 218,000</td></tr>
+          <tr><td class="glowable">地面铺装</td><td class="glowable">实木复合 120㎡ × ¥280~380 + 防滑砖 70㎡ × ¥180~260 + 铺装人工</td><td class="glowable">61,000 ~ 84,000</td></tr>
+          <tr><td class="glowable">墙面处理</td><td class="glowable">乳胶漆 350㎡ × ¥40~65 + 微水泥 30㎡ × ¥380~500 + 木饰面 25㎡ × ¥600~900</td><td class="glowable">40,000 ~ 60,000</td></tr>
+          <tr><td class="glowable">定制柜体</td><td class="glowable">E0 板投影 ¥1,380~2,200/㎡ · 橱柜+衣柜×4+玄关柜+餐边柜+书柜（45 延米）</td><td class="glowable">95,000 ~ 130,000</td></tr>
+          <tr><td class="glowable">门窗工程</td><td class="glowable">实木复合门×8 × ¥2,800~4,000 + 铝合金封阳台 + 防盗门</td><td class="glowable">35,000 ~ 52,000</td></tr>
+          <tr><td class="glowable">卫浴洁具</td><td class="glowable">智能马桶×3 + 淋浴×3 + 台盆柜×3 + 主卫浴缸 + 五金（中高端品牌）</td><td class="glowable">52,000 ~ 72,000</td></tr>
+          <tr><td class="glowable">适老化配置</td><td class="glowable">专项：扶手系统 + 感应夜灯 + 紧急呼叫 + 防滑细节（不可削减）</td><td class="glowable">22,000 ~ 32,000</td></tr>
+          <tr><td class="glowable">家电配置</td><td class="glowable">中央空调一拖五 + 烟灶 + 热水器×2 + 洗烘 + 电视×2 + 冰箱</td><td class="glowable">85,000 ~ 115,000</td></tr>
+          <tr><td class="glowable">灯具五金</td><td class="glowable">无主灯+灯带+筒射灯 + 感应灯 + 开关插座 + 卫浴五金</td><td class="glowable">34,000 ~ 50,000</td></tr>
+          <tr><td class="glowable">软装家具</td><td class="glowable">沙发 + 床×4 + 餐桌椅 + 窗帘 + 饰品绿植</td><td class="glowable">72,000 ~ 105,000</td></tr>
+          <tr class="total"><td class="glowable">合计</td><td class="glowable">已含 10% 弹性 · 不含税费与设计费</td><td class="glowable">660,000 ~ 910,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout reveal" style="margin-top:2.5rem;">
+      <h4 class="glowable">预算说明 · 数据来源</h4>
+      <p class="glowable" style="margin-bottom:0.7rem;">报价基于 <strong class="glowable">禅城区 2026 年中高端档</strong>装修市场行情，按套内面积 198.11㎡ 计算。人工费占比约 25~35%、辅材 10~15%、主材 40~50%、设计与管理 10~15%（土巴兔 2026 报告）。建议预留 10~15% 应急资金。<strong >适老化配置为本方案不可削减项</strong>，关乎母亲日常居住安全。</p>
+      <ul class="src-list">
+        <li class="glowable"><a href="https://www.to8to.com/yezhu/z356452.html" target="_blank" rel="noopener">土巴兔 · 2026 佛山装修报价（半包/全包基准）</a></li>
+        <li class="glowable"><a href="https://www.to8to.com/yezhu/z356142.html" target="_blank" rel="noopener">土巴兔 · 2026 佛山全包 ¥1,320~1,580/㎡ 精准控价</a></li>
+        <li class="glowable"><a href="https://www.to8to.com/yezhu/z356199.html" target="_blank" rel="noopener">土巴兔 · 2026 佛山控价指南（高端档 ¥1,854+/㎡）</a></li>
+        <li class="glowable"><a href="https://www.fang.com/xiaoqu/fs-2822593382/" target="_blank" rel="noopener">房天下 · 岭南天地小区数据（容积率 1.03 · 物业费 ¥3.5~5.8/㎡/月）</a></li>
+        <li class="glowable"><a href="https://zhuanlan.zhihu.com/p/9402395749" target="_blank" rel="noopener">知乎 · 2025 装修人工与材料费用清单（人工占比基准）</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<div class="quote-block reveal">
+  <blockquote class="glowable">
+    岭南人家，烟火温暖。<br>
+    老有所安，少有所乐。<br>
+    家，不只是一个空间，<br>
+    更是一份安稳的陪伴。
+  </blockquote>
+</div>
+
+
+<footer>
+  <div class="sig glowable">戴启东住宅空间设计方案</div>
+  <p class="glowable">
+    空间居住设计 · 课程作业<br>
+    汇报人：25 环境艺术设计 1 班 陈键朗<br>
+    佛山 · 禅城 · 2026 年 5 月
+  </p>
+  <p class="glowable" style="font-size:clamp(0.6rem,0.7vw,0.68rem);opacity:0.35;margin-top:1rem;">
+    酷家乐方案 ID：<span id="designIdFooter">3FO3EIOVF0JS</span> · 基于《业主需求意向表（戴启东）》编制
+  </p>
+</footer>
+
+
+
+<script>
+(function(){
+  var carousels=document.querySelectorAll('.illo-carousel');
+  var delays=[0,80,200,350,430,550];
+  window.addEventListener('load',function(){
+    carousels.forEach(function(el,i){
+      var imgs=el.querySelectorAll('img');
+      if(imgs.length<2)return;
+      var idx=0;
+      setTimeout(function(){
+        setInterval(function(){
+          imgs[idx].classList.remove('active');
+          idx=(idx+1)%imgs.length;
+          imgs[idx].classList.add('active');
+        },3000);
+      },delays[i]||0);
+    });
+  });
+})();
+</script>
+
+
+
+<script>document.querySelectorAll('nav .links li').forEach(function(li,i){li.style.transitionDelay=(0.06+i*0.04)+'s'})</script>
+<script>
+(function(){
+  'use strict';
+
+  var flyout    = document.getElementById('roomFlyout');
+  var container = document.getElementById('floorplanContainer');
+  var hints     = document.querySelectorAll('.overlay-stats .room-hint');
+  var cards     = document.querySelectorAll('.room-grid .room-card');
+  if(!flyout || !container || !hints.length || !cards.length) return;
+
+  var rootStyle  = getComputedStyle(document.documentElement);
+  var FADE_OUT   = parseTime(rootStyle.getPropertyValue('--flyout-fade-out'),   140);
+  var FADE_IN    = parseTime(rootStyle.getPropertyValue('--flyout-fade-in'),    220);
+  var FADE_DELAY = parseTime(rootStyle.getPropertyValue('--flyout-fade-in-delay'), 100);
+  var HIDE_DELAY = 150;
+
+  function parseTime(v,fallback){
+    v = (v||'').trim();
+    if(!v) return fallback;
+    if(v.indexOf('ms') !== -1) return parseFloat(v) || fallback;
+    if(v.indexOf('s')  !== -1) return (parseFloat(v)||0) * 1000 || fallback;
+    return parseFloat(v) || fallback;
+  }
+
+  var activeIdx       = -1;
+  var currentInner    = null;
+  var hideTimer       = null;
+  var transitionTimer = null;
+  var touchDevice     = 'ontouchstart' in window;
+
+  function buildInner(card){
+    var inner = document.createElement('div');
+    inner.className = 'room-flyout-inner';
+    inner.appendChild(card.querySelector('.room-card-top').cloneNode(true));
+    var p = document.createElement('p');
+    p.textContent = card.querySelector('.room-card-body').textContent;
+    inner.appendChild(p);
+    return inner;
+  }
+
+  function settleTransition(){
+    if(transitionTimer){ clearTimeout(transitionTimer); transitionTimer = null; }
+    var layers = flyout.querySelectorAll('.room-flyout-inner');
+    for(var i = 0; i < layers.length; i++){
+      if(layers[i] !== currentInner && layers[i].parentNode){
+        layers[i].parentNode.removeChild(layers[i]);
+      }
+    }
+    if(currentInner){
+      currentInner.style.cssText = '';
+      currentInner.classList.remove('is-leaving');
+    }
+  }
+
+  function fillContent(card){
+    if(transitionTimer){ clearTimeout(transitionTimer); transitionTimer = null; }
+    var inner = buildInner(card);
+    flyout.innerHTML = '';
+    flyout.appendChild(inner);
+    currentInner = inner;
+  }
+
+  function crossfade(card){
+    settleTransition();
+    var old = currentInner;
+    if(!old || !old.parentNode){ fillContent(card); return; }
+
+    var next = buildInner(card);
+
+    next.style.position = 'absolute';
+    next.style.top      = '0';
+    next.style.left     = '0';
+    next.style.right    = '0';
+    next.style.opacity  = '0';
+    flyout.appendChild(next);
+
+    old.classList.add('is-leaving');
+    old.offsetHeight;
+    old.style.opacity = '0';
+
+    transitionTimer = setTimeout(function(){
+      if(old.parentNode) old.parentNode.removeChild(old);
+      next.style.cssText = 'opacity:1';
+      currentInner = next;
+      transitionTimer = null;
+    }, Math.max(FADE_OUT, FADE_DELAY));
+
+    requestAnimationFrame(function(){
+      setTimeout(function(){ next.style.opacity = '1'; }, FADE_DELAY);
+    });
+  }
+
+  function hide(){
+    flyout.classList.remove('show');
+    for(var i = 0; i < hints.length; i++) hints[i].classList.remove('active');
+    activeIdx = -1;
+
+  }
+
+  function delayedHide(){
+    hideTimer = setTimeout(function(){ hide(); hideTimer = null; }, HIDE_DELAY);
+  }
+
+  function show(span){
+    if(hideTimer){ clearTimeout(hideTimer); hideTimer = null; }
+    var idx = parseInt(span.getAttribute('data-room'), 10);
+    if(idx === activeIdx) return;
+    var card = cards[idx];
+    if(!card) return;
+
+    for(var i = 0; i < hints.length; i++) hints[i].classList.remove('active');
+    span.classList.add('active');
+    activeIdx = idx;
+
+    if(flyout.classList.contains('show') && currentInner && currentInner.parentNode){
+      crossfade(card);
+    }else{
+      fillContent(card);
+      flyout.classList.add('show');
+    }
+  }
+
+  if(touchDevice){
+
+    hints.forEach(function(span){
+      span.addEventListener('click', function(e){
+        e.stopPropagation();
+        var idx = parseInt(span.getAttribute('data-room'), 10);
+        if(activeIdx === idx){ hide(); return; }
+        show(span);
+      });
+    });
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.overlay-stats .room-hint')) hide();
+    });
+  }else{
+
+    container.addEventListener('mouseenter', function(){
+      if(hideTimer){ clearTimeout(hideTimer); hideTimer = null; }
+    });
+    container.addEventListener('mouseleave', delayedHide);
+    hints.forEach(function(span){
+      span.addEventListener('mouseenter', function(){ show(span); });
+    });
+  }
+})();
+</script>
+
+
+<script>
+(function(){
+  'use strict';
+
+  var nav = document.querySelector('nav');
+  if(!nav) return;
+
+  nav.addEventListener('click', function(e){
+    var a = e.target.closest('a[href^="#"]');
+    if(!a) return;
+    var id = a.getAttribute('href').slice(1);
+    var target = document.getElementById(id);
+    if(!target) return;
+    e.preventDefault();
+    if(e.shiftKey) history.pushState(null, null, '#' + id);
+    target.scrollIntoView({ behavior: 'smooth' });
+
+    closeHamburger();
+  });
+
+  var burger = nav.querySelector('.hamburger');
+  var links  = nav.querySelector('.links');
+  if(burger && links){
+    burger.addEventListener('click', function(){
+      var open = burger.classList.toggle('open');
+      links.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  function closeHamburger(){
+    if(burger && burger.classList.contains('open')){
+      burger.classList.remove('open');
+      links.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  }
+})();
+</script>
+
+
+<!--
+  ============================================================
+  CONFIG — 所有酷家乐图片数据的唯一来源
+  更新方式：修改下方 CONFIG 对象，或运行 node update-renders.js 自动更新
+  ============================================================
+-->
+<script>
+var KJL_CONFIG = {
+  "designId": "3FO3EIOVF0JS",
+  "updatedAt": "2026-05-26",
+  "renders": [
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WK2Y8", "name": "客餐厅 · 视角一", "tag": "宋式美学", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WK2Y8.jpg?x-oss-process=image/format,webp" },
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZQ8", "name": "客餐厅 · 视角二", "tag": "暖色无主灯", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZQ8.jpg?x-oss-process=image/format,webp" },
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZA8", "name": "次卧 · 视角一", "tag": "暖木色", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZA8.jpg?x-oss-process=image/format,webp" },
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKYA8", "name": "次卧 · 视角二", "tag": "柔和灯光", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKYA8.jpg?x-oss-process=image/format,webp" },
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZI8", "name": "次卧 · 视角三", "tag": "收纳空间", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZI8.jpg?x-oss-process=image/format,webp" },
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZY8", "name": "厨房", "tag": "实用布局", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZY8.jpg?x-oss-process=image/format,webp" }
+  ],
+  "panos": [
+    { "name": "客餐厅全景", "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJUTGFHI" },
+    { "name": "次卧全景 · 一", "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJWNQWEK" },
+    { "name": "次卧全景 · 二", "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJUW8ROM" },
+    { "name": "厨房全景", "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJUWBGBF" }
+  ],
+  "cover": {
+    "name": "户型封面",
+    "url": "https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIKTMNIKTK3XKAABAAAAABI8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp"
+  }
+};
+</script>
+
+<script>
+(function(){
+  'use strict';
+
+  var data = window.KJL_CONFIG;
+  if(!data) return;
+
+  var gallery = document.getElementById('renderGallery');
+  var panoContainer = document.getElementById('panoLinks');
+  var designIdDisp  = document.getElementById('designIdDisplay');
+  var designIdFoot  = document.getElementById('designIdFooter');
+
+  // 户型封面图 — 从配置更新
+  if(data.cover && data.cover.url){
+    var fpImg = document.getElementById('floorplanImg');
+    if(fpImg){
+      fpImg.src = data.cover.url;
+      fpImg.setAttribute('srcset', data.cover.url + ' 1920w');
+      if(data.cover.name) fpImg.alt = data.cover.name;
+    }
+  }
+
+  // 设计 ID
+  if(designIdDisp && data.designId) designIdDisp.textContent = data.designId;
+  if(designIdFoot && data.designId) designIdFoot.textContent = data.designId;
+
+  // 渲染图画廊
+  if(gallery && data.renders && data.renders.length){
+    gallery.innerHTML = '';
+    data.renders.forEach(function(r){
+      var frame = document.createElement('div');
+      frame.className = 'render-frame';
+      var img = document.createElement('img');
+      img.src = r.url;
+      img.alt = r.name;
+      img.loading = 'lazy';
+      frame.appendChild(img);
+      var cap = document.createElement('div');
+      cap.className = 'cap glowable';
+      var tt = document.createElement('span');
+      tt.className = 'tt glowable';
+      tt.textContent = r.name;
+      cap.appendChild(tt);
+      if(r.tag){
+        var tg = document.createElement('span');
+        tg.className = 'tg glowable';
+        tg.textContent = r.tag;
+        cap.appendChild(tg);
+      }
+      frame.appendChild(cap);
+      gallery.appendChild(frame);
+    });
+  }
+
+  // VR 全景链接
+  if(panoContainer && data.panos && data.panos.length){
+    panoContainer.innerHTML = '';
+    data.panos.forEach(function(p){
+      var a = document.createElement('a');
+      a.href = p.url;
+      a.target = '_blank';
+      a.className = 'pano-link glowable';
+      var arr = document.createElement('span');
+      arr.className = 'arr glowable';
+      arr.textContent = '→';
+      a.appendChild(arr);
+      a.appendChild(document.createTextNode(' ' + p.name));
+      panoContainer.appendChild(a);
+    });
+  }
+})();
+</script>
+</body>
+</html>
