@@ -1,38 +1,5 @@
 ﻿<!DOCTYPE html>
-<!--
- ╔══════════════════════════════════════════════════════════════════════════╗
- ║  戴启东住宅空间设计方案 · v11 · 2026-05-26                               ║
- ╠══════════════════════════════════════════════════════════════════════════╣
- ║  Single-file presentation page.  Reuse template for vibe-coding / FYP.   ║
- ║                                                                          ║
- ║  ── Architecture ───────────────────────────────────────────────────     ║
- ║  · Pure HTML/CSS/JS, no build step, no external framework.               ║
- ║  · Design tokens live in :root (lines ~30-90). Edit one place to         ║
- ║    re-skin the whole page.                                               ║
- ║  · Layout is fluid clamp() + 12-col grid; works mobile → 100" wide.      ║
- ║  · Light / dark theme auto-switches via prefers-color-scheme; can be     ║
- ║    forced with html[data-theme="light|dark|auto"].                       ║
- ║                                                                          ║
- ║  ── CSS sections (search the banner to jump) ──────────────────────      ║
- ║    Design System · Reset · Typography · Nav · Hero · Sections ·          ║
- ║    Property Info Grid · Room Flyout · Process · Color · Render ·         ║
- ║    Budget Bench · Budget Table · Quote · Footer · Reveal · Wide-screen   ║
- ║    · Global Hover Glow                                                   ║
- ║                                                                          ║
- ║  ── JS modules (IIFE-isolated, no globals) ────────────────────────      ║
- ║    1. Lingnan card carousels — 3s rotation per card, staggered start     ║
- ║    2. Nav li stagger        — cascading hamburger slide-in delay         ║
- ║    3. Floorplan room flyout  — desktop hover / mobile tap                ║
- ║    4. Nav delegated handler  — smooth scroll + hamburger                 ║
- ║                                                                          ║
- ║  ── Repurposing checklist ─────────────────────────────────────────      ║
- ║    [1] Replace <title>, hero text, footer signature.                     ║
- ║    [2] Swap image URLs (jsdelivr CDN + render OSS).                      ║
- ║    [3] Edit :root design tokens for color/material identity.             ║
- ║    [4] Re-author each <section>; keep section IDs in sync with nav.      ║
- ║    [5] Update room-card data-room indices if floorplan changes.          ║
- ╚══════════════════════════════════════════════════════════════════════════╝
--->
+
 <html lang="zh-CN" data-theme="auto">
 <head>
 <meta charset="UTF-8">
@@ -41,14 +8,9 @@
 <title>戴启东住宅空间设计方案 — 岭南新中式 · 适老化温馨之家</title>
 <meta name="color-scheme" content="light dark">
 <style>
-  /* ============================================================
-     Design System — Kenya Hara × MUJI editorial minimalism
-     CSS custom properties for light/dark auto-switching
-     Fluid: clamp + vw + rem — mobile → desktop → 100" wide-screen
-     Grid: 12-column fluid grid
-     ============================================================ */
+  
 
-  /* ---- Tokens: Light (default) ---- */
+  
   :root {
     --bg:            #faf8f4;
     --bg-warm:       #f3efe6;
@@ -65,7 +27,7 @@
     --shadow-sm:     0 1px 2px rgba(0,0,0,0.03);
   }
 
-  /* ---- Tokens: Dark ---- */
+  
   @media (prefers-color-scheme: dark) {
     [data-theme="auto"] {
       --bg:       #1a1612;
@@ -111,7 +73,7 @@
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.03);
   }
 
-  /* ---- Reset ---- */
+  
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   html {
@@ -133,7 +95,7 @@
     transition: background 0.4s ease, color 0.4s ease;
   }
 
-  /* ===== Text Selection ===== */
+  
   ::selection {
     background: var(--amber-soft);
     color: var(--ink);
@@ -143,7 +105,7 @@
     color: var(--ink);
   }
 
-  /* ===== Typography ===== */
+  
   .serif { font-family: 'Noto Serif SC', 'STSong', 'SimSun', serif; }
 
   h1 { font: 700 clamp(2.2rem, 5.5vw, 4.5rem)/1.15 'Noto Serif SC', serif; }
@@ -159,13 +121,13 @@
     font-weight: 500;
   }
 
-  /* ===== Layout Container ===== */
+  
   .container {
     width: min(90vw, 75rem);
     margin-inline: auto;
   }
 
-  /* ===== Nav ===== */
+  
   nav {
     position: fixed; inset: 0 0 auto 0; z-index: 100;
     background: color-mix(in srgb, var(--bg) 92%, transparent);
@@ -196,7 +158,7 @@
   }
   nav .links a:hover { color: var(--amber); }
 
-  /* ===== Hamburger Menu ===== */
+  
   .hamburger {
     display: none; background: none; border: none; cursor: pointer;
     width: 32px; height: 32px; position: relative; z-index: 110;
@@ -259,7 +221,7 @@
     nav .links a:hover { background: var(--bg-warm); }
   }
 
-  /* ===== Hero ===== */
+  
   .hero {
     position: relative;
     min-height: 100vh; min-height: 100dvh;
@@ -316,7 +278,7 @@
   }
   .hero .scroll-hint:hover { color: var(--amber); }
 
-  /* ===== Sections ===== */
+  
   section {
     padding: clamp(4rem, 10vh, 8rem) clamp(1rem, 4vw, 3rem);
   }
@@ -328,14 +290,14 @@
     line-height: 1.75; margin-bottom: 4rem;
   }
 
-  /* ===== Horizontal Rule ===== */
+  
   hr.rule {
     border: none; height: 1px;
     background: linear-gradient(to right, var(--rule), transparent);
     margin: 0 0 4rem;
   }
 
-  /* ===== Stat Line ===== */
+  
   .stat-line {
     display: flex; flex-wrap: wrap; gap: clamp(1.5rem, 4vw, 3rem);
     justify-content: center;
@@ -353,14 +315,14 @@
     color: var(--ink-soft); margin-top: 0.15rem;
   }
 
-  /* ===== 2-Column Split ===== */
+  
   .split {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: clamp(2rem, 5vw, 4rem); align-items: start;
   }
   @media (max-width: 768px) { .split { grid-template-columns: 1fr; } }
 
-  /* ===== Feature List ===== */
+  
   .feature-list { list-style: none; }
   .feature-list li {
     padding: 0.85rem 0; border-bottom: 1px solid var(--rule);
@@ -370,7 +332,7 @@
   .feature-list li:last-child { border-bottom: none; }
   .feature-list li strong { font-weight: 500; color: var(--ink); }
 
-  /* ===== Callout ===== */
+  
   .callout {
     background: var(--bg-warm); padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2.25rem);
     margin: 2rem 0;
@@ -383,7 +345,7 @@
   }
   .callout p { color: var(--ink-soft); }
 
-  /* ===== Card Grid ===== */
+  
   .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
@@ -407,7 +369,7 @@
   .card li { padding: 0.3rem 0; list-style: none; }
   .card li::before { content: '— '; color: var(--amber-soft); }
 
-  /* ===== Illustrated Card — image right, text left ===== */
+  
   .card-illo {
     display: flex; gap: 0; align-items: stretch;
     background: var(--surface); border: 1px solid var(--rule);
@@ -465,7 +427,7 @@
     }
   }
 
-  /* ===== Room Grid ===== */
+  
   .room-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
@@ -493,7 +455,7 @@
     color: var(--ink-soft); line-height: 1.85;
   }
 
-  /* ===== Floor Plan Frame ===== */
+  
   .floorplan-frame {
     position: relative; width: 100%;
     background: var(--surface);
@@ -507,9 +469,9 @@
     display: block; width: 100%; height: auto;
     object-fit: contain;
     max-height: 75vh;
-    background: #fff; /* floorplan always on white */
+    background: #fff; 
   }
-  /* dark mode: dim the white floorplan slightly */
+  
   @media (prefers-color-scheme: dark) {
     .floorplan-frame img {
       filter: brightness(0.92) sepia(0.06);
@@ -531,7 +493,7 @@
     font-family: 'Noto Serif SC', serif; font-weight: 700; color: #dab87a;
   }
 
-  /* ===== Property Info Grid (Section 05) ===== */
+  
   .property-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -580,7 +542,7 @@
     .property-cell { padding: 0.8rem 0.7rem; }
   }
 
-  /* ===== Room Flyout (floorplan hover) ===== */
+  
   .room-flyout {
     position: absolute; left: 0; right: 0; top: 100%;
     opacity: 0; transform: translateY(8px);
@@ -612,11 +574,7 @@
     font-size: clamp(0.72rem, 0.85vw, 0.82rem);
     font-weight: 300; line-height: 1.85; color: var(--ink-soft);
   }
-  /* Crossfade timing — sequential (small overlap) instead of symmetric crossfade
-     so old/new don't visually stack mid-transition.
-     OUT:  0   → 140ms  (opacity 1 → 0, ease-in)
-     IN:   100 → 320ms  (opacity 0 → 1, ease-out, 40ms overlap window)
-     JS reads --flyout-fade-out / --flyout-fade-in-delay / --flyout-fade-in. */
+  
   :root {
     --flyout-fade-out: 140ms;
     --flyout-fade-in-delay: 100ms;
@@ -628,7 +586,7 @@
   .room-flyout-inner.is-leaving {
     transition: opacity var(--flyout-fade-out) cubic-bezier(0.55, 0.06, 0.68, 0.19);
   }
-  /* highlight the hovered span */
+  
   .overlay-stats span.room-hint {
     cursor: pointer; transition: color 0.25s, text-shadow 0.25s;
     position: relative; pointer-events: auto;
@@ -638,7 +596,7 @@
     color: #fff; text-shadow: 0 0 10px rgba(255,210,130,0.95), 0 0 24px rgba(255,180,60,0.55);
   }
 
-  /* ===== Process Row ===== */
+  
   .process-row {
     display: flex; flex-wrap: wrap; justify-content: center;
     gap: 0;
@@ -659,7 +617,7 @@
   }
 
 
-  /* ===== Palette Bar ===== */
+  
   .palette-bar {
     display: flex; flex-wrap: wrap; border-radius: 0.4rem;
     overflow: hidden; margin-bottom: 4rem;
@@ -673,7 +631,7 @@
   .palette-bar .swatch-name { font-weight: 500; margin-bottom: 0.25rem; }
   .palette-bar .swatch-role { font-size: clamp(0.58rem, 0.7vw, 0.68rem); opacity: 0.7; }
 
-  /* ===== Render Gallery ===== */
+  
   .render-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
@@ -704,7 +662,7 @@
     white-space: nowrap;
   }
 
-  /* ===== Pano Links ===== */
+  
   .pano-links {
     display: flex; flex-wrap: wrap; justify-content: center;
     gap: clamp(0.5rem, 1.5vw, 1rem); margin-top: 3rem;
@@ -721,7 +679,7 @@
   .pano-link:hover { border-color: var(--amber); }
   .pano-link .arr { color: var(--amber); font-size: 1.2em; }
 
-  /* ===== Budget — Benchmark Strip ===== */
+  
   .budget-bench {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -756,7 +714,7 @@
     .budget-bench { grid-template-columns: repeat(2, 1fr); }
   }
 
-  /* ===== Budget Table ===== */
+  
   .budget-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .budget-table { width: 100%; border-collapse: collapse; min-width: 28rem; max-width: 56rem; margin: 0 auto; }
   .budget-table col.name { width: 18%; }
@@ -780,7 +738,7 @@
   }
   .budget-table tr.total td:last-child { color: var(--terracotta); }
 
-  /* ===== Source List ===== */
+  
   .src-list {
     list-style: none; padding: 0; margin: 0.5rem 0 0;
     display: grid; gap: 0.4rem;
@@ -803,7 +761,7 @@
   }
   .src-list a:hover { color: var(--amber); border-bottom-color: var(--amber); }
 
-  /* ===== Quote ===== */
+  
   .quote-block {
     padding: clamp(3rem, 8vh, 6rem) clamp(1rem, 3vw, 2rem);
     text-align: center;
@@ -815,7 +773,7 @@
     color: var(--ink-soft); max-width: 38rem; margin: 0 auto;
   }
 
-  /* ===== Footer ===== */
+  
   footer {
     padding: clamp(3rem, 8vh, 5rem) clamp(1rem, 3vw, 2rem);
     text-align: center; font-size: clamp(0.72rem, 0.85vw, 0.82rem);
@@ -826,7 +784,7 @@
     color: var(--ink); margin-bottom: 0.25rem;
   }
 
-  /* ===== Reveal Animation ===== */
+  
   .reveal {
     opacity: 0; transform: translateY(1rem);
     animation: reveal 0.85s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
@@ -841,7 +799,7 @@
     html { scroll-behavior: auto; }
   }
 
-  /* ===== Extra-wide screens (>1920px / 100") ===== */
+  
   @media (min-width: 1600px) {
     .container { width: min(80vw, 82rem); }
     .card-grid { grid-template-columns: repeat(3, 1fr); }
@@ -852,12 +810,12 @@
     .render-gallery { grid-template-columns: repeat(3, 1fr); }
   }
 
-  /* ===== Tablet ===== */
+  
   @media (max-width: 1024px) {
     .card-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
-  /* ===== Mobile ===== */
+  
   @media (max-width: 640px) {
     .container { width: 92vw; }
     .card-grid { grid-template-columns: 1fr; }
@@ -871,17 +829,12 @@
     }
   }
 
-  /* ===== Global hover glow =====
-     Text elements with .glowable glow amber on hover.
-     Container elements with .glowable trigger glow on their
-     .glowable children when the container is hovered.
-     The floorplan room-hint keeps its own brighter white+glow (over image).
-  */
-  /* Level 1: unified transition for all glowable elements */
+  
+  
   .glowable { transition: color 0.28s ease, text-shadow 0.28s ease; }
   a         { transition: color 0.28s ease, text-shadow 0.28s ease; }
 
-  /* Level 2: direct hover — any glowable element under the cursor glows */
+  
   html.glow-on .glowable:hover {
     color: var(--amber) !important;
     text-shadow:
@@ -889,7 +842,7 @@
       0 0 18px color-mix(in srgb, var(--amber) 30%, transparent) !important;
   }
 
-  /* Level 3: container hover — hovering a container glows all glowable children */
+  
   html.glow-on .card:hover .glowable,
   html.glow-on .card-illo:hover .glowable,
   html.glow-on .room-card:hover .glowable,
@@ -910,7 +863,7 @@
       0 0 18px color-mix(in srgb, var(--amber) 30%, transparent) !important;
   }
 
-  /* Sibling rules — special cases using ~ combinator */
+  
   html.glow-on .eyebrow:hover ~ .sec-title,
   html.glow-on .eyebrow:hover ~ .sec-desc,
   html.glow-on .sec-title:hover ~ .sec-desc {
@@ -920,7 +873,7 @@
       0 0 18px color-mix(in srgb, var(--amber) 30%, transparent) !important;
   }
 
-  /* ===== Glow blacklist — these keep their own independent styles ===== */
+  
   html.glow-on .overlay-stats .room-hint:hover,
   html.glow-on .overlay-stats .room-hint.active {
     color: #fff !important;
@@ -934,15 +887,15 @@
     color: inherit !important;
     text-shadow: none !important;
   }
-  /* ===== Link Overrides — Always-active (no glow dependency) ===== */
-  /* Budget source links: preserve dotted underline, inherit text color on hover */
+  
+  
   .src-list a:hover { color: inherit !important; text-shadow: none !important; }
-  /* Nav links: always amber glow on hover */
+  
   a:hover { color: var(--amber) !important; text-shadow: 0 0 8px color-mix(in srgb,var(--amber) 55%,transparent), 0 0 18px color-mix(in srgb,var(--amber) 30%,transparent); }
-  /* Scheme ID link: dotted underline treatment */
+  
   a[href*="3FO3EIOVF0JS"] { text-decoration: none; border-bottom: 1px dotted var(--rule-strong); transition: border-color 0.25s, color 0.28s ease, text-shadow 0.28s ease; }
   a[href*="3FO3EIOVF0JS"]:hover { border-bottom-color: var(--amber); }
-  /* Reduced-motion: strip transitions globally */
+  
   @media (prefers-reduced-motion: reduce) {
     .glowable, a { transition: none; }
   }
@@ -950,9 +903,8 @@
 </head>
 <body>
 
-<!-- Nav -->
-<!-- Nav: smooth-scroll handled by delegated listener (see bottom script).
-     Shift+click any link to write the hash to the URL bar. -->
+
+
 <nav>
   <div class="wordmark glowable">戴启东<em class="glowable">·</em>宅</div>
   <button class="hamburger" aria-label="菜单" aria-expanded="false">
@@ -970,7 +922,7 @@
   </ul>
 </nav>
 
-<!-- Hero -->
+
 <header class="hero">
   <div class="hero-bg"><img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/first-page-bg.webp" alt="" aria-hidden="true" loading="eager"></div>
   <div class="eyebrow reveal glowable">住宅空间设计 · 课程作业</div>
@@ -986,7 +938,7 @@
   <div class="scroll-hint reveal" onclick="if(event.ctrlKey||event.metaKey){event.preventDefault();document.documentElement.classList.toggle('glow-on')}else if(event.shiftKey){var h=document.documentElement;h.dataset.theme=h.dataset.theme==='light'?'dark':h.dataset.theme==='dark'?'auto':'light'}else{document.getElementById('overview').scrollIntoView({behavior:'smooth'})}" title="点击滚到概览 · Shift+点击切明暗 · Ctrl+点击切高亮">▼</div>
 </header>
 
-<!-- Overview -->
+
 <section id="overview">
   <div class="container">
     <div class="eyebrow reveal sec-label glowable">01 · Overview</div>
@@ -1019,7 +971,7 @@
   </div>
 </section>
 
-<!-- Philosophy -->
+
 <section id="philosophy" style="background:var(--bg-warm);">
   <div class="container">
     <div class="eyebrow reveal sec-label glowable">02 · Philosophy</div>
@@ -1040,7 +992,7 @@
   </div>
 </section>
 
-<!-- Lingnan -->
+
 <section id="lingnan">
   <div class="container">
     <div class="eyebrow reveal sec-label glowable">03 · Lingnan Heritage</div>
@@ -1122,7 +1074,7 @@
   </div>
 </section>
 
-<!-- Elderly -->
+
 <section id="elderly" style="background:var(--bg-warm);">
   <div class="container">
     <div class="eyebrow reveal sec-label glowable">04 · Elderly Care</div>
@@ -1166,14 +1118,14 @@
   </div>
 </section>
 
-<!-- Property & Floor Plan -->
+
 <section id="floorplan">
   <div class="container">
     <div class="eyebrow reveal sec-label glowable">05 · Property &amp; Floor Plan</div>
     <h2 class="sec-title reveal d1 glowable">项目背景 · 原始户型</h2>
     <p class="sec-desc reveal d2 glowable">项目位于佛山市禅城区祖庙街道 · <strong class="glowable">岭南天地</strong>居住片区，由瑞安房地产开发。本户建面 227.92㎡，是片区高层四房大平层之一。</p>
 
-    <!-- Property meta cards -->
+    
     <div class="property-grid reveal d3">
       <div class="property-cell">
         <div class="property-label glowable">位置</div>
@@ -1241,7 +1193,7 @@
   </div>
 </section>
 
-<!-- Spaces -->
+
 <section id="spaces" style="background:var(--bg-warm);">
   <div class="container">
     <div class="eyebrow reveal sec-label glowable">06 · Space Planning</div>
@@ -1285,7 +1237,7 @@
   </div>
 </section>
 
-<!-- Process -->
+
 <section>
   <div class="container">
     <div class="eyebrow reveal sec-label glowable">07 · Process</div>
@@ -1322,7 +1274,7 @@
   </div>
 </section>
 
-<!-- Color -->
+
 <section style="background:var(--bg-warm);">
   <div class="container">
     <div class="eyebrow reveal sec-label glowable">08 · Palette &amp; Material</div>
@@ -1346,7 +1298,7 @@
   </div>
 </section>
 
-<!-- Renders -->
+
 <section id="renders">
   <div class="container">
     <div class="eyebrow reveal sec-label glowable">09 · Renderings</div>
@@ -1393,14 +1345,14 @@
   </div>
 </section>
 
-<!-- Budget -->
+
 <section id="budget" style="background:var(--bg-warm);">
   <div class="container">
     <div class="eyebrow reveal sec-label glowable">10 · Budget</div>
     <h2 class="sec-title reveal d1 glowable">预算概算</h2>
     <p class="sec-desc reveal d2 glowable">套内 198.11㎡，禅城区 2026 中高端档全包测算。每项均给出估算依据，便于核价与裁剪。</p>
 
-    <!-- Benchmark strip -->
+    
     <div class="budget-bench reveal d3">
       <div <span class="b-k glowable">禅城 2026 半包</span><span class="b-v glowable">¥680~750<span class="b-u glowable">/㎡</span></span></div>
       <div <span class="b-k glowable">禅城 2026 全包</span><span class="b-v glowable">¥1,320~1,580<span class="b-u glowable">/㎡</span></span></div>
@@ -1442,7 +1394,7 @@
   </div>
 </section>
 
-<!-- Quote -->
+
 <div class="quote-block reveal">
   <blockquote class="glowable">
     岭南人家，烟火温暖。<br>
@@ -1452,7 +1404,7 @@
   </blockquote>
 </div>
 
-<!-- Footer -->
+
 <footer>
   <div class="sig glowable">戴启东住宅空间设计方案</div>
   <p class="glowable">
@@ -1466,13 +1418,7 @@
 </footer>
 
 
-<!-- ============================================================
-     Lingnan card carousels
-     ----------------------------------------------------------
-     6 illustrated cards each contain N images that crossfade
-     every 3 s. Staggered start delays prevent simultaneous
-     transitions. No user interaction — runs on window load.
-     ============================================================ -->
+
 <script>
 (function(){
   var carousels=document.querySelectorAll('.illo-carousel');
@@ -1494,30 +1440,19 @@
 })();
 </script>
 
-<!-- ============================================================
-     Floorplan room flyout
-     ----------------------------------------------------------
-     Desktop: hover hint text → flyout shows; container-level
-              mouseleave delays hide (presentation-friendly).
-     Mobile:  tap hint text → toggle; tap anywhere else → hide.
-     Transition: sequential fade — old fades out, then new fades
-                 in with a small overlap; timing is read from CSS
-                 custom properties so design + code stay in sync.
-     ============================================================ -->
-<!-- Nav link stagger — cascading transition-delay for hamburger slide-in -->
+
+
 <script>document.querySelectorAll('nav .links li').forEach(function(li,i){li.style.transitionDelay=(0.06+i*0.04)+'s'})</script>
 <script>
 (function(){
   'use strict';
 
-  // ---- DOM refs ----
   var flyout    = document.getElementById('roomFlyout');
   var container = document.getElementById('floorplanContainer');
   var hints     = document.querySelectorAll('.overlay-stats .room-hint');
   var cards     = document.querySelectorAll('.room-grid .room-card');
   if(!flyout || !container || !hints.length || !cards.length) return;
 
-  // ---- Timing (read from CSS so motion stays editable in one place) ----
   var rootStyle  = getComputedStyle(document.documentElement);
   var FADE_OUT   = parseTime(rootStyle.getPropertyValue('--flyout-fade-out'),   140);
   var FADE_IN    = parseTime(rootStyle.getPropertyValue('--flyout-fade-in'),    220);
@@ -1532,14 +1467,12 @@
     return parseFloat(v) || fallback;
   }
 
-  // ---- State ----
   var activeIdx       = -1;
   var currentInner    = null;
   var hideTimer       = null;
   var transitionTimer = null;
   var touchDevice     = 'ontouchstart' in window;
 
-  // ---- Helpers ----
   function buildInner(card){
     var inner = document.createElement('div');
     inner.className = 'room-flyout-inner';
@@ -1550,7 +1483,6 @@
     return inner;
   }
 
-  // Kill timer + drop every layer except currentInner; reset its inline styles.
   function settleTransition(){
     if(transitionTimer){ clearTimeout(transitionTimer); transitionTimer = null; }
     var layers = flyout.querySelectorAll('.room-flyout-inner');
@@ -1573,14 +1505,13 @@
     currentInner = inner;
   }
 
-  // Sequential fade: old leaves first, new arrives after a small delay.
   function crossfade(card){
     settleTransition();
     var old = currentInner;
     if(!old || !old.parentNode){ fillContent(card); return; }
 
     var next = buildInner(card);
-    // New layer floats above old as an absolute overlay starting invisible.
+
     next.style.position = 'absolute';
     next.style.top      = '0';
     next.style.left     = '0';
@@ -1588,19 +1519,17 @@
     next.style.opacity  = '0';
     flyout.appendChild(next);
 
-    // Old keeps container height while it fades out.
     old.classList.add('is-leaving');
-    old.offsetHeight; // reflow
+    old.offsetHeight;
     old.style.opacity = '0';
 
-    // After FADE_DELAY, swap roles: new takes normal flow, fades in.
     transitionTimer = setTimeout(function(){
       if(old.parentNode) old.parentNode.removeChild(old);
-      next.style.cssText = 'opacity:1'; // strip absolute, normal flow
+      next.style.cssText = 'opacity:1';
       currentInner = next;
       transitionTimer = null;
     }, Math.max(FADE_OUT, FADE_DELAY));
-    // Trigger fade-in just before the swap, so the overlap window is bounded.
+
     requestAnimationFrame(function(){
       setTimeout(function(){ next.style.opacity = '1'; }, FADE_DELAY);
     });
@@ -1610,7 +1539,7 @@
     flyout.classList.remove('show');
     for(var i = 0; i < hints.length; i++) hints[i].classList.remove('active');
     activeIdx = -1;
-    // currentInner intentionally kept — flyout's own fade-out is still painting.
+
   }
 
   function delayedHide(){
@@ -1636,9 +1565,8 @@
     }
   }
 
-  // ---- Bindings ----
   if(touchDevice){
-    // Mobile: tap hint to toggle; tap anywhere else to close.
+
     hints.forEach(function(span){
       span.addEventListener('click', function(e){
         e.stopPropagation();
@@ -1651,7 +1579,7 @@
       if(!e.target.closest('.overlay-stats .room-hint')) hide();
     });
   }else{
-    // Desktop: container-level hit area (mouse can wander floorplan without losing flyout).
+
     container.addEventListener('mouseenter', function(){
       if(hideTimer){ clearTimeout(hideTimer); hideTimer = null; }
     });
@@ -1663,14 +1591,7 @@
 })();
 </script>
 
-<!-- ============================================================
-     Nav: delegated smooth-scroll + hamburger toggle
-     ------------------------------------------------------------
-     - All `nav .links a[href^="#"]` get smooth-scroll for free.
-     - Shift+click writes the hash to the URL (deep-link sharing).
-     - Hamburger toggles `.open` on itself and the `.links` UL,
-       and sets aria-expanded for assistive tech.
-     ============================================================ -->
+
 <script>
 (function(){
   'use strict';
@@ -1678,7 +1599,6 @@
   var nav = document.querySelector('nav');
   if(!nav) return;
 
-  // Smooth-scroll for in-page links.
   nav.addEventListener('click', function(e){
     var a = e.target.closest('a[href^="#"]');
     if(!a) return;
@@ -1688,11 +1608,10 @@
     e.preventDefault();
     if(e.shiftKey) history.pushState(null, null, '#' + id);
     target.scrollIntoView({ behavior: 'smooth' });
-    // Auto-close mobile menu after a tap.
+
     closeHamburger();
   });
 
-  // Hamburger toggle.
   var burger = nav.querySelector('.hamburger');
   var links  = nav.querySelector('.links');
   if(burger && links){
