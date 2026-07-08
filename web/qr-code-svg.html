@@ -1,49 +1,90 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>QR Code SVG Embed</title>
+  <title>戴启东住宅空间设计方案 QR 组件</title>
   <style>
     :root {
-      --qr-size: min(78vmin, 360px);
-      --qr-foreground: #111111;
-      --qr-background: #ffffff;
-      --page-background: #f7f7f7;
+      --bg: #faf8f4;
+      --surface: #fffdf9;
+      --ink: #2c1810;
+      --ink-soft: #5c4a3e;
+      --amber: #c4934a;
+      --rule: #e8e3d8;
+      --qr-size: min(72vmin, 348px);
+      --qr-popover-bg: var(--surface, #fffdf9);
+      --qr-popover-fg: var(--ink, #2c1810);
+      --qr-popover-accent: var(--amber, #c4934a);
+      --qr-popover-rule: var(--rule, #e8e3d8);
+      --qr-code-bg: #fffdf9;
+      --qr-code-fg: #2c1810;
     }
 
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; }
 
     body {
       min-height: 100vh;
       margin: 0;
       display: grid;
       place-items: center;
-      background: var(--page-background);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: clamp(24px, 6vw, 64px);
+      background: linear-gradient(145deg, var(--bg), #f3efe6);
+      color: var(--qr-popover-fg);
+      font-family: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    .qr-hover {
+      width: min(100%, calc(var(--qr-size) + 96px));
+      padding: clamp(22px, 5vw, 46px);
+      border: 1px solid var(--qr-popover-rule);
+      border-radius: 18px;
+      background: var(--qr-popover-bg);
+      box-shadow: 0 18px 55px rgba(44, 24, 16, 0.08);
+      text-align: center;
+    }
+
+    .qr-hover h1 {
+      margin: 0 0 0.35rem;
+      font: 700 clamp(1.15rem, 3vw, 1.65rem)/1.35 "Noto Serif SC", "STSong", "SimSun", serif;
+      letter-spacing: 0.08em;
+    }
+
+    .qr-hover p {
+      margin: 0 0 clamp(18px, 4vw, 28px);
+      color: var(--ink-soft, #5c4a3e);
+      font-size: clamp(0.82rem, 1.8vw, 0.95rem);
+      line-height: 1.7;
+      text-wrap: pretty;
     }
 
     .qr-frame {
       width: var(--qr-size);
-      max-width: calc(100vw - 32px);
+      max-width: 100%;
+      margin-inline: auto;
+      padding: clamp(10px, 2.4vw, 16px);
+      border: 1px solid color-mix(in srgb, var(--qr-popover-accent) 24%, var(--qr-popover-rule));
+      border-radius: 14px;
+      background: var(--qr-code-bg);
     }
 
-    .qr-code {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .qr-bg { fill: var(--qr-background); }
-    .qr-modules { fill: var(--qr-foreground); }
+    .qr-svg { display: block; width: 100%; height: auto; color: var(--qr-code-fg); }
+    .qr-svg-bg { fill: var(--qr-code-bg); }
+    .qr-svg-path { fill: none; stroke: currentColor; stroke-width: 0.96; stroke-linecap: round; stroke-linejoin: round; }
+    .qr-target { margin-top: 1rem; color: var(--qr-popover-accent); font-size: 0.78rem; overflow-wrap: anywhere; }
   </style>
 </head>
 <body>
-  <div class="qr-frame" data-qr-target="https://ersiter-chen.rth1.xyz/dai-qidong-scheme-latest.html">
-    <svg class="qr-code" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 41" role="img" aria-label="QR Code for https://ersiter-chen.rth1.xyz/dai-qidong-scheme-latest.html" shape-rendering="crispEdges">
-      <rect class="qr-bg" width="41" height="41"/>
-      <path class="qr-modules" d="M4 4h7v1H4z M13 4h2v1H13z M16 4h1v1H16z M18 4h1v1H18z M20 4h2v1H20z M25 4h2v1H25z M30 4h7v1H30z M4 5h1v1H4z M10 5h1v1H10z M12 5h1v1H12z M16 5h3v1H16z M21 5h2v1H21z M26 5h1v1H26z M28 5h1v1H28z M30 5h1v1H30z M36 5h1v1H36z M4 6h1v1H4z M6 6h3v1H6z M10 6h1v1H10z M12 6h4v1H12z M17 6h1v1H17z M23 6h4v1H23z M30 6h1v1H30z M32 6h3v1H32z M36 6h1v1H36z M4 7h1v1H4z M6 7h3v1H6z M10 7h1v1H10z M12 7h1v1H12z M19 7h3v1H19z M23 7h1v1H23z M25 7h1v1H25z M28 7h1v1H28z M30 7h1v1H30z M32 7h3v1H32z M36 7h1v1H36z M4 8h1v1H4z M6 8h3v1H6z M10 8h1v1H10z M14 8h1v1H14z M16 8h2v1H16z M19 8h1v1H19z M23 8h3v1H23z M27 8h1v1H27z M30 8h1v1H30z M32 8h3v1H32z M36 8h1v1H36z M4 9h1v1H4z M10 9h1v1H10z M13 9h2v1H13z M17 9h2v1H17z M21 9h2v1H21z M24 9h1v1H24z M26 9h1v1H26z M28 9h1v1H28z M30 9h1v1H30z M36 9h1v1H36z M4 10h7v1H4z M12 10h1v1H12z M14 10h1v1H14z M16 10h1v1H16z M18 10h1v1H18z M20 10h1v1H20z M22 10h1v1H22z M24 10h1v1H24z M26 10h1v1H26z M28 10h1v1H28z M30 10h7v1H30z M12 11h1v1H12z M18 11h1v1H18z M22 11h1v1H22z M24 11h1v1H24z M26 11h1v1H26z M28 11h1v1H28z M4 12h1v1H4z M10 12h1v1H10z M12 12h2v1H12z M15 12h1v1H15z M17 12h5v1H17z M26 12h2v1H26z M29 12h2v1H29z M33 12h3v1H33z M4 13h1v1H4z M7 13h3v1H7z M11 13h1v1H11z M15 13h1v1H15z M18 13h2v1H18z M23 13h3v1H23z M27 13h1v1H27z M32 13h3v1H32z M4 14h1v1H4z M6 14h1v1H6z M9 14h3v1H9z M13 14h1v1H13z M19 14h2v1H19z M25 14h2v1H25z M29 14h2v1H29z M32 14h1v1H32z M34 14h1v1H34z M4 15h1v1H4z M7 15h3v1H7z M12 15h3v1H12z M16 15h1v1H16z M18 15h1v1H18z M22 15h3v1H22z M26 15h1v1H26z M28 15h1v1H28z M30 15h6v1H30z M7 16h1v1H7z M10 16h1v1H10z M13 16h1v1H13z M15 16h4v1H15z M20 16h1v1H20z M22 16h1v1H22z M24 16h1v1H24z M28 16h1v1H28z M30 16h2v1H30z M35 16h1v1H35z M4 17h2v1H4z M11 17h2v1H11z M15 17h2v1H15z M18 17h1v1H18z M22 17h3v1H22z M27 17h1v1H27z M30 17h2v1H30z M33 17h1v1H33z M35 17h2v1H35z M6 18h1v1H6z M8 18h8v1H8z M18 18h2v1H18z M29 18h2v1H29z M32 18h4v1H32z M5 19h2v1H5z M8 19h2v1H8z M12 19h2v1H12z M17 19h2v1H17z M22 19h1v1H22z M26 19h4v1H26z M31 19h1v1H31z M33 19h2v1H33z M36 19h1v1H36z M4 20h2v1H4z M10 20h1v1H10z M13 20h1v1H13z M15 20h1v1H15z M17 20h2v1H17z M20 20h2v1H20z M28 20h2v1H28z M31 20h3v1H31z M36 20h1v1H36z M4 21h1v1H4z M6 21h3v1H6z M11 21h1v1H11z M13 21h1v1H13z M17 21h1v1H17z M19 21h6v1H19z M27 21h1v1H27z M30 21h1v1H30z M33 21h2v1H33z M36 21h1v1H36z M5 22h1v1H5z M7 22h1v1H7z M9 22h2v1H9z M12 22h4v1H12z M18 22h3v1H18z M23 22h1v1H23z M25 22h1v1H25z M27 22h1v1H27z M30 22h2v1H30z M33 22h2v1H33z M36 22h1v1H36z M4 23h1v1H4z M7 23h2v1H7z M11 23h4v1H11z M22 23h1v1H22z M24 23h1v1H24z M26 23h5v1H26z M32 23h4v1H32z M5 24h3v1H5z M9 24h3v1H9z M13 24h2v1H13z M17 24h1v1H17z M21 24h1v1H21z M24 24h1v1H24z M28 24h1v1H28z M31 24h3v1H31z M4 25h1v1H4z M13 25h2v1H13z M18 25h2v1H18z M21 25h3v1H21z M25 25h3v1H25z M31 25h2v1H31z M34 25h1v1H34z M4 26h1v1H4z M6 26h8v1H6z M16 26h1v1H16z M19 26h2v1H19z M22 26h1v1H22z M24 26h3v1H24z M29 26h1v1H29z M31 26h1v1H31z M33 26h3v1H33z M4 27h1v1H4z M7 27h1v1H7z M9 27h1v1H9z M12 27h1v1H12z M14 27h1v1H14z M16 27h2v1H16z M20 27h1v1H20z M22 27h1v1H22z M26 27h4v1H26z M31 27h1v1H31z M33 27h4v1H33z M4 28h3v1H4z M10 28h3v1H10z M14 28h4v1H14z M22 28h3v1H22z M27 28h7v1H27z M35 28h1v1H35z M12 29h3v1H12z M17 29h5v1H17z M23 29h3v1H23z M27 29h2v1H27z M32 29h1v1H32z M34 29h1v1H34z M36 29h1v1H36z M4 30h7v1H4z M13 30h1v1H13z M16 30h1v1H16z M19 30h1v1H19z M22 30h1v1H22z M25 30h4v1H25z M30 30h1v1H30z M32 30h1v1H32z M34 30h2v1H34z M4 31h1v1H4z M10 31h1v1H10z M13 31h2v1H13z M17 31h1v1H17z M19 31h1v1H19z M22 31h1v1H22z M24 31h1v1H24z M27 31h2v1H27z M32 31h3v1H32z M36 31h1v1H36z M4 32h1v1H4z M6 32h3v1H6z M10 32h1v1H10z M13 32h2v1H13z M18 32h1v1H18z M21 32h1v1H21z M23 32h1v1H23z M26 32h1v1H26z M28 32h6v1H28z M35 32h1v1H35z M4 33h1v1H4z M6 33h3v1H6z M10 33h1v1H10z M13 33h3v1H13z M19 33h2v1H19z M23 33h2v1H23z M29 33h1v1H29z M31 33h2v1H31z M35 33h2v1H35z M4 34h1v1H4z M6 34h3v1H6z M10 34h1v1H10z M14 34h2v1H14z M17 34h1v1H17z M19 34h6v1H19z M26 34h3v1H26z M31 34h2v1H31z M34 34h3v1H34z M4 35h1v1H4z M10 35h1v1H10z M13 35h1v1H13z M15 35h1v1H15z M17 35h1v1H17z M20 35h1v1H20z M24 35h1v1H24z M26 35h2v1H26z M29 35h6v1H29z M4 36h7v1H4z M12 36h1v1H12z M16 36h1v1H16z M18 36h2v1H18z M21 36h3v1H21z M26 36h4v1H26z M31 36h1v1H31z M35 36h1v1H35z"/>
-    </svg>
-  </div>
+  <main class="qr-hover" data-qr-target="https://ersiter-chen.rth1.xyz/dai-qidong-scheme-latest.html">
+    <h1>扫码查看方案</h1>
+    <p>戴启东住宅空间设计方案</p>
+    <div class="qr-frame">
+      <svg class="qr-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 41" role="img" aria-label="QR Code for https://ersiter-chen.rth1.xyz/dai-qidong-scheme-latest.html">
+                <rect class="qr-svg-bg" width="41" height="41" rx="3"/>
+                <path class="qr-svg-path" d="M4.5 4.5H10.5 M13.5 4.5H14.5 M16.499 4.5h.002 M18.499 4.5h.002 M20.5 4.5H21.5 M25.5 4.5H26.5 M30.5 4.5H36.5 M4.499 5.5h.002 M10.499 5.5h.002 M12.499 5.5h.002 M16.5 5.5H18.5 M21.5 5.5H22.5 M26.499 5.5h.002 M28.499 5.5h.002 M30.499 5.5h.002 M36.499 5.5h.002 M4.499 6.5h.002 M6.5 6.5H8.5 M10.499 6.5h.002 M12.5 6.5H15.5 M17.499 6.5h.002 M23.5 6.5H26.5 M30.499 6.5h.002 M32.5 6.5H34.5 M36.499 6.5h.002 M4.499 7.5h.002 M6.5 7.5H8.5 M10.499 7.5h.002 M12.499 7.5h.002 M19.5 7.5H21.5 M23.499 7.5h.002 M25.499 7.5h.002 M28.499 7.5h.002 M30.499 7.5h.002 M32.5 7.5H34.5 M36.499 7.5h.002 M4.499 8.5h.002 M6.5 8.5H8.5 M10.499 8.5h.002 M14.499 8.5h.002 M16.5 8.5H17.5 M19.499 8.5h.002 M23.5 8.5H25.5 M27.499 8.5h.002 M30.499 8.5h.002 M32.5 8.5H34.5 M36.499 8.5h.002 M4.499 9.5h.002 M10.499 9.5h.002 M13.5 9.5H14.5 M17.5 9.5H18.5 M21.5 9.5H22.5 M24.499 9.5h.002 M26.499 9.5h.002 M28.499 9.5h.002 M30.499 9.5h.002 M36.499 9.5h.002 M4.5 10.5H10.5 M12.499 10.5h.002 M14.499 10.5h.002 M16.499 10.5h.002 M18.499 10.5h.002 M20.499 10.5h.002 M22.499 10.5h.002 M24.499 10.5h.002 M26.499 10.5h.002 M28.499 10.5h.002 M30.5 10.5H36.5 M12.499 11.5h.002 M18.499 11.5h.002 M22.499 11.5h.002 M24.499 11.5h.002 M26.499 11.5h.002 M28.499 11.5h.002 M4.499 12.5h.002 M10.499 12.5h.002 M12.5 12.5H13.5 M15.499 12.5h.002 M17.5 12.5H21.5 M26.5 12.5H27.5 M29.5 12.5H30.5 M33.5 12.5H35.5 M4.499 13.5h.002 M7.5 13.5H9.5 M11.499 13.5h.002 M15.499 13.5h.002 M18.5 13.5H19.5 M23.5 13.5H25.5 M27.499 13.5h.002 M32.5 13.5H34.5 M4.499 14.5h.002 M6.499 14.5h.002 M9.5 14.5H11.5 M13.499 14.5h.002 M19.5 14.5H20.5 M25.5 14.5H26.5 M29.5 14.5H30.5 M32.499 14.5h.002 M34.499 14.5h.002 M4.499 15.5h.002 M7.5 15.5H9.5 M12.5 15.5H14.5 M16.499 15.5h.002 M18.499 15.5h.002 M22.5 15.5H24.5 M26.499 15.5h.002 M28.499 15.5h.002 M30.5 15.5H35.5 M7.499 16.5h.002 M10.499 16.5h.002 M13.499 16.5h.002 M15.5 16.5H18.5 M20.499 16.5h.002 M22.499 16.5h.002 M24.499 16.5h.002 M28.499 16.5h.002 M30.5 16.5H31.5 M35.499 16.5h.002 M4.5 17.5H5.5 M11.5 17.5H12.5 M15.5 17.5H16.5 M18.499 17.5h.002 M22.5 17.5H24.5 M27.499 17.5h.002 M30.5 17.5H31.5 M33.499 17.5h.002 M35.5 17.5H36.5 M6.499 18.5h.002 M8.5 18.5H15.5 M18.5 18.5H19.5 M29.5 18.5H30.5 M32.5 18.5H35.5 M5.5 19.5H6.5 M8.5 19.5H9.5 M12.5 19.5H13.5 M17.5 19.5H18.5 M22.499 19.5h.002 M26.5 19.5H29.5 M31.499 19.5h.002 M33.5 19.5H34.5 M36.499 19.5h.002 M4.5 20.5H5.5 M10.499 20.5h.002 M13.499 20.5h.002 M15.499 20.5h.002 M17.5 20.5H18.5 M20.5 20.5H21.5 M28.5 20.5H29.5 M31.5 20.5H33.5 M36.499 20.5h.002 M4.499 21.5h.002 M6.5 21.5H8.5 M11.499 21.5h.002 M13.499 21.5h.002 M17.499 21.5h.002 M19.5 21.5H24.5 M27.499 21.5h.002 M30.499 21.5h.002 M33.5 21.5H34.5 M36.499 21.5h.002 M5.499 22.5h.002 M7.499 22.5h.002 M9.5 22.5H10.5 M12.5 22.5H15.5 M18.5 22.5H20.5 M23.499 22.5h.002 M25.499 22.5h.002 M27.499 22.5h.002 M30.5 22.5H31.5 M33.5 22.5H34.5 M36.499 22.5h.002 M4.499 23.5h.002 M7.5 23.5H8.5 M11.5 23.5H14.5 M22.499 23.5h.002 M24.499 23.5h.002 M26.5 23.5H30.5 M32.5 23.5H35.5 M5.5 24.5H7.5 M9.5 24.5H11.5 M13.5 24.5H14.5 M17.499 24.5h.002 M21.499 24.5h.002 M24.499 24.5h.002 M28.499 24.5h.002 M31.5 24.5H33.5 M4.499 25.5h.002 M13.5 25.5H14.5 M18.5 25.5H19.5 M21.5 25.5H23.5 M25.5 25.5H27.5 M31.5 25.5H32.5 M34.499 25.5h.002 M4.499 26.5h.002 M6.5 26.5H13.5 M16.499 26.5h.002 M19.5 26.5H20.5 M22.499 26.5h.002 M24.5 26.5H26.5 M29.499 26.5h.002 M31.499 26.5h.002 M33.5 26.5H35.5 M4.499 27.5h.002 M7.499 27.5h.002 M9.499 27.5h.002 M12.499 27.5h.002 M14.499 27.5h.002 M16.5 27.5H17.5 M20.499 27.5h.002 M22.499 27.5h.002 M26.5 27.5H29.5 M31.499 27.5h.002 M33.5 27.5H36.5 M4.5 28.5H6.5 M10.5 28.5H12.5 M14.5 28.5H17.5 M22.5 28.5H24.5 M27.5 28.5H33.5 M35.499 28.5h.002 M12.5 29.5H14.5 M17.5 29.5H21.5 M23.5 29.5H25.5 M27.5 29.5H28.5 M32.499 29.5h.002 M34.499 29.5h.002 M36.499 29.5h.002 M4.5 30.5H10.5 M13.499 30.5h.002 M16.499 30.5h.002 M19.499 30.5h.002 M22.499 30.5h.002 M25.5 30.5H28.5 M30.499 30.5h.002 M32.499 30.5h.002 M34.5 30.5H35.5 M4.499 31.5h.002 M10.499 31.5h.002 M13.5 31.5H14.5 M17.499 31.5h.002 M19.499 31.5h.002 M22.499 31.5h.002 M24.499 31.5h.002 M27.5 31.5H28.5 M32.5 31.5H34.5 M36.499 31.5h.002 M4.499 32.5h.002 M6.5 32.5H8.5 M10.499 32.5h.002 M13.5 32.5H14.5 M18.499 32.5h.002 M21.499 32.5h.002 M23.499 32.5h.002 M26.499 32.5h.002 M28.5 32.5H33.5 M35.499 32.5h.002 M4.499 33.5h.002 M6.5 33.5H8.5 M10.499 33.5h.002 M13.5 33.5H15.5 M19.5 33.5H20.5 M23.5 33.5H24.5 M29.499 33.5h.002 M31.5 33.5H32.5 M35.5 33.5H36.5 M4.499 34.5h.002 M6.5 34.5H8.5 M10.499 34.5h.002 M14.5 34.5H15.5 M17.499 34.5h.002 M19.5 34.5H24.5 M26.5 34.5H28.5 M31.5 34.5H32.5 M34.5 34.5H36.5 M4.499 35.5h.002 M10.499 35.5h.002 M13.499 35.5h.002 M15.499 35.5h.002 M17.499 35.5h.002 M20.499 35.5h.002 M24.499 35.5h.002 M26.5 35.5H27.5 M29.5 35.5H34.5 M4.5 36.5H10.5 M12.499 36.5h.002 M16.499 36.5h.002 M18.5 36.5H19.5 M21.5 36.5H23.5 M26.5 36.5H29.5 M31.499 36.5h.002 M35.499 36.5h.002"/>
+              </svg>
+    </div>
+    <div class="qr-target">https://ersiter-chen.rth1.xyz/dai-qidong-scheme-latest.html</div>
+  </main>
 </body>
 </html>

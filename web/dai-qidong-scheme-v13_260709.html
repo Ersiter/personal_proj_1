@@ -275,72 +275,8 @@
     font-size: clamp(0.85rem, 1.2vw, 1rem);
     color: var(--amber-soft); cursor: pointer;
     user-select: none; transition: color 0.3s;
-    outline: none;
-    --qr-popover-bg: var(--surface, #fffdf9);
-    --qr-popover-fg: var(--ink, #2c1810);
-    --qr-popover-accent: var(--amber, #c4934a);
-    --qr-popover-rule: var(--rule, #e8e3d8);
-    --qr-code-bg: #fffdf9;
-    --qr-code-fg: #2c1810;
   }
-  .hero .scroll-hint:hover,
-  .hero .scroll-hint:focus-visible { color: var(--amber); }
-  .hero .scroll-hint:focus-visible { text-shadow: 0 0 12px color-mix(in srgb, var(--amber) 32%, transparent); }
-  .qr-popover {
-    position: absolute;
-    left: 50%; bottom: calc(100% + 0.85rem);
-    width: min(72vw, 13rem);
-    padding: 0.72rem;
-    border: 1px solid var(--qr-popover-rule);
-    border-radius: 0.45rem;
-    background: color-mix(in srgb, var(--qr-popover-bg) 96%, transparent);
-    box-shadow: 0 16px 44px rgba(44, 24, 16, 0.13);
-    color: var(--qr-popover-fg);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translate(-50%, 0.35rem);
-    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
-  }
-  .qr-popover::after {
-    content: '';
-    position: absolute;
-    left: 50%; bottom: -0.38rem;
-    width: 0.72rem; height: 0.72rem;
-    background: var(--qr-popover-bg);
-    border-right: 1px solid var(--qr-popover-rule);
-    border-bottom: 1px solid var(--qr-popover-rule);
-    transform: translateX(-50%) rotate(45deg);
-  }
-  .hero .scroll-hint:hover .qr-popover,
-  .hero .scroll-hint:focus .qr-popover,
-  .hero .scroll-hint:focus-within .qr-popover {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, 0);
-  }
-  .qr-popover-title {
-    display: block;
-    margin-bottom: 0.45rem;
-    color: var(--qr-popover-accent);
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    line-height: 1;
-    white-space: nowrap;
-  }
-  .qr-popover .qr-svg {
-    display: block;
-    width: 100%; height: auto;
-    color: var(--qr-code-fg);
-  }
-  .qr-popover .qr-svg-bg { fill: var(--qr-code-bg); }
-  .qr-popover .qr-svg-path {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 0.96;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
+  .hero .scroll-hint:hover { color: var(--amber); }
 
   
   section {
@@ -739,10 +675,6 @@
     font-size: clamp(0.75rem, 0.9vw, 0.85rem);
   }
   .pano-link:hover { border-color: var(--amber); }
-  .pano-link.featured-pano {
-    border-color: var(--amber-soft);
-    color: var(--amber);
-  }
   .pano-link .arr { color: var(--amber); font-size: 1.2em; }
 
   
@@ -998,16 +930,7 @@
     <span class="sep">/</span>
     <span class="glowable">四口之家</span>
   </div>
-  <div class="scroll-hint reveal qr-hover" tabindex="0" role="button" aria-label="滚动到概览，悬停或聚焦显示二维码" onclick="if(event.ctrlKey||event.metaKey){event.preventDefault();document.documentElement.classList.toggle('glow-on')}else if(event.shiftKey){var h=document.documentElement;h.dataset.theme=h.dataset.theme==='light'?'dark':h.dataset.theme==='dark'?'auto':'light'}else{document.getElementById('overview').scrollIntoView({behavior:'smooth'})}" title="点击滚到概览 · Shift+点击切明暗 · Ctrl+点击切高亮">
-    <span aria-hidden="true">▼</span>
-    <span class="qr-popover" role="status" aria-label="扫码查看方案二维码">
-      <span class="qr-popover-title">扫码查看方案</span>
-      <svg class="qr-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 41" role="img" aria-label="QR Code for https://ersiter-chen.rth1.xyz/dai-qidong-scheme-latest.html">
-                <rect class="qr-svg-bg" width="41" height="41" rx="3"/>
-                <path class="qr-svg-path" d="M4.5 4.5H10.5 M13.5 4.5H14.5 M16.499 4.5h.002 M18.499 4.5h.002 M20.5 4.5H21.5 M25.5 4.5H26.5 M30.5 4.5H36.5 M4.499 5.5h.002 M10.499 5.5h.002 M12.499 5.5h.002 M16.5 5.5H18.5 M21.5 5.5H22.5 M26.499 5.5h.002 M28.499 5.5h.002 M30.499 5.5h.002 M36.499 5.5h.002 M4.499 6.5h.002 M6.5 6.5H8.5 M10.499 6.5h.002 M12.5 6.5H15.5 M17.499 6.5h.002 M23.5 6.5H26.5 M30.499 6.5h.002 M32.5 6.5H34.5 M36.499 6.5h.002 M4.499 7.5h.002 M6.5 7.5H8.5 M10.499 7.5h.002 M12.499 7.5h.002 M19.5 7.5H21.5 M23.499 7.5h.002 M25.499 7.5h.002 M28.499 7.5h.002 M30.499 7.5h.002 M32.5 7.5H34.5 M36.499 7.5h.002 M4.499 8.5h.002 M6.5 8.5H8.5 M10.499 8.5h.002 M14.499 8.5h.002 M16.5 8.5H17.5 M19.499 8.5h.002 M23.5 8.5H25.5 M27.499 8.5h.002 M30.499 8.5h.002 M32.5 8.5H34.5 M36.499 8.5h.002 M4.499 9.5h.002 M10.499 9.5h.002 M13.5 9.5H14.5 M17.5 9.5H18.5 M21.5 9.5H22.5 M24.499 9.5h.002 M26.499 9.5h.002 M28.499 9.5h.002 M30.499 9.5h.002 M36.499 9.5h.002 M4.5 10.5H10.5 M12.499 10.5h.002 M14.499 10.5h.002 M16.499 10.5h.002 M18.499 10.5h.002 M20.499 10.5h.002 M22.499 10.5h.002 M24.499 10.5h.002 M26.499 10.5h.002 M28.499 10.5h.002 M30.5 10.5H36.5 M12.499 11.5h.002 M18.499 11.5h.002 M22.499 11.5h.002 M24.499 11.5h.002 M26.499 11.5h.002 M28.499 11.5h.002 M4.499 12.5h.002 M10.499 12.5h.002 M12.5 12.5H13.5 M15.499 12.5h.002 M17.5 12.5H21.5 M26.5 12.5H27.5 M29.5 12.5H30.5 M33.5 12.5H35.5 M4.499 13.5h.002 M7.5 13.5H9.5 M11.499 13.5h.002 M15.499 13.5h.002 M18.5 13.5H19.5 M23.5 13.5H25.5 M27.499 13.5h.002 M32.5 13.5H34.5 M4.499 14.5h.002 M6.499 14.5h.002 M9.5 14.5H11.5 M13.499 14.5h.002 M19.5 14.5H20.5 M25.5 14.5H26.5 M29.5 14.5H30.5 M32.499 14.5h.002 M34.499 14.5h.002 M4.499 15.5h.002 M7.5 15.5H9.5 M12.5 15.5H14.5 M16.499 15.5h.002 M18.499 15.5h.002 M22.5 15.5H24.5 M26.499 15.5h.002 M28.499 15.5h.002 M30.5 15.5H35.5 M7.499 16.5h.002 M10.499 16.5h.002 M13.499 16.5h.002 M15.5 16.5H18.5 M20.499 16.5h.002 M22.499 16.5h.002 M24.499 16.5h.002 M28.499 16.5h.002 M30.5 16.5H31.5 M35.499 16.5h.002 M4.5 17.5H5.5 M11.5 17.5H12.5 M15.5 17.5H16.5 M18.499 17.5h.002 M22.5 17.5H24.5 M27.499 17.5h.002 M30.5 17.5H31.5 M33.499 17.5h.002 M35.5 17.5H36.5 M6.499 18.5h.002 M8.5 18.5H15.5 M18.5 18.5H19.5 M29.5 18.5H30.5 M32.5 18.5H35.5 M5.5 19.5H6.5 M8.5 19.5H9.5 M12.5 19.5H13.5 M17.5 19.5H18.5 M22.499 19.5h.002 M26.5 19.5H29.5 M31.499 19.5h.002 M33.5 19.5H34.5 M36.499 19.5h.002 M4.5 20.5H5.5 M10.499 20.5h.002 M13.499 20.5h.002 M15.499 20.5h.002 M17.5 20.5H18.5 M20.5 20.5H21.5 M28.5 20.5H29.5 M31.5 20.5H33.5 M36.499 20.5h.002 M4.499 21.5h.002 M6.5 21.5H8.5 M11.499 21.5h.002 M13.499 21.5h.002 M17.499 21.5h.002 M19.5 21.5H24.5 M27.499 21.5h.002 M30.499 21.5h.002 M33.5 21.5H34.5 M36.499 21.5h.002 M5.499 22.5h.002 M7.499 22.5h.002 M9.5 22.5H10.5 M12.5 22.5H15.5 M18.5 22.5H20.5 M23.499 22.5h.002 M25.499 22.5h.002 M27.499 22.5h.002 M30.5 22.5H31.5 M33.5 22.5H34.5 M36.499 22.5h.002 M4.499 23.5h.002 M7.5 23.5H8.5 M11.5 23.5H14.5 M22.499 23.5h.002 M24.499 23.5h.002 M26.5 23.5H30.5 M32.5 23.5H35.5 M5.5 24.5H7.5 M9.5 24.5H11.5 M13.5 24.5H14.5 M17.499 24.5h.002 M21.499 24.5h.002 M24.499 24.5h.002 M28.499 24.5h.002 M31.5 24.5H33.5 M4.499 25.5h.002 M13.5 25.5H14.5 M18.5 25.5H19.5 M21.5 25.5H23.5 M25.5 25.5H27.5 M31.5 25.5H32.5 M34.499 25.5h.002 M4.499 26.5h.002 M6.5 26.5H13.5 M16.499 26.5h.002 M19.5 26.5H20.5 M22.499 26.5h.002 M24.5 26.5H26.5 M29.499 26.5h.002 M31.499 26.5h.002 M33.5 26.5H35.5 M4.499 27.5h.002 M7.499 27.5h.002 M9.499 27.5h.002 M12.499 27.5h.002 M14.499 27.5h.002 M16.5 27.5H17.5 M20.499 27.5h.002 M22.499 27.5h.002 M26.5 27.5H29.5 M31.499 27.5h.002 M33.5 27.5H36.5 M4.5 28.5H6.5 M10.5 28.5H12.5 M14.5 28.5H17.5 M22.5 28.5H24.5 M27.5 28.5H33.5 M35.499 28.5h.002 M12.5 29.5H14.5 M17.5 29.5H21.5 M23.5 29.5H25.5 M27.5 29.5H28.5 M32.499 29.5h.002 M34.499 29.5h.002 M36.499 29.5h.002 M4.5 30.5H10.5 M13.499 30.5h.002 M16.499 30.5h.002 M19.499 30.5h.002 M22.499 30.5h.002 M25.5 30.5H28.5 M30.499 30.5h.002 M32.499 30.5h.002 M34.5 30.5H35.5 M4.499 31.5h.002 M10.499 31.5h.002 M13.5 31.5H14.5 M17.499 31.5h.002 M19.499 31.5h.002 M22.499 31.5h.002 M24.499 31.5h.002 M27.5 31.5H28.5 M32.5 31.5H34.5 M36.499 31.5h.002 M4.499 32.5h.002 M6.5 32.5H8.5 M10.499 32.5h.002 M13.5 32.5H14.5 M18.499 32.5h.002 M21.499 32.5h.002 M23.499 32.5h.002 M26.499 32.5h.002 M28.5 32.5H33.5 M35.499 32.5h.002 M4.499 33.5h.002 M6.5 33.5H8.5 M10.499 33.5h.002 M13.5 33.5H15.5 M19.5 33.5H20.5 M23.5 33.5H24.5 M29.499 33.5h.002 M31.5 33.5H32.5 M35.5 33.5H36.5 M4.499 34.5h.002 M6.5 34.5H8.5 M10.499 34.5h.002 M14.5 34.5H15.5 M17.499 34.5h.002 M19.5 34.5H24.5 M26.5 34.5H28.5 M31.5 34.5H32.5 M34.5 34.5H36.5 M4.499 35.5h.002 M10.499 35.5h.002 M13.499 35.5h.002 M15.499 35.5h.002 M17.499 35.5h.002 M20.499 35.5h.002 M24.499 35.5h.002 M26.5 35.5H27.5 M29.5 35.5H34.5 M4.5 36.5H10.5 M12.499 36.5h.002 M16.499 36.5h.002 M18.5 36.5H19.5 M21.5 36.5H23.5 M26.5 36.5H29.5 M31.499 36.5h.002 M35.499 36.5h.002"/>
-              </svg>
-    </span>
-  </div>
+  <div class="scroll-hint reveal" onclick="if(event.ctrlKey||event.metaKey){event.preventDefault();document.documentElement.classList.toggle('glow-on')}else if(event.shiftKey){var h=document.documentElement;h.dataset.theme=h.dataset.theme==='light'?'dark':h.dataset.theme==='dark'?'auto':'light'}else{document.getElementById('overview').scrollIntoView({behavior:'smooth'})}" title="点击滚到概览 · Shift+点击切明暗 · Ctrl+点击切高亮">▼</div>
 </header>
 
 <section id="overview">
@@ -1378,9 +1301,12 @@
 
     <h3 class="glowable" style="text-align:center;margin-bottom:1.5rem;">VR 全景图</h3>
     <div class="pano-links" id="panoLinks">
-      <span class="pano-link glowable">加载全景链接中…</span>
+      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJUTGFHI" target="_blank" class="pano-link glowable"><span class="arr glowable">&rarr;</span> 客餐厅全景</a>
+      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJWNQWEK" target="_blank" class="pano-link glowable"><span class="arr glowable">&rarr;</span> 次卧全景 · 一</a>
+      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJUW8ROM" target="_blank" class="pano-link glowable"><span class="arr glowable">&rarr;</span> 次卧全景 · 二</a>
+      <a href="https://www.kujiale.com/xiaoguotu/pano/3FOFPJUWBGBF" target="_blank" class="pano-link glowable"><span class="arr glowable">&rarr;</span> 厨房全景</a>
     </div>
-    <p class="glowable" style="text-align:center;font-size:clamp(0.65rem,0.8vw,0.75rem);color:var(--ink-soft);margin-top:1.5rem;">酷家乐方案：<a id="designUrlLink" href="#" target="_blank" rel="noopener" style="color:var(--amber);"><span id="designIdLink">加载中…</span></a></p>
+    <p class="glowable" style="text-align:center;font-size:clamp(0.65rem,0.8vw,0.75rem);color:var(--ink-soft);margin-top:1.5rem;">酷家乐方案：<a href="https://www.kujiale.com/pcenter/design/3FO3EIOVF0JS/list" target="_blank" style="color:var(--amber);">3FO3EIOVF0JS</a></p>
   </div>
 </section>
 
@@ -1663,9 +1589,30 @@
 })();
 </script>
 
-<script src="kjl-config.js"></script>
-
-
+<script>
+var KJL_CONFIG = {
+  "designId": "3FO3EIOVF0JS",
+  "updatedAt": "2026-05-26",
+  "renders": [
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WK2Y8", "name": "客餐厅 · 视角一", "tag": "宋式美学", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WK2Y8.jpg?x-oss-process=image/format,webp" },
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZQ8", "name": "客餐厅 · 视角二", "tag": "暖色无主灯", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZQ8.jpg?x-oss-process=image/format,webp" },
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZA8", "name": "次卧 · 视角一", "tag": "暖木色", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZA8.jpg?x-oss-process=image/format,webp" },
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKYA8", "name": "次卧 · 视角二", "tag": "柔和灯光", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKYA8.jpg?x-oss-process=image/format,webp" },
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZI8", "name": "次卧 · 视角三", "tag": "收纳空间", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZI8.jpg?x-oss-process=image/format,webp" },
+    { "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZY8", "name": "厨房", "tag": "实用布局", "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZY8.jpg?x-oss-process=image/format,webp" }
+  ],
+  "panos": [
+    { "name": "客餐厅全景", "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJUTGFHI" },
+    { "name": "次卧全景 · 一", "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJWNQWEK" },
+    { "name": "次卧全景 · 二", "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJUW8ROM" },
+    { "name": "厨房全景", "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJUWBGBF" }
+  ],
+  "cover": {
+    "name": "户型封面",
+    "url": "https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIFUKLAKTLD74AABAAAAAEA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp"
+  }
+};
+</script>
 
 <script>
 (function(){
@@ -1674,36 +1621,10 @@
   var data = window.KJL_CONFIG;
   if(!data) return;
 
-  function cleanUrlPath(url){
-    return String(url || '').split('#')[0].split('?')[0].replace(/\/+$/, '');
-  }
-
-  function lastUrlPart(url){
-    return cleanUrlPath(url).split('/').pop() || '';
-  }
-
-  function renderIdFromUrl(url){
-    return lastUrlPart(url).replace(/\.[^.]+$/, '');
-  }
-
-  if(data.renders && data.renders.length){
-    data.renders.forEach(function(r){
-      if(r && !r.id && r.url) r.id = renderIdFromUrl(r.url);
-    });
-  }
-
-  if(data.panos && data.panos.length){
-    data.panos.forEach(function(p){
-      if(p && !p.id && p.url) p.id = lastUrlPart(p.url);
-    });
-  }
-
   var gallery = document.getElementById('renderGallery');
   var panoContainer = document.getElementById('panoLinks');
   var designIdDisp  = document.getElementById('designIdDisplay');
   var designIdFoot  = document.getElementById('designIdFooter');
-  var designUrlLink = document.getElementById('designUrlLink');
-  var designIdLink  = document.getElementById('designIdLink');
 
   if(data.cover && data.cover.url){
     var fpImg = document.getElementById('floorplanImg');
@@ -1716,8 +1637,6 @@
 
   if(designIdDisp && data.designId) designIdDisp.textContent = data.designId;
   if(designIdFoot && data.designId) designIdFoot.textContent = data.designId;
-  if(designIdLink && data.designId) designIdLink.textContent = data.designId;
-  if(designUrlLink && data.designUrl) designUrlLink.href = data.designUrl;
 
   if(gallery && data.renders && data.renders.length){
     gallery.innerHTML = '';
@@ -1748,30 +1667,17 @@
 
   if(panoContainer && data.panos && data.panos.length){
     panoContainer.innerHTML = '';
-    var featured = null;
-    if(data.featuredPanoId){
-      featured = data.panos.find(function(p){ return p.id === data.featuredPanoId; });
-    }
-    featured = featured || data.panos[0];
-
-    function appendPanoLink(p, labelPrefix, isFeatured){
+    data.panos.forEach(function(p){
       var a = document.createElement('a');
       a.href = p.url;
       a.target = '_blank';
-      a.rel = 'noopener';
-      a.className = 'pano-link glowable' + (isFeatured ? ' featured-pano' : '');
+      a.className = 'pano-link glowable';
       var arr = document.createElement('span');
       arr.className = 'arr glowable';
       arr.textContent = '→';
       a.appendChild(arr);
-      a.appendChild(document.createTextNode(' ' + labelPrefix + p.name));
+      a.appendChild(document.createTextNode(' ' + p.name));
       panoContainer.appendChild(a);
-    }
-
-    appendPanoLink(featured, '优先查看 · ', true);
-    data.panos.forEach(function(p){
-      if(featured && p.id === featured.id) return;
-      appendPanoLink(p, '', false);
     });
   }
 })();
