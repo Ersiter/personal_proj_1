@@ -1,7 +1,6 @@
 import { createCadSnapshotViewer } from './cad-snapshot-viewer.js';
 
-const assetBaseUrl = new URL('./', import.meta.url);
-const snapshotUrl = new URL('./floorplan.mlcad', assetBaseUrl);
+const snapshotUrl = 'https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/assets/cad/floorplan.mlcad';
 // Calibrated against the title geometry outside the apartment plan.
 const FLOORPLAN_FIT_OFFSET = Object.freeze({ x: 0.02, y: -0.078 });
 
