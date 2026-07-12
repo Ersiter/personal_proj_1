@@ -545,6 +545,79 @@
     max-height: 75vh;
     background: #fff; 
   }
+  .floorplan-frame img[hidden],
+  .floorplan-frame .cad-viewer[hidden],
+  .floorplan-frame .cad-controls[hidden],
+  .floorplan-frame .cad-layer-panel[hidden] { display: none !important; }
+  .floorplan-frame #floorplanImg,
+  .floorplan-frame .cad-viewer {
+    transition: opacity 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .floorplan-frame .cad-viewer { opacity: 0; }
+  .floorplan-frame.is-cad-active #floorplanImg {
+    opacity: 0; pointer-events: none;
+  }
+  .floorplan-frame.is-cad-active .cad-viewer:not([hidden]) { opacity: 1; }
+  .floorplan-heading {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 0.8rem; margin-top: clamp(2rem,4vw,3rem); margin-bottom: 1rem;
+  }
+  .floorplan-heading h3 { margin: 0; }
+  .plan-view-tabs {
+    display: inline-flex; flex-shrink: 0;
+    border: 1px solid var(--rule-strong); border-radius: 0.4rem;
+    overflow: hidden; background: var(--surface);
+  }
+  .plan-view-tab,
+  .cad-control-btn {
+    border: 0; background: transparent; color: var(--ink-soft);
+    font: inherit; font-size: clamp(0.65rem, 0.8vw, 0.74rem);
+    line-height: 1; cursor: pointer; transition: color 0.28s ease, background 0.28s ease;
+  }
+  .plan-view-tab { padding: 0.58rem 0.72rem; }
+  .plan-view-tab + .plan-view-tab { border-left: 1px solid var(--rule); }
+  .plan-view-tab[aria-selected="true"] { color: var(--ink); background: var(--bg-warm); }
+  .plan-view-tab:hover,
+  .plan-view-tab:focus-visible,
+  .cad-control-btn:hover,
+  .cad-control-btn:focus-visible { color: var(--amber); outline: none; }
+  .cad-viewer {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; overflow: hidden;
+  }
+  .cad-viewer canvas { display: block; width: 100%; height: 100%; }
+  .cad-viewer-status {
+    height: 100%; display: grid; place-items: center;
+    padding: clamp(1rem, 3vw, 2rem); color: var(--ink-soft);
+    font-size: clamp(0.72rem, 0.9vw, 0.82rem); text-align: center;
+  }
+  .cad-controls {
+    position: absolute; top: clamp(0.55rem, 1.4vw, 0.85rem); right: clamp(0.55rem, 1.4vw, 0.85rem);
+    display: flex; gap: 0.35rem; z-index: 2;
+  }
+  .cad-control-btn {
+    min-height: 2rem; padding: 0.45rem 0.62rem;
+    border: 1px solid var(--rule-strong); border-radius: 0.4rem;
+    background: color-mix(in srgb, var(--surface) 92%, transparent);
+    box-shadow: var(--shadow-sm);
+  }
+  .cad-layer-panel {
+    position: absolute; top: calc(100% + 0.45rem); right: 0;
+    width: min(16rem, calc(100vw - 3rem)); max-height: min(20rem, 55vh);
+    overflow: auto; padding: 0.35rem; border: 1px solid var(--rule-strong);
+    border-radius: 0.4rem; background: var(--surface); box-shadow: var(--shadow-sm);
+  }
+  .cad-layer-row {
+    display: grid; grid-template-columns: auto auto minmax(0, 1fr);
+    align-items: center; gap: 0.5rem; padding: 0.48rem 0.42rem;
+    color: var(--ink-soft); font-size: clamp(0.68rem, 0.8vw, 0.76rem); cursor: pointer;
+  }
+  .cad-layer-row + .cad-layer-row { border-top: 1px solid var(--rule); }
+  .cad-layer-row input { accent-color: var(--amber); }
+  .cad-layer-swatch {
+    width: 0.66rem; height: 0.66rem; border: 1px solid var(--rule-strong); border-radius: 50%;
+  }
+  .cad-layer-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   
   @media (prefers-color-scheme: dark) {
     .floorplan-frame img {
@@ -740,7 +813,7 @@
     gap: clamp(0.5rem, 1.5vw, 1rem); margin-top: 3rem;
   }
   .pano-links .pano-link { flex: 0 1 auto; }
-  .pano-link {
+  .pano-link.glowable {
     display: flex; align-items: center; gap: 0.75rem;
     padding: clamp(0.8rem, 1.8vw, 1.25rem) clamp(0.8rem, 2vw, 1.5rem);
     background: var(--surface); border: 1px solid var(--rule);
@@ -872,6 +945,8 @@
 
   @media (prefers-reduced-motion: reduce) {
     .reveal { animation: none; opacity: 1; transform: none; }
+    .floorplan-frame #floorplanImg,
+    .floorplan-frame .cad-viewer { transition: none; }
     html { scroll-behavior: auto; }
   }
 
@@ -899,6 +974,7 @@
     .render-gallery { grid-template-columns: 1fr; }
 
     .floorplan-frame .overlay-stats { flex-direction: column; align-items: center; gap: 0.3rem; }
+    .floorplan-heading { align-items: flex-start; flex-direction: column; gap: 0.65rem; }
     .process-row { flex-direction: column; align-items: center; }
     .pano-links {
       display: grid; grid-template-columns: repeat(2, 1fr);
@@ -1085,10 +1161,10 @@
           <p class="glowable">提炼弧形轮廓 → 天花造型装饰线、电视背景墙弧形收边、走廊灯槽曲线呼应。</p>
         </div>
         <div class="illo-img illo-carousel" data-group="1" data-count="4">
-          <img class="active" src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-1-1.webp" alt="镬耳山墙" loading="eager">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-1-2.webp" alt="镬耳山墙" loading="lazy">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-1-3.webp" alt="镬耳山墙" loading="lazy">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-1-4.webp" alt="镬耳山墙" loading="lazy">
+          <img class="active" data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-1-1.webp" alt="镬耳山墙" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-1-2.webp" alt="镬耳山墙" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-1-3.webp" alt="镬耳山墙" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-1-4.webp" alt="镬耳山墙" loading="lazy">
         </div>
       </div>
       <div class="card-illo">
@@ -1097,10 +1173,10 @@
           <p class="glowable">彩色玻璃几何分割 → 玄关屏风、客餐厅柔性隔断、柜门装饰面板。</p>
         </div>
         <div class="illo-img illo-carousel" data-group="2" data-count="4">
-          <img class="active" src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-2-1.webp" alt="满洲窗" loading="eager">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-2-2.webp" alt="满洲窗" loading="lazy">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-2-3.webp" alt="满洲窗" loading="lazy">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-2-4.webp" alt="满洲窗" loading="lazy">
+          <img class="active" data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-2-1.webp" alt="满洲窗" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-2-2.webp" alt="满洲窗" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-2-3.webp" alt="满洲窗" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-2-4.webp" alt="满洲窗" loading="lazy">
         </div>
       </div>
       <div class="card-illo">
@@ -1109,9 +1185,9 @@
           <p class="glowable">灰调哑光砖 → 玄关 / 厨卫地面；仿古肌理涂料 → 局部墙面；青灰调贯穿硬装基底。</p>
         </div>
         <div class="illo-img illo-carousel" data-group="3" data-count="3">
-          <img class="active" src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-3-1.webp" alt="青砖灰瓦" loading="eager">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-3-2.webp" alt="青砖灰瓦" loading="lazy">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-3-3.webp" alt="青砖灰瓦" loading="lazy">
+          <img class="active" data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-3-1.webp" alt="青砖灰瓦" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-3-2.webp" alt="青砖灰瓦" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-3-3.webp" alt="青砖灰瓦" loading="lazy">
         </div>
       </div>
       <div class="card-illo">
@@ -1120,12 +1196,12 @@
           <p class="glowable">简化几何镂空 → 空调出风口面板、装饰墙面、柜门通风隔断。</p>
         </div>
         <div class="illo-img illo-carousel" data-group="4" data-count="6">
-          <img class="active" src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-1.webp" alt="木雕花窗" loading="eager">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-2.webp" alt="木雕花窗" loading="lazy">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-3.webp" alt="木雕花窗" loading="lazy">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-4.webp" alt="木雕花窗" loading="lazy">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-5.webp" alt="木雕花窗" loading="lazy">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-6.webp" alt="木雕花窗" loading="lazy">
+          <img class="active" data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-1.webp" alt="木雕花窗" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-2.webp" alt="木雕花窗" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-3.webp" alt="木雕花窗" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-4.webp" alt="木雕花窗" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-5.webp" alt="木雕花窗" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-4-6.webp" alt="木雕花窗" loading="lazy">
         </div>
       </div>
       <div class="card-illo">
@@ -1134,8 +1210,8 @@
           <p class="glowable">推拉隔断新演绎 → 客餐厅柔性分区，木格栅移门保持视线通透、空间可分可合。</p>
         </div>
         <div class="illo-img illo-carousel" data-group="5" data-count="2">
-          <img class="active" src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-5-1.webp" alt="趟栊门" loading="eager">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-5-2.webp" alt="趟栊门" loading="lazy">
+          <img class="active" data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-5-1.webp" alt="趟栊门" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-5-2.webp" alt="趟栊门" loading="lazy">
         </div>
       </div>
       <div class="card-illo">
@@ -1144,9 +1220,9 @@
           <p class="glowable">阳台绿植 + 天光引入 → 微型室内景观，实木格栅天棚营造半室外感受。</p>
         </div>
         <div class="illo-img illo-carousel" data-group="6" data-count="3">
-          <img class="active" src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-6-1.webp" alt="庭院天井" loading="eager">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-6-2.webp" alt="庭院天井" loading="lazy">
-          <img src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-6-3.webp" alt="庭院天井" loading="lazy">
+          <img class="active" data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-6-1.webp" alt="庭院天井" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-6-2.webp" alt="庭院天井" loading="lazy">
+          <img data-src="https://cdn.jsdelivr.net/gh/Ersiter/personal_proj_1@main/img/lingnan-6-3.webp" alt="庭院天井" loading="lazy">
         </div>
       </div>
     </div>
@@ -1248,14 +1324,28 @@
 
     <p class="glowable reveal d3" style="font-size:clamp(0.82rem,0.98vw,0.92rem);line-height:2;color:var(--ink-soft);">岭南天地（Lingnan Tiandi）是瑞安房地产「天地」系产品在佛山的延伸，与上海「新天地」同源。项目以祖庙东华里历史街区为文化底盘，将岭南骑楼、镬耳山墙、青砖灰瓦等元素与现代商住体量缝合，居住组团围绕街区展开。本户位于其中的高层住宅，南北通透，开间近 17 m，三面采光，是片区面积上限附近的大平层产品，适合三代同堂。</p>
 
-    <h3 class="reveal d3 glowable" style="margin-top:clamp(2rem,4vw,3rem);margin-bottom:1rem;">原始户型平面</h3>
+    <div class="floorplan-heading reveal d3">
+      <h3 class="glowable">原始户型平面</h3>
+      <div class="plan-view-tabs" role="tablist" aria-label="户型图视图">
+        <button class="plan-view-tab" type="button" role="tab" aria-selected="true" aria-controls="floorplanFrame" id="originalPlanTab" data-plan-view="original">原始户型</button>
+        <button class="plan-view-tab" type="button" role="tab" aria-selected="false" aria-controls="floorplanFrame" id="layoutPlanTab" data-plan-view="cad">平面布置</button>
+      </div>
+    </div>
     <div style="position:relative;" id="floorplanContainer">
-    <div class="floorplan-frame reveal d3">
+    <div class="floorplan-frame reveal d3" id="floorplanFrame">
       <img id="floorplanImg" src="https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIFUKLAKTLD74AABAAAAAEA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp" loading="lazy"
         alt="戴启东住宅原始户型图 — 四室两厅三卫 227.92㎡"
         sizes="(max-width: 640px) 92vw, (max-width: 1024px) 90vw, 75rem"
         srcset="https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIFUKLAKTLD74AABAAAAAEA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp 1920w"
       >
+      <div class="cad-viewer" id="cadViewer" hidden aria-live="polite"></div>
+      <div class="cad-controls" id="cadControls" hidden>
+        <button class="cad-control-btn" type="button" id="cadLayersButton" aria-expanded="false" aria-controls="cadLayerPanel">图层</button>
+        <button class="cad-control-btn" type="button" id="cadZoomButton">范围缩放</button>
+        <div class="cad-layer-panel" id="cadLayerPanel" role="dialog" aria-label="图层" hidden>
+          <div id="cadLayerList"></div>
+        </div>
+      </div>
       <div class="overlay-stats" aria-hidden="true">
         <span class="room-hint" data-room="0">客餐厅 <strong class="glowable">71.20㎡</strong></span>
         <span class="room-hint" data-room="1">主卧 <strong class="glowable">28.61㎡</strong></span>
@@ -1456,7 +1546,7 @@
   <p class="glowable">
     空间居住设计 · 课程作业<br>
     汇报人：25 环境艺术设计 1 班 陈键朗<br>
-    佛山 · 禅城 · 2026 年 5 月
+    佛山 · 禅城 · 2026 年 7 月
   </p>
   <p class="glowable" style="font-size:clamp(0.6rem,0.7vw,0.68rem);opacity:0.35;margin-top:1rem;">
     酷家乐方案 ID：<span id="designIdFooter">3FO3EIOVF0JS</span> · 基于《业主需求意向表（戴启东）》编制
@@ -1465,22 +1555,75 @@
 
 <script>
 (function(){
+  var section=document.getElementById('lingnan');
   var carousels=document.querySelectorAll('.illo-carousel');
   var delays=[0,80,200,350,430,550];
-  window.addEventListener('load',function(){
-    carousels.forEach(function(el,i){
-      var imgs=el.querySelectorAll('img');
-      if(imgs.length<2)return;
-      var idx=0;
-      setTimeout(function(){
-        setInterval(function(){
-          imgs[idx].classList.remove('active');
-          idx=(idx+1)%imgs.length;
-          imgs[idx].classList.add('active');
-        },3000);
-      },delays[i]||0);
+  var states=[];
+  var imagesLoaded=false;
+  var sectionVisible=!('IntersectionObserver' in window);
+
+  function canRun(){ return sectionVisible&&!document.hidden; }
+  function loadImages(){
+    if(imagesLoaded)return;
+    imagesLoaded=true;
+    carousels.forEach(function(el){
+      el.querySelectorAll('img[data-src]').forEach(function(img){
+        img.src=img.dataset.src;
+        img.removeAttribute('data-src');
+      });
     });
+  }
+  function schedule(state){
+    if(!canRun()||!state.ready||state.timer!==null)return;
+    state.startedAt=performance.now();
+    state.timer=window.setTimeout(function(){
+      state.timer=null;
+      state.imgs[state.index].classList.remove('active');
+      state.index=(state.index+1)%state.imgs.length;
+      state.imgs[state.index].classList.add('active');
+      state.remaining=3000;
+      schedule(state);
+    },state.remaining);
+  }
+  function pause(state){
+    if(state.timer===null)return;
+    state.remaining=Math.max(0,state.remaining-(performance.now()-state.startedAt));
+    window.clearTimeout(state.timer);
+    state.timer=null;
+  }
+  function sync(){
+    states.forEach(function(state){
+      if(canRun())schedule(state);else pause(state);
+    });
+  }
+
+  carousels.forEach(function(el,i){
+    var imgs=el.querySelectorAll('img');
+    if(imgs.length<2)return;
+    var state={ imgs:imgs, index:0, ready:false, remaining:3000+(delays[i]||0), startedAt:0, timer:null };
+    var first=imgs[0];
+    var markReady=function(){ state.ready=true; sync(); };
+    if(first.complete&&first.naturalWidth>0)markReady();
+    else first.addEventListener('load',markReady,{once:true});
+    states.push(state);
   });
+
+  if('IntersectionObserver' in window&&section){
+    new IntersectionObserver(function(entries){
+      sectionVisible=entries[0].isIntersecting;
+      sync();
+    }).observe(section);
+    var preloadObserver=new IntersectionObserver(function(entries){
+      if(!entries[0].isIntersecting)return;
+      loadImages();
+      preloadObserver.disconnect();
+    },{rootMargin:'800px 0px'});
+    preloadObserver.observe(section);
+  }else{
+    loadImages();
+  }
+  document.addEventListener('visibilitychange',sync);
+  sync();
 })();
 </script>
 
@@ -1769,7 +1912,7 @@
       a.href = p.url;
       a.target = '_blank';
       a.rel = 'noopener';
-      a.className = 'pano-link glowable' + (isFeatured ? ' featured-pano' : '');
+      a.className = 'pano-link glowable reveal' + (isFeatured ? ' featured-pano' : '');
       var arr = document.createElement('span');
       arr.className = 'arr glowable';
       arr.textContent = '→';
@@ -1784,6 +1927,212 @@
       appendPanoLink(p, '', false);
     });
   }
+})();
+</script>
+<script>
+(function(){
+  'use strict';
+
+  var originalTab = document.getElementById('originalPlanTab');
+  var layoutTab = document.getElementById('layoutPlanTab');
+  var floorplanFrame = document.getElementById('floorplanFrame');
+  var floorplanImg = document.getElementById('floorplanImg');
+  var cadViewer = document.getElementById('cadViewer');
+  var cadControls = document.getElementById('cadControls');
+  var layersButton = document.getElementById('cadLayersButton');
+  var layerPanel = document.getElementById('cadLayerPanel');
+  var layerList = document.getElementById('cadLayerList');
+  var zoomButton = document.getElementById('cadZoomButton');
+
+  if(!originalTab || !layoutTab || !floorplanFrame || !floorplanImg || !cadViewer || !cadControls || !layersButton || !layerPanel || !layerList || !zoomButton) return;
+
+  var cadApi = null;
+  var loadingPromise = null;
+  var PLAN_VIEW_STORAGE_KEY = 'dai-qidong:floorplan-view';
+  var activeView = getStoredView();
+  var hideCadTimer = null;
+  var transitionEpoch = 0;
+
+  function getStoredView(){
+    try {
+      return window.sessionStorage.getItem(PLAN_VIEW_STORAGE_KEY) === 'cad' ? 'cad' : 'original';
+    } catch(error) {
+      return 'original';
+    }
+  }
+
+  function persistView(view){
+    try {
+      window.sessionStorage.setItem(PLAN_VIEW_STORAGE_KEY, view);
+    } catch(error) {}
+  }
+
+  function setCadStatus(message){
+    cadViewer.replaceChildren();
+    var status = document.createElement('div');
+    status.className = 'cad-viewer-status';
+    status.textContent = message;
+    cadViewer.appendChild(status);
+  }
+
+  function renderLayers(layers){
+    layerList.replaceChildren();
+    if(!layers.length){
+      var empty = document.createElement('div');
+      empty.className = 'cad-layer-row';
+      empty.textContent = '图纸未包含可切换图层。';
+      layerList.appendChild(empty);
+      return;
+    }
+
+    layers.forEach(function(layer){
+      var row = document.createElement('label');
+      row.className = 'cad-layer-row';
+
+      var checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.checked = layer.isOn;
+      checkbox.setAttribute('aria-label', '切换图层 ' + layer.name);
+      checkbox.addEventListener('change', function(){
+        if(cadApi) cadApi.setLayerOn(layer.name, checkbox.checked);
+      });
+
+      var swatch = document.createElement('span');
+      swatch.className = 'cad-layer-swatch';
+      swatch.style.background = layer.cssColor;
+      swatch.setAttribute('aria-hidden', 'true');
+
+      var name = document.createElement('span');
+      name.className = 'cad-layer-name';
+      name.textContent = layer.name;
+
+      row.appendChild(checkbox);
+      row.appendChild(swatch);
+      row.appendChild(name);
+      layerList.appendChild(row);
+    });
+  }
+
+  function closeLayerPanel(){
+    layerPanel.hidden = true;
+    layersButton.setAttribute('aria-expanded', 'false');
+  }
+
+  function loadCadModule(){
+    if(window.location.protocol === 'file:') {
+      return Promise.reject(new Error('请在项目根目录运行 npm run preview:beta，再打开终端显示的网址。'));
+    }
+    return import('../assets/cad/cad-viewer.js');
+  }
+
+  function ensureCadLoaded(){
+    if(cadApi) return Promise.resolve(cadApi);
+    if(loadingPromise) return loadingPromise;
+
+    setCadStatus('正在载入平面布置…');
+    loadingPromise = loadCadModule()
+      .then(function(module){
+        cadViewer.replaceChildren();
+        return module.loadCadViewer({
+          container: cadViewer,
+          onLayersChanged: renderLayers
+        });
+      })
+      .then(function(api){
+        cadApi = api;
+        return api;
+      })
+      .catch(function(error){
+        loadingPromise = null;
+        cadControls.hidden = true;
+        closeLayerPanel();
+        setCadStatus(error && error.message ? error.message : '图纸加载失败。');
+        throw error;
+      });
+
+    return loadingPromise;
+  }
+
+  function revealCad(animate){
+    var epoch = ++transitionEpoch;
+    cadViewer.hidden = false;
+    if(!animate){
+      floorplanFrame.classList.add('is-cad-active');
+      cadControls.hidden = false;
+      return;
+    }
+
+    floorplanFrame.classList.remove('is-cad-active');
+    void cadViewer.offsetWidth;
+    window.requestAnimationFrame(function(){
+      window.requestAnimationFrame(function(){
+        if(activeView === 'cad' && epoch === transitionEpoch){
+          floorplanFrame.classList.add('is-cad-active');
+          cadControls.hidden = false;
+        }
+      });
+    });
+  }
+
+  function showCadControlsWhenReady(animate){
+    ensureCadLoaded()
+      .then(function(){
+        if(activeView === 'cad') revealCad(animate);
+      })
+      .catch(function(){
+        if(activeView === 'cad') floorplanFrame.classList.add('is-cad-active');
+      });
+  }
+
+  function selectView(view, options){
+    options = options || {};
+    var isCad = view === 'cad';
+    activeView = view;
+    if(options.persist !== false) persistView(view);
+    originalTab.setAttribute('aria-selected', String(!isCad));
+    layoutTab.setAttribute('aria-selected', String(isCad));
+    floorplanImg.hidden = false;
+    if(!isCad){
+      transitionEpoch += 1;
+      cadControls.hidden = true;
+      closeLayerPanel();
+      floorplanFrame.classList.remove('is-cad-active');
+      if(hideCadTimer) window.clearTimeout(hideCadTimer);
+      hideCadTimer = window.setTimeout(function(){
+        if(activeView === 'original') cadViewer.hidden = true;
+      }, 350);
+      return;
+    }
+
+    if(hideCadTimer) window.clearTimeout(hideCadTimer);
+    cadViewer.hidden = false;
+    floorplanFrame.classList.remove('is-cad-active');
+    cadControls.hidden = true;
+    showCadControlsWhenReady(options.animate !== false);
+  }
+
+  originalTab.addEventListener('click', function(){ selectView('original'); });
+  layoutTab.addEventListener('click', function(){ selectView('cad'); });
+
+  layersButton.addEventListener('click', function(){
+    var shouldOpen = layerPanel.hidden;
+    layerPanel.hidden = !shouldOpen;
+    layersButton.setAttribute('aria-expanded', String(shouldOpen));
+  });
+
+  zoomButton.addEventListener('click', function(){
+    if(cadApi) cadApi.zoomToExtents();
+  });
+
+  document.addEventListener('pointerdown', function(event){
+    if(!cadControls.contains(event.target)) closeLayerPanel();
+  });
+
+  document.addEventListener('keydown', function(event){
+    if(event.key === 'Escape') closeLayerPanel();
+  });
+
+  selectView(activeView, { animate: false, persist: false });
 })();
 </script>
 </body>

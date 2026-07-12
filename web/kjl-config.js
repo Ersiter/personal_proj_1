@@ -5,7 +5,7 @@ window.KJL_CONFIG = {
   "featuredPanoId": "3FOFPJUTGFHI",
   "cover": {
     "name": "户型封面",
-    "url": "https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIFUKLAKTLD74AABAAAAAEA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp"
+    "url": "https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EE5B7O2G/1/NJJBNIAKTK4TGAABAAAAACA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp"
   },
   "renders": [
     {

@@ -1,0 +1,20 @@
+{
+  "scripts": {
+    "build:cad": "node scripts/build-cad-viewer.mjs",
+    "preview:beta": "node scripts/preview-beta.mjs"
+  },
+  "devDependencies": {
+    "@mlightcad/cad-html-exporter-cli": "^1.5.7",
+    "@mlightcad/cad-html-plugin": "^1.5.7",
+    "@mlightcad/cad-simple-viewer": "^1.5.7",
+    "@mlightcad/data-model": "^1.10.3",
+    "@mlightcad/dxf-json-converter": "^1.10.3",
+    "@mlightcad/libredwg-converter": "^3.10.3",
+    "@mlightcad/mtext-renderer": "^0.11.9",
+    "@mlightcad/three-renderer": "^1.5.7",
+    "esbuild": "^0.28.1",
+    "fflate": "^0.8.2",
+    "lodash-es": "^4.17.21",
+    "three": "^0.172.0"
+  }
+}

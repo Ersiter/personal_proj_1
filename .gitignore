@@ -1,2 +1,7 @@
 web/strip-comments.js
-web/qr-code-svg.html
+node_modules/
+/assets/cad/**
+!/assets/cad/
+!/assets/cad/cad-viewer.js
+!/assets/cad/MLIGHTCAD-CAD-HTML-PLUGIN-MIT.txt
+!/assets/cad/THREE-MIT.txt
