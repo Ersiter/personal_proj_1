@@ -1,8 +1,8 @@
 window.KJL_CONFIG = {
-  "designId": "3FO3EIOVF0JS",
-  "designUrl": "https://www.kujiale.com/pcenter/design/3FO3EIOVF0JS/list",
-  "updatedAt": "2026-05-26",
-  "featuredPanoId": "3FOFPJUTGFHI",
+  "designId": "3FO3EE5B7O2G",
+  "designUrl": "https://www.kujiale.com/pcenter/design/3FO3EE5B7O2G/list",
+  "updatedAt": "2026-07-13",
+  "featuredPanoId": "3FOF5M7CIM0N",
   "cover": {
     "name": "户型封面",
     "url": "https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EE5B7O2G/1/NJJBNIAKTK4TGAABAAAAACA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp"
@@ -12,51 +12,51 @@ window.KJL_CONFIG = {
       // "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WK2Y8", // optional; inferred from url when omitted
       "name": "客餐厅 · 视角一",
       "tag": "宋式美学",
-      "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WK2Y8.jpg?x-oss-process=image/format,webp"
+      "url": "https://qhrenderpicoss.kujiale.com/r/2026/07/13/L3D720S41ENDO5F7FGIUWIO34LUFX7T4CBY8.jpg?x-oss-process=image/format,webp"
     },
     {
       "name": "客餐厅 · 视角二",
-      "tag": "暖色无主灯",
-      "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZQ8.jpg?x-oss-process=image/format,webp"
+      "tag": "暖调氛围",
+      "url": "https://qhrenderpicoss.kujiale.com/r/2026/07/13/L3D720S41ENDO5F7FFIUWLGZSLUFX7SEUKQ8.jpg?x-oss-process=image/format,webp"
     },
     {
-      "name": "次卧 · 视角一",
-      "tag": "暖木色",
-      "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZA8.jpg?x-oss-process=image/format,webp"
+      "name": "主卧",
+      "tag": "木色明亮",
+      "url": "https://qhrenderpicoss.kujiale.com/r/2026/07/13/L3D720S41ENDO5F7FCIUWICMALUFX755JLI8.jpg?x-oss-process=image/format,webp"
     },
     {
-      "name": "次卧 · 视角二",
+      "name": "次卧",
       "tag": "柔和灯光",
-      "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKYA8.jpg?x-oss-process=image/format,webp"
+      "url": "https://qhrenderpicoss.kujiale.com/r/2026/07/13/L3D720S41ENDO5F7IDQUWICMALUFX755OFA8.jpg?x-oss-process=image/format,webp"
     },
     {
-      "name": "次卧 · 视角三",
-      "tag": "收纳空间",
-      "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZI8.jpg?x-oss-process=image/format,webp"
+      "name": "洗手间",
+      "tag": "安全防滑",
+      "url": "https://qhrenderpicoss.kujiale.com/r/2026/07/13/L3D720S41ENDO5F7K7IUWLW2ELUFX7TGL2Q8.jpg?x-oss-process=image/format,webp"
     },
     {
       "name": "厨房",
       "tag": "实用布局",
-      "url": "https://qhrenderpicoss.kujiale.com/r/2026/05/19/L3D720S433B53ENDO4KL3NAUWJWPALUFX73WKZY8.jpg?x-oss-process=image/format,webp"
+      "url": "https://qhrenderpicoss.kujiale.com/r/2026/07/13/L3D720S41ENDO5F7N7AUWLGZSLUFX7SFKEA8.jpg?x-oss-process=image/format,webp"
     }
   ],
   "panos": [
     {
       "name": "客餐厅全景",
       // "id": "3FOFPJUTGFHI", // optional; inferred from url when omitted
-      "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJUTGFHI"
+      "url": "https://www.kujiale.com/xiaoguotu/pano/3FOF5M7CIM0N"
     },
     {
       "name": "次卧全景 · 一",
-      "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJWNQWEK"
+      "url": "https://www.kujiale.com/xiaoguotu/pano/3FOF5M777F6Y"
     },
     {
       "name": "次卧全景 · 二",
-      "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJUW8ROM"
+      "url": "https://www.kujiale.com/xiaoguotu/pano/3FOF5M778095"
     },
     {
       "name": "厨房全景",
-      "url": "https://www.kujiale.com/xiaoguotu/pano/3FOFPJUWBGBF"
+      "url": "https://www.kujiale.com/xiaoguotu/pano/3FOF5M7D6TIL"
     }
   ]
 };

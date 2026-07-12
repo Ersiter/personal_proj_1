@@ -1,7 +1,10 @@
 web/strip-comments.js
 node_modules/
+*.png
 /assets/cad/**
 !/assets/cad/
 !/assets/cad/cad-viewer.js
 !/assets/cad/MLIGHTCAD-CAD-HTML-PLUGIN-MIT.txt
 !/assets/cad/THREE-MIT.txt
+!/assets/cad/装修图纸.dwg
+!/assets/cad/floorplan.mlcad

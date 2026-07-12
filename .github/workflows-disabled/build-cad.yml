@@ -1,0 +1,42 @@
+name: Build CAD snapshot (disabled draft)
+
+# This file intentionally lives outside .github/workflows.
+# Move it there only after the public/private DWG source and deployment target
+# have been approved.
+on:
+  workflow_dispatch:
+
+jobs:
+  build-cad:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Future private-source hook:
+      # retrieve and decrypt the DWG into assets/cad/装修图纸.dwg here.
+      # Never print the key or the decrypted file in an Action log.
+      - name: Build CAD runtime and snapshot
+        run: npm run build:cad
+
+      - name: Check public CAD resources
+        env:
+          CDN_BASE: https://cdn.jsdelivr.net/gh/${{ github.repository }}@${{ github.sha }}/assets/cad
+        shell: bash
+        run: |
+          test -s assets/cad/cad-viewer.js
+          test -s assets/cad/floorplan.mlcad
+          curl --fail --location --head "$CDN_BASE/cad-viewer.js"
+          curl --fail --location --head "$CDN_BASE/floorplan.mlcad"
