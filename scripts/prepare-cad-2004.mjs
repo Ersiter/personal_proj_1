@@ -1,4 +1,4 @@
-import { cp, mkdtemp, rm, stat, writeFile } from 'node:fs/promises';
+import { copyFile, mkdtemp, rm, stat, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { basename, join } from 'node:path';
@@ -15,17 +15,14 @@ function runCoreConsole(executable, args) {
     child.stderr.on('data', (chunk) => output.push(chunk));
     child.once('error', reject);
     child.once('exit', (code) => {
-      if (code === 0) {
-        resolve();
-        return;
-      }
+      if (code === 0) return resolve();
       reject(new Error(`AutoCAD Core Console failed with exit code ${code}: ${Buffer.concat(output).toString('utf16le')}`));
     });
   });
 }
 
-/** Creates an evaluated build-only DWG copy without modifying the source drawing. */
-export async function prepareCadDrawing({ inputPath, outputPath, coreConsole = process.env.AUTOCAD_CORE_CONSOLE }) {
+/** Converts a source drawing to AutoCAD 2004 in a disposable build directory. */
+export async function prepareCad2004({ inputPath, outputPath, coreConsole = process.env.AUTOCAD_CORE_CONSOLE }) {
   const source = toPath(inputPath);
   const output = toPath(outputPath);
   if (!existsSync(source)) throw new Error(`CAD source drawing was not found: ${source}`);
@@ -33,14 +30,24 @@ export async function prepareCadDrawing({ inputPath, outputPath, coreConsole = p
     throw new Error('Set AUTOCAD_CORE_CONSOLE to accoreconsole.exe before building the CAD snapshot.');
   }
 
-  await cp(source, output);
-  const directory = await mkdtemp(join(tmpdir(), 'dai-qidong-cad-fields-'));
-  const scriptPath = join(directory, 'evaluate-fields.scr');
+  const directory = await mkdtemp(join(tmpdir(), 'dai-qidong-cad-2004-'));
+  const scriptPath = join(directory, 'save-as-2004.scr');
+  const sourceCopy = join(directory, 'source.dwg');
+  const convertedDrawing = join(directory, 'floorplan-2004.dwg');
+  const saveAsTarget = convertedDrawing.replace(/\\/g, '/');
 
   try {
-    await writeFile(scriptPath, '_.FILEDIA\n0\n_.FIELDEVAL\n31\n_.REGENALL\n_.QSAVE\n_.QUIT\n', 'utf8');
-    await runCoreConsole(coreConsole, ['/i', output, '/s', scriptPath]);
-    if ((await stat(output)).size === 0) throw new Error(`AutoCAD Core Console did not write ${basename(output)}.`);
+    await copyFile(source, sourceCopy);
+    await writeFile(
+      scriptPath,
+      `_.FILEDIA\n0\n_.FIELDEVAL\n31\n_.REGENALL\n_.QSAVE\n_.SAVEAS\n2004\n${saveAsTarget}\n_.QUIT\n`,
+      'utf8'
+    );
+    await runCoreConsole(coreConsole, ['/i', sourceCopy, '/s', scriptPath]);
+    if (!existsSync(convertedDrawing) || (await stat(convertedDrawing)).size === 0) {
+      throw new Error(`AutoCAD Core Console did not write ${basename(output)}.`);
+    }
+    await copyFile(convertedDrawing, output);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

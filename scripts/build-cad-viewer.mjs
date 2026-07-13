@@ -1,10 +1,10 @@
 import { cp, mkdir, mkdtemp, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join, resolve } from 'node:path';
+import { resolve, join } from 'node:path';
 import { build } from 'esbuild';
 import { exportCadSnapshot } from './export-cad-snapshot.mjs';
-import { prepareCadDrawing } from './prepare-cad-drawing.mjs';
+import { prepareCad2004 } from './prepare-cad-2004.mjs';
 
 const root = resolve(import.meta.dirname, '..');
 const outputDirectory = resolve(root, 'assets', 'cad');
@@ -48,9 +48,9 @@ const drawing = output('装修图纸.dwg');
 if (existsSync(drawing)) {
   const directory = await mkdtemp(join(tmpdir(), 'dai-qidong-cad-build-'));
   try {
-    const preparedDrawing = join(directory, 'field-materialized.dwg');
-    await prepareCadDrawing({ inputPath: drawing, outputPath: preparedDrawing });
-    await exportCadSnapshot({ inputPath: preparedDrawing, outputPath: output('floorplan.mlcad') });
+    const downgradedDrawing = join(directory, 'floorplan-2004.dwg');
+    await prepareCad2004({ inputPath: drawing, outputPath: downgradedDrawing });
+    await exportCadSnapshot({ inputPath: downgradedDrawing, outputPath: output('floorplan.mlcad') });
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

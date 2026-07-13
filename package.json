@@ -1,8 +1,7 @@
 {
   "scripts": {
     "build:cad": "node scripts/build-cad-viewer.mjs",
-    "preview:beta": "node scripts/preview-beta.mjs",
-    "test:cad": "node --test test/cad-field-materialization.test.mjs"
+    "preview:beta": "node scripts/preview-beta.mjs"
   },
   "devDependencies": {
     "@mlightcad/cad-html-exporter-cli": "^1.5.7",

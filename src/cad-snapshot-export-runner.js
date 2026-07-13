@@ -85,9 +85,6 @@ window.exportCadSnapshot = async (fileName, bytes) => {
 
   try {
     await materializeHiddenLayers(layerStore, manager.curView, originalLayers);
-    await manager.curView.ensureEntitiesConvertedForExport({ includeInvisibleLayers: true });
-    await nextFrame();
-    await nextFrame();
 
     const options = resolveAcApHtmlExportOptions({
       exportInvisibleLayers: true,
