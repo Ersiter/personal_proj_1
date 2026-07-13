@@ -825,6 +825,7 @@
     display: block; width: 100%; height: clamp(12rem, 30vw, 16rem);
     object-fit: cover;
   }
+  .render-frame video { display: block; width: 100%; height: auto; }
   .render-frame .cap {
     padding: clamp(0.6rem, 1.2vw, 1rem) clamp(0.6rem, 1.5vw, 1.25rem);
     display: flex; align-items: center; gap: 0.5rem;
@@ -839,14 +840,7 @@
     padding: 0.12rem 0.6rem; border-radius: 0.75rem;
     white-space: nowrap;
   }
-  .render-video-placeholder {
-    min-height: clamp(9rem, 18vw, 13rem); margin-top: clamp(1.5rem, 3vw, 2.25rem);
-    display: grid; place-items: center; text-align: center;
-    background: var(--surface); border: 1px solid var(--rule); border-radius: 0.4rem;
-    padding: clamp(1rem, 3vw, 2rem);
-  }
-  .render-video-placeholder h3 { margin: 0.35rem 0; }
-  .render-video-placeholder p { margin: 0; color: var(--ink-soft); font-size: clamp(0.72rem, 0.85vw, 0.82rem); }
+  .render-video-frame { margin-top: clamp(1.5rem, 3vw, 2.25rem); }
 
   
   .pano-links {
@@ -1521,12 +1515,9 @@
       <div class="render-frame skeleton"><div style="height:clamp(12rem,30vw,16rem);background:var(--rule);"></div><div class="cap"><span>加载中…</span></div></div>
     </div>
 
-    <div class="render-video-placeholder reveal d3" id="walkthrough-video" aria-label="全屋漫游视频占位">
-      <div>
-        <div class="eyebrow sec-label glowable">方案漫游</div>
-        <h3 class="glowable">全屋漫游</h3>
-        <p class="glowable">视频导出后将在此播放。</p>
-      </div>
+    <div class="render-frame render-video-frame skeleton reveal d3" id="walkthrough-video" aria-label="全屋漫游视频">
+      <div style="height:clamp(12rem,30vw,16rem);background:var(--rule);"></div>
+      <div class="cap"><span>加载中…</span></div>
     </div>
 
     <hr class="rule" style="margin-top:4rem;">
@@ -1897,6 +1888,7 @@
   if(data.renders && data.renders.length){
     data.renders.forEach(function(r){
       if(r && !r.id && r.url) r.id = renderIdFromUrl(r.url);
+  var walkthroughContainer = document.getElementById('walkthrough-video');
     });
   }
 
@@ -1944,6 +1936,38 @@
       tt.textContent = r.name;
       cap.appendChild(tt);
       if(r.tag){
+  if(walkthroughContainer && data.walkthrough && data.walkthrough.url){
+    function loadWalkthrough(){
+      if(walkthroughContainer.dataset.loaded === 'true') return;
+      walkthroughContainer.dataset.loaded = 'true';
+      walkthroughContainer.innerHTML = '';
+      walkthroughContainer.classList.remove('skeleton');
+      var walkthroughVideo = document.createElement('video');
+      walkthroughVideo.controls = true;
+      walkthroughVideo.preload = 'metadata';
+      walkthroughVideo.playsInline = true;
+      walkthroughVideo.setAttribute('aria-label', data.walkthrough.name || '全屋漫游视频');
+      walkthroughVideo.src = data.walkthrough.url;
+      walkthroughContainer.appendChild(walkthroughVideo);
+      var walkthroughCaption = document.createElement('div');
+      walkthroughCaption.className = 'cap glowable';
+      var walkthroughTitle = document.createElement('span');
+      walkthroughTitle.className = 'tt glowable';
+      walkthroughTitle.textContent = data.walkthrough.name || '全屋漫游';
+      walkthroughCaption.appendChild(walkthroughTitle);
+      walkthroughContainer.appendChild(walkthroughCaption);
+    }
+    if('IntersectionObserver' in window){
+      var walkthroughObserver = new IntersectionObserver(function(entries){
+        if(!entries[0].isIntersecting) return;
+        walkthroughObserver.disconnect();
+        loadWalkthrough();
+      }, { rootMargin: '800px 0px' });
+      walkthroughObserver.observe(walkthroughContainer);
+    }else{
+      loadWalkthrough();
+    }
+  }
         var tg = document.createElement('span');
         tg.className = 'tg glowable';
         tg.textContent = r.tag;

@@ -7,6 +7,10 @@ window.KJL_CONFIG = {
     "name": "户型封面",
     "url": "https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EE5B7O2G/1/NJJBNIAKTK4TGAABAAAAACA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp"
   },
+  "walkthrough": {
+    "name": "全屋漫游",
+    "url": "https://qhrenderpic-cos.kujiale.com/recycle180d/2026/07/14/L1D0S144B0ENDO5FOTUIUWKB62LUFX5W7DUI8.mp4"
+  },
   "renders": [
     {
       // "id": "L3D720S433B53ENDO4KL3NAUWJWPALUFX73WK2Y8", // optional; inferred from url when omitted
