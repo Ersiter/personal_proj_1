@@ -5,10 +5,11 @@ window.KJL_CONFIG = {
   "featuredPanoId": "3FOF5M7CIM0N",
   "cover": {
     "name": "户型封面",
-    "url": "https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EE5B7O2G/1/NJJBNIAKTK4TGAABAAAAACA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp"
+    "url": "https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EE5B7O2G/1/NJKLF5AKTJKHYAABAAAAAAQ8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp"
   },
   "walkthrough": {
     "name": "全屋漫游",
+    // "url": "https://qhrenderpic-cos.kujiale.com/recycle180d/2026/07/14/L3D462S132B0ENDO5FOTXIUWIOYALUFX5W7Y3Q8_automatic.mp4"
     "url": "https://qhrenderpic-cos.kujiale.com/recycle180d/2026/07/14/L1D0S144B0ENDO5FOTUIUWKB62LUFX5W7DUI8.mp4"
   },
   "renders": [
@@ -48,7 +49,8 @@ window.KJL_CONFIG = {
     {
       "name": "客餐厅全景",
       // "id": "3FOFPJUTGFHI", // optional; inferred from url when omitted
-      "url": "https://www.kujiale.com/xiaoguotu/pano/3FOF5M7CIM0N"
+      // "url": "https://www.kujiale.com/xiaoguotu/pano/3FOF5M7CIM0N"
+      "url": "https://yun.kujiale.com/cloud/design/3FO3EE5B7O2G/show"
     },
     {
       "name": "次卧全景 · 一",

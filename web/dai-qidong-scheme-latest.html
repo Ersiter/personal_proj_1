@@ -495,8 +495,9 @@
     background: linear-gradient(to right, var(--surface) 0%, transparent 100%);
     z-index: 1; pointer-events: none;
   }
+  [data-theme="dark"] .card-illo .illo-img img { filter: brightness(0.75) saturate(0.7); }
   @media (prefers-color-scheme: dark) {
-    .card-illo .illo-img img { filter: brightness(0.75) saturate(0.7); }
+    [data-theme="auto"] .card-illo .illo-img img { filter: brightness(0.75) saturate(0.7); }
   }
   @media (max-width: 480px) {
     .card-illo { flex-direction: column-reverse; }
@@ -590,10 +591,7 @@
     transition: color var(--motion-hover) var(--ease-standard), background var(--motion-hover) var(--ease-standard), border-color var(--motion-hover) var(--ease-standard),
       box-shadow var(--motion-hover) var(--ease-standard), text-shadow var(--motion-hover) var(--ease-standard);
   }
-  .plan-view-tab {
-    padding: 0.58rem 0.72rem;
-    box-shadow: inset 0 0 0 1px transparent;
-  }
+  .plan-view-tab { padding: 0.58rem 0.72rem; }
   .plan-view-tab + .plan-view-tab { border-left: 1px solid var(--rule); }
   .plan-view-tab[aria-selected="true"] { color: var(--ink); background: var(--bg-warm); }
   .plan-view-tab:hover,
@@ -602,11 +600,6 @@
   .cad-control-btn:focus-visible {
     color: var(--amber); outline: none;
     text-shadow: 0 0 0.55rem color-mix(in srgb, var(--amber) 42%, transparent);
-  }
-  .plan-view-tab:hover,
-  .plan-view-tab:focus-visible {
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--amber) 62%, transparent),
-      inset 0 0 0.75rem color-mix(in srgb, var(--amber) 16%, transparent);
   }
   .cad-viewer {
     position: absolute; inset: 0;
@@ -631,8 +624,7 @@
   .cad-control-btn:hover,
   .cad-control-btn:focus-visible {
     border-color: color-mix(in srgb, var(--amber) 66%, var(--rule-strong));
-    box-shadow: 0 0 0 1px color-mix(in srgb, var(--amber) 42%, transparent),
-      0 0 1.1rem color-mix(in srgb, var(--amber) 34%, transparent), var(--shadow-sm);
+    box-shadow: var(--shadow-sm);
   }
   .cad-layer-panel {
     position: absolute; top: calc(100% + 0.45rem); right: 0;
@@ -652,10 +644,9 @@
   }
   .cad-layer-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   
+  [data-theme="dark"] .floorplan-frame img { filter: brightness(0.92) sepia(0.06); }
   @media (prefers-color-scheme: dark) {
-    .floorplan-frame img {
-      filter: brightness(0.92) sepia(0.06);
-    }
+    [data-theme="auto"] .floorplan-frame img { filter: brightness(0.92) sepia(0.06); }
   }
   .floorplan-frame .overlay-stats {
     position: absolute; bottom: 0; left: 0; right: 0;
@@ -1081,8 +1072,8 @@
   
   a:hover { color: var(--amber) !important; text-shadow: 0 0 8px color-mix(in srgb,var(--amber) 55%,transparent), 0 0 18px color-mix(in srgb,var(--amber) 30%,transparent); }
   
-  a[href*="3FO3EIOVF0JS"] { text-decoration: none; border-bottom: 1px dotted var(--rule-strong); transition: border-color var(--motion-quick), color var(--motion-hover) var(--ease-standard), text-shadow var(--motion-hover) var(--ease-standard); }
-  a[href*="3FO3EIOVF0JS"]:hover { border-bottom-color: var(--amber); }
+  a[href*="/pcenter/design/"] { text-decoration: none; border-bottom: 1px dotted var(--rule-strong); transition: border-color var(--motion-quick), color var(--motion-hover) var(--ease-standard), text-shadow var(--motion-hover) var(--ease-standard); }
+  a[href*="/pcenter/design/"]:hover { border-bottom-color: var(--amber); }
   
   @media (prefers-reduced-motion: reduce) {
     .glowable, a { transition: none; }
@@ -1374,10 +1365,9 @@
         alt="戴启东住宅户型图纸 — 四室两厅三卫 227.92㎡"
         sizes="(max-width: 640px) 92vw, (max-width: 1024px) 90vw, 75rem"
       >
-      <img id="floorplanImg" class="plan-image" src="https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIFUKLAKTLD74AABAAAAAEA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp" loading="lazy"
+      <img id="floorplanImg" class="plan-image" loading="lazy"
         alt="戴启东住宅原始户型图 — 四室两厅三卫 227.92㎡"
         sizes="(max-width: 640px) 92vw, (max-width: 1024px) 90vw, 75rem"
-        srcset="https://qhtbdoss.kujiale.com/fpimgnew/prod/bim/3FO3EIOVF0JS/1/NIFUKLAKTLD74AABAAAAAEA8.jpg?x-oss-process=image/resize,m_mfit,w_1020,h_768/format,webp 1920w"
       >
       <div class="cad-viewer" id="cadViewer" hidden aria-live="polite"></div>
       <div class="cad-controls" id="cadControls" hidden>
@@ -1410,7 +1400,7 @@
     <div class="room-grid reveal d3">
       <div class="room-card" data-room="0">
         <div class="room-card-top"><h4 class="glowable">客餐厅</h4><span class="sqm glowable">71.20㎡</span></div>
-        <div class="room-card-body glowable">全屋最核心公共空间。6人L型沙发+茶几、75寸大屏电视。木饰面护墙板电视墙+隐形收纳。岭南花窗隔断柔性分区，暖色无主灯3000K。1×6实木餐桌+餐边柜+陈列柜，配独立电视。</div>
+        <div class="room-card-body glowable">全屋最核心公共空间。能容纳6人的分布包围沙发座椅+茶几、75寸大屏电视。木饰面护墙板电视墙+隐形收纳。岭南花窗隔断柔性分区，暖色主灯4000K。1×6实木餐桌+餐边柜+陈列柜，配独立电视。</div>
       </div>
       <div class="room-card" data-room="1">
         <div class="room-card-top"><h4 class="glowable">主卧室（老年房）</h4><span class="sqm glowable">28.61㎡</span></div>
@@ -1426,11 +1416,11 @@
       </div>
       <div class="room-card" data-room="4">
         <div class="room-card-top"><h4 class="glowable">次卧三（书房）</h4><span class="sqm glowable">18.02㎡</span></div>
-        <div class="room-card-body glowable">改造为书房，满足2人同时使用。双人书桌+电脑位，书籍+手办展示柜。暖色系+实木地板。</div>
+        <div class="room-card-body glowable">改造为书房，满足2人同时使用。双人书桌+电脑位，书籍+古玩展示柜。暖色系+实木地板。</div>
       </div>
       <div class="room-card" data-room="5">
         <div class="room-card-top"><h4 class="glowable">厨房</h4><span class="sqm glowable">11.49㎡</span></div>
-        <div class="room-card-body glowable">中式大吸力烟灶应对大油烟。U型操作台+双水槽，实用优先。暖木色橱柜面板+隐形拉手，易清洁哑光大砖。</div>
+        <div class="room-card-body glowable">中式大吸力烟灶应对大油烟。双侧操作台+双水槽，实用优先。暖木色橱柜面板+隐形拉手，易清洁哑光大砖。</div>
       </div>
       <div class="room-card">
         <div class="room-card-top"><h4 class="glowable">阳台</h4><span class="sqm glowable">5.79㎡</span></div>
@@ -1507,7 +1497,7 @@
   <div class="container">
     <div class="eyebrow reveal sec-label glowable">09 · Renderings</div>
     <h2 class="sec-title reveal d1 glowable">效果图</h2>
-    <p class="sec-desc reveal d2 glowable">酷家乐智能设计渲染 · 新中式–宋式 A 风格 · 设计 ID：<span id="designIdDisplay">3FO3EIOVF0JS</span></p>
+    <p class="sec-desc reveal d2 glowable">酷家乐智能设计渲染 · 新中式–宋式 A 风格 · 设计 ID：<span id="designIdDisplay">...</span></p>
 
     <div class="render-gallery reveal d3" id="renderGallery">
       <div class="render-frame skeleton"><div style="height:clamp(12rem,30vw,16rem);background:var(--rule);"></div><div class="cap"><span>加载中…</span></div></div>
@@ -1595,7 +1585,7 @@
     佛山 · 禅城 · 2026 年 7 月
   </p>
   <p class="glowable" style="font-size:clamp(0.6rem,0.7vw,0.68rem);opacity:0.35;margin-top:1rem;">
-    酷家乐方案 ID：<span id="designIdFooter">3FO3EIOVF0JS</span> · 基于《业主需求意向表（戴启东）》编制
+    酷家乐方案 ID：<span id="designIdFooter">...</span> · 基于《业主需求意向表（戴启东）》编制
   </p>
 </footer>
 
@@ -1888,7 +1878,6 @@
   if(data.renders && data.renders.length){
     data.renders.forEach(function(r){
       if(r && !r.id && r.url) r.id = renderIdFromUrl(r.url);
-  var walkthroughContainer = document.getElementById('walkthrough-video');
     });
   }
 
@@ -1899,6 +1888,7 @@
   }
 
   var gallery = document.getElementById('renderGallery');
+  var walkthroughContainer = document.getElementById('walkthrough-video');
   var panoContainer = document.getElementById('panoLinks');
   var designIdDisp  = document.getElementById('designIdDisplay');
   var designIdFoot  = document.getElementById('designIdFooter');
@@ -1936,6 +1926,16 @@
       tt.textContent = r.name;
       cap.appendChild(tt);
       if(r.tag){
+        var tg = document.createElement('span');
+        tg.className = 'tg glowable';
+        tg.textContent = r.tag;
+        cap.appendChild(tg);
+      }
+      frame.appendChild(cap);
+      gallery.appendChild(frame);
+    });
+  }
+
   if(walkthroughContainer && data.walkthrough && data.walkthrough.url){
     function loadWalkthrough(){
       if(walkthroughContainer.dataset.loaded === 'true') return;
@@ -1957,6 +1957,7 @@
       walkthroughCaption.appendChild(walkthroughTitle);
       walkthroughContainer.appendChild(walkthroughCaption);
     }
+
     if('IntersectionObserver' in window){
       var walkthroughObserver = new IntersectionObserver(function(entries){
         if(!entries[0].isIntersecting) return;
@@ -1967,15 +1968,6 @@
     }else{
       loadWalkthrough();
     }
-  }
-        var tg = document.createElement('span');
-        tg.className = 'tg glowable';
-        tg.textContent = r.tag;
-        cap.appendChild(tg);
-      }
-      frame.appendChild(cap);
-      gallery.appendChild(frame);
-    });
   }
 
   if(panoContainer && data.panos && data.panos.length){
