@@ -13,6 +13,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 const CAMERA_FRUSTUM = 400;
 const CAMERA_DISTANCE = 500;
 const CAD_BACKGROUND = 0x0D1B2A;
+const VIEW_FIT_PADDING = 0.9;
 
 function colorToCss(color) {
   return `#${(color >>> 0).toString(16).padStart(6, '0')}`;
@@ -76,10 +77,11 @@ function createControls(camera, canvas) {
   controls.enableDamping = false;
   controls.autoRotate = false;
   controls.enableRotate = false;
-  controls.zoomSpeed = 5;
-  controls.zoomToCursor = true;
+  controls.zoomSpeed = 1.2;
+  controls.zoomToCursor = false;
   controls.mouseButtons = { LEFT: THREE.MOUSE.PAN, MIDDLE: -1, RIGHT: -1 };
-  controls.touches = { ONE: THREE.TOUCH.PAN, TWO: THREE.TOUCH.DOLLY_PAN };
+  // Rotation is disabled, so DOLLY_ROTATE yields a stable pinch-only gesture.
+  controls.touches = { ONE: THREE.TOUCH.PAN, TWO: THREE.TOUCH.DOLLY_ROTATE };
   controls.update();
   return controls;
 }
@@ -175,13 +177,17 @@ export async function createCadSnapshotViewer({ container, snapshotUrl, onLayers
   };
   const zoomToExtents = () => {
     const { width, height } = getSize();
+    const aspect = width / height;
     const spanX = Math.max(extents.maxX - extents.minX, Number.EPSILON);
     const spanY = Math.max(extents.maxY - extents.minY, Number.EPSILON);
     const centerX = (extents.minX + extents.maxX) / 2 + spanX * fitOffset.x;
     const centerY = (extents.minY + extents.maxY) / 2 + spanY * fitOffset.y;
     camera.position.set(centerX, centerY, CAMERA_DISTANCE);
     controls.target.set(centerX, centerY, 0);
-    camera.zoom = Math.min(width / spanX, height / spanY) * 0.9;
+    camera.zoom = Math.min(
+      (CAMERA_FRUSTUM * 2 * aspect) / spanX,
+      (CAMERA_FRUSTUM * 2) / spanY
+    ) * VIEW_FIT_PADDING;
     camera.updateProjectionMatrix();
     controls.update();
     render();

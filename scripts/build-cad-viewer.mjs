@@ -1,8 +1,10 @@
-import { cp, mkdir } from 'node:fs/promises';
+import { cp, mkdir, mkdtemp, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
 import { build } from 'esbuild';
 import { exportCadSnapshot } from './export-cad-snapshot.mjs';
+import { prepareCadDrawing } from './prepare-cad-drawing.mjs';
 
 const root = resolve(import.meta.dirname, '..');
 const outputDirectory = resolve(root, 'assets', 'cad');
@@ -44,7 +46,14 @@ await Promise.all([
 
 const drawing = output('装修图纸.dwg');
 if (existsSync(drawing)) {
-  await exportCadSnapshot({ inputPath: drawing, outputPath: output('floorplan.mlcad') });
+  const directory = await mkdtemp(join(tmpdir(), 'dai-qidong-cad-build-'));
+  try {
+    const preparedDrawing = join(directory, 'field-materialized.dwg');
+    await prepareCadDrawing({ inputPath: drawing, outputPath: preparedDrawing });
+    await exportCadSnapshot({ inputPath: preparedDrawing, outputPath: output('floorplan.mlcad') });
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
 } else {
   console.log('No local DWG found; snapshot generation skipped.');
 }
